@@ -53,7 +53,7 @@ import OrderCloud as oc
 #Authenticate so we can use the API 
 oc.auth.login("<<username>>","<<password>>","<<client_id>>","FullAccess")
 #Get the current user
-print(oc.MeApi.get())
+print(oc.MeApi().get())
 
 ```
 
