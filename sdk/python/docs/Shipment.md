@@ -1,0 +1,16 @@
+# Shipment
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **str** |  | [optional] 
+**shipper** | **str** |  | [optional] 
+**date_shipped** | **date** |  | [optional] 
+**tracking_number** | **str** |  | [optional] 
+**cost** | **float** |  | [optional] 
+**items** | [**list[ShipmentItem]**](ShipmentItem.md) |  | [optional] 
+**xp** | **object** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
