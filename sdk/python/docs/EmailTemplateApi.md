@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **get**
-> get(buyer_id, email_template_type)
+> object get(buyer_id, email_template_type)
 
 
 
@@ -31,7 +31,8 @@ buyer_id = 'buyer_id_example' # str | ID of the buyer.
 email_template_type = 'email_template_type_example' # str | Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode.
 
 try: 
-    api_instance.get(buyer_id, email_template_type)
+    api_response = api_instance.get(buyer_id, email_template_type)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling EmailTemplateApi->get: %s\n" % e
 ```
@@ -45,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -59,7 +60,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> patch(buyer_id, email_template_type)
+> patch(buyer_id, email_template_type, email_template)
 
 
 
@@ -77,9 +78,10 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.EmailTemplateApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 email_template_type = 'email_template_type_example' # str | Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode.
+email_template = OrderCloud.EmailTemplate() # EmailTemplate | 
 
 try: 
-    api_instance.patch(buyer_id, email_template_type)
+    api_instance.patch(buyer_id, email_template_type, email_template)
 except ApiException as e:
     print "Exception when calling EmailTemplateApi->patch: %s\n" % e
 ```
@@ -90,6 +92,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
  **email_template_type** | **str**| Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode. | 
+ **email_template** | [**EmailTemplate**](EmailTemplate.md)|  | 
 
 ### Return type
 
@@ -155,7 +158,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> update(buyer_id, email_template_type)
+> update(buyer_id, email_template_type, email_template)
 
 
 
@@ -173,9 +176,10 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.EmailTemplateApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 email_template_type = 'email_template_type_example' # str | Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode.
+email_template = OrderCloud.EmailTemplate() # EmailTemplate | 
 
 try: 
-    api_instance.update(buyer_id, email_template_type)
+    api_instance.update(buyer_id, email_template_type, email_template)
 except ApiException as e:
     print "Exception when calling EmailTemplateApi->update: %s\n" % e
 ```
@@ -186,6 +190,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
  **email_template_type** | **str**| Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode. | 
+ **email_template** | [**EmailTemplate**](EmailTemplate.md)|  | 
 
 ### Return type
 

@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_credit_card**
-> object create_credit_card()
+> object create_credit_card(credit_card)
 
 
 
@@ -98,16 +98,20 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = OrderCloud.MeApi()
+credit_card = OrderCloud.BuyerCreditCard() # BuyerCreditCard | 
 
 try: 
-    api_response = api_instance.create_credit_card()
+    api_response = api_instance.create_credit_card(credit_card)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling MeApi->create_credit_card: %s\n" % e
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **credit_card** | [**BuyerCreditCard**](BuyerCreditCard.md)|  | 
 
 ### Return type
 
@@ -217,7 +221,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> object get(user)
+> object get()
 
 
 
@@ -233,20 +237,16 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = OrderCloud.MeApi()
-user = OrderCloud.User() # User | 
 
 try: 
-    api_response = api_instance.get(user)
+    api_response = api_instance.get()
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling MeApi->get: %s\n" % e
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user** | [**User**](User.md)|  | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_address**
-> get_address(address_id)
+> object get_address(address_id)
 
 
 
@@ -283,7 +283,8 @@ api_instance = OrderCloud.MeApi()
 address_id = 'address_id_example' # str | ID of the address.
 
 try: 
-    api_instance.get_address(address_id)
+    api_response = api_instance.get_address(address_id)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling MeApi->get_address: %s\n" % e
 ```
@@ -296,7 +297,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -310,7 +311,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_credit_card**
-> get_credit_card(creditcard_id)
+> object get_credit_card(creditcard_id)
 
 
 
@@ -329,7 +330,8 @@ api_instance = OrderCloud.MeApi()
 creditcard_id = 'creditcard_id_example' # str | ID of the creditcard.
 
 try: 
-    api_instance.get_credit_card(creditcard_id)
+    api_response = api_instance.get_credit_card(creditcard_id)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling MeApi->get_credit_card: %s\n" % e
 ```
@@ -342,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -546,7 +548,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_addresses**
-> object list_addresses(address, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> object list_addresses(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
 
 
 
@@ -562,7 +564,6 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = OrderCloud.MeApi()
-address = OrderCloud.BuyerAddress() # BuyerAddress | 
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -570,7 +571,7 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_addresses(address, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    api_response = api_instance.list_addresses(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling MeApi->list_addresses: %s\n" % e
@@ -580,7 +581,6 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **address** | [**BuyerAddress**](BuyerAddress.md)|  | 
  **search** | **str**| Word or phrase to search for. | [optional] 
  **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
@@ -1218,7 +1218,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_address**
-> patch_address(address_id)
+> patch_address(address_id, address)
 
 
 
@@ -1235,9 +1235,10 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.MeApi()
 address_id = 'address_id_example' # str | ID of the address.
+address = OrderCloud.BuyerAddress() # BuyerAddress | 
 
 try: 
-    api_instance.patch_address(address_id)
+    api_instance.patch_address(address_id, address)
 except ApiException as e:
     print "Exception when calling MeApi->patch_address: %s\n" % e
 ```
@@ -1247,6 +1248,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **address_id** | **str**| ID of the address. | 
+ **address** | [**BuyerAddress**](BuyerAddress.md)|  | 
 
 ### Return type
 
@@ -1264,7 +1266,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_credit_card**
-> patch_credit_card(creditcard_id)
+> patch_credit_card(creditcard_id, credit_card)
 
 
 
@@ -1281,9 +1283,10 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.MeApi()
 creditcard_id = 'creditcard_id_example' # str | ID of the creditcard.
+credit_card = OrderCloud.BuyerCreditCard() # BuyerCreditCard | 
 
 try: 
-    api_instance.patch_credit_card(creditcard_id)
+    api_instance.patch_credit_card(creditcard_id, credit_card)
 except ApiException as e:
     print "Exception when calling MeApi->patch_credit_card: %s\n" % e
 ```
@@ -1293,6 +1296,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **creditcard_id** | **str**| ID of the creditcard. | 
+ **credit_card** | [**BuyerCreditCard**](BuyerCreditCard.md)|  | 
 
 ### Return type
 
@@ -1357,7 +1361,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_address**
-> update_address(address_id)
+> object update_address(address_id, address)
 
 
 
@@ -1374,9 +1378,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.MeApi()
 address_id = 'address_id_example' # str | ID of the address.
+address = OrderCloud.BuyerAddress() # BuyerAddress | 
 
 try: 
-    api_instance.update_address(address_id)
+    api_response = api_instance.update_address(address_id, address)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling MeApi->update_address: %s\n" % e
 ```
@@ -1386,10 +1392,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **address_id** | **str**| ID of the address. | 
+ **address** | [**BuyerAddress**](BuyerAddress.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -1403,7 +1410,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_credit_card**
-> update_credit_card(creditcard_id)
+> object update_credit_card(creditcard_id, credit_card)
 
 
 
@@ -1420,9 +1427,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.MeApi()
 creditcard_id = 'creditcard_id_example' # str | ID of the creditcard.
+credit_card = OrderCloud.BuyerCreditCard() # BuyerCreditCard | 
 
 try: 
-    api_instance.update_credit_card(creditcard_id)
+    api_response = api_instance.update_credit_card(creditcard_id, credit_card)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling MeApi->update_credit_card: %s\n" % e
 ```
@@ -1432,10 +1441,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **creditcard_id** | **str**| ID of the creditcard. | 
+ **credit_card** | [**BuyerCreditCard**](BuyerCreditCard.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 

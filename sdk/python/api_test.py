@@ -5,16 +5,16 @@ Me = oc.MeApi()
 
 print(Me.get())
 
-Buyers = oc.BuyerApi()
-buyerList = Buyers.list()
+# Buyers = oc.BuyerApi()
+# buyerList = Buyers.list()
 
-#Get the first buyerID
-buyerid = buyerList['Items'][0]['ID']
+# #Get the first buyerID
+# buyerid = buyerList['Items'][0]['ID']
 
-Users = oc.UserApi()
-print(Users.list(buyerid)['Items'])
-print(buyerList)
+# Users = oc.UserApi()
+# print(Users.list(buyerid)['Items'])
+# print(buyerList)
 
-#Let's create a buyer user 
-newuser = oc.models.User(id="Omar",username="omarshehata",password="fails345",active=True,first_name="Omar",last_name="Shehata",email="oshehata@four51.com")
-#print(Users.create(buyerid,user=newuser))
+# #Let's create a buyer user 
+# newuser = oc.models.User(id="Omar",username="omarshehata",password="fails345",active=True,first_name="Omar",last_name="Shehata",email="oshehata@four51.com")
+# #print(Users.create(buyerid,user=newuser))

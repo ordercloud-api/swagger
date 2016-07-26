@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete**
-> delete(buyer_id, company)
+> delete(buyer_id)
 
 
 
@@ -76,10 +76,9 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.BuyerApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
-company = OrderCloud.Buyer() # Buyer | 
 
 try: 
-    api_instance.delete(buyer_id, company)
+    api_instance.delete(buyer_id)
 except ApiException as e:
     print "Exception when calling BuyerApi->delete: %s\n" % e
 ```
@@ -89,7 +88,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
- **company** | [**Buyer**](Buyer.md)|  | 
 
 ### Return type
 
@@ -107,7 +105,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> object get(buyer_id, company)
+> object get(buyer_id)
 
 
 
@@ -124,10 +122,9 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.BuyerApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
-company = OrderCloud.Buyer() # Buyer | 
 
 try: 
-    api_response = api_instance.get(buyer_id, company)
+    api_response = api_instance.get(buyer_id)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling BuyerApi->get: %s\n" % e
@@ -138,7 +135,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
- **company** | [**Buyer**](Buyer.md)|  | 
 
 ### Return type
 
@@ -156,7 +152,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> object list(company, search=search, page=page, page_size=page_size)
+> object list(search=search, page=page, page_size=page_size)
 
 
 
@@ -172,13 +168,12 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = OrderCloud.BuyerApi()
-company = OrderCloud.Buyer() # Buyer | 
 search = 'search_example' # str | Word or phrase to search for. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(company, search=search, page=page, page_size=page_size)
+    api_response = api_instance.list(search=search, page=page, page_size=page_size)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling BuyerApi->list: %s\n" % e
@@ -188,7 +183,6 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **company** | [**Buyer**](Buyer.md)|  | 
  **search** | **str**| Word or phrase to search for. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 

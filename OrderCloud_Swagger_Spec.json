@@ -217,17 +217,7 @@
         "tags": [
           "Me"
         ],
-        "parameters": [
-          {
-            "name": "user",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
-          }
-        ]
+        "parameters": []
       },
       "put": {
         "responses": {
@@ -435,15 +425,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "address",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/BuyerAddress"
-            }
           }
         ]
       },
@@ -477,7 +458,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": "Only available to Buyer Users."
+            "description": "Only available to Buyer Users.",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "GetAddress",
@@ -497,7 +481,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": "Only available to Buyer Users."
+            "description": "Only available to Buyer Users.",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "UpdateAddress",
@@ -511,6 +498,15 @@
             "description": "ID of the address.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BuyerAddress"
+            }
           }
         ]
       },
@@ -531,6 +527,15 @@
             "description": "ID of the address.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BuyerAddress"
+            }
           }
         ]
       },
@@ -569,7 +574,17 @@
         "tags": [
           "Me"
         ],
-        "parameters": []
+        "parameters": [
+          {
+            "name": "creditCard",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BuyerCreditCard"
+            }
+          }
+        ]
       },
       "get": {
         "responses": {
@@ -627,7 +642,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": "Only available to Buyer Users."
+            "description": "Only available to Buyer Users.",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "GetCreditCard",
@@ -647,7 +665,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": "Only available to Buyer Users."
+            "description": "Only available to Buyer Users.",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "UpdateCreditCard",
@@ -661,6 +682,15 @@
             "description": "ID of the creditcard.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "creditCard",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BuyerCreditCard"
+            }
           }
         ]
       },
@@ -681,6 +711,15 @@
             "description": "ID of the creditcard.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "creditCard",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BuyerCreditCard"
+            }
           }
         ]
       },
@@ -1250,7 +1289,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -1277,7 +1319,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -1298,6 +1343,15 @@
             "description": "ID of the order.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
           }
         ]
       },
@@ -1331,7 +1385,10 @@
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Patch",
@@ -1352,6 +1409,15 @@
             "description": "ID of the order.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "partialOrder",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
           }
         ]
       }
@@ -1360,7 +1426,10 @@
       "post": {
         "responses": {
           "201": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Create",
@@ -1374,6 +1443,15 @@
             "description": "ID of the buyer.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
           }
         ]
       },
@@ -2177,7 +2255,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -2211,7 +2292,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -2239,6 +2323,15 @@
             "description": "ID of the line item.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "lineItem",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LineItem"
+            }
           }
         ]
       },
@@ -2279,7 +2372,10 @@
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Patch",
@@ -2307,6 +2403,15 @@
             "description": "ID of the line item.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "partialLineItem",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LineItem"
+            }
           }
         ]
       }
@@ -2374,15 +2479,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "lineItem",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/LineItem"
-            }
           }
         ]
       },
@@ -2524,7 +2620,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -2558,7 +2657,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -2586,6 +2688,15 @@
             "description": "ID of the payment.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "payment",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Payment"
+            }
           }
         ]
       },
@@ -2626,7 +2737,10 @@
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Patch",
@@ -2654,6 +2768,15 @@
             "description": "ID of the payment.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "partialPayment",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Payment"
+            }
           }
         ]
       }
@@ -2721,15 +2844,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "payment",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Payment"
-            }
           }
         ]
       },
@@ -2825,7 +2939,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "UpdateTransaction",
@@ -2860,13 +2977,25 @@
             "description": "ID of the transaction.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "transaction",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PaymentTransaction"
+            }
           }
         ]
       },
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "PatchTransaction",
@@ -2901,6 +3030,15 @@
             "description": "ID of the transaction.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "partialTransaction",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PaymentTransaction"
+            }
           }
         ]
       },
@@ -2950,7 +3088,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -2977,7 +3118,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -2998,6 +3142,15 @@
             "description": "ID of the shipment.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "shipment",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Shipment"
+            }
           }
         ]
       },
@@ -3031,7 +3184,10 @@
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Patch",
@@ -3052,6 +3208,15 @@
             "description": "ID of the shipment.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "shipment",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Shipment"
+            }
           }
         ]
       }
@@ -3119,15 +3284,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "shipment",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Shipment"
-            }
           }
         ]
       },
@@ -3272,15 +3428,6 @@
             "description": "ID of the buyer.",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "company",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Buyer"
-            }
           }
         ]
       },
@@ -3333,15 +3480,6 @@
             "description": "ID of the buyer.",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "company",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Buyer"
-            }
           }
         ]
       }
@@ -3381,15 +3519,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "company",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Buyer"
-            }
           }
         ]
       },
@@ -3423,7 +3552,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -3443,7 +3575,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -3457,6 +3592,15 @@
             "description": "ID of the user.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
           }
         ]
       },
@@ -3497,6 +3641,15 @@
             "description": "ID of the user.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
           }
         ]
       }
@@ -3550,15 +3703,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "user",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
           }
         ]
       },
@@ -3592,7 +3736,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -3612,7 +3759,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -3626,6 +3776,15 @@
             "description": "ID of the product.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "product",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
           }
         ]
       },
@@ -3666,6 +3825,15 @@
             "description": "ID of the product.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "product",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
           }
         ]
       }
@@ -3719,15 +3887,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "product",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Product"
-            }
           }
         ]
       },
@@ -3877,6 +4036,15 @@
             "description": "ID of the variant.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "variant",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Variant"
+            }
           }
         ]
       },
@@ -3907,6 +4075,15 @@
             "description": "ID of the variant.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "variant",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Variant"
+            }
           }
         ]
       },
@@ -4193,7 +4370,17 @@
         "tags": [
           "Product"
         ],
-        "parameters": []
+        "parameters": [
+          {
+            "name": "productAssignment",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProductAssignment"
+            }
+          }
+        ]
       },
       "get": {
         "responses": {
@@ -4315,7 +4502,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -4335,7 +4525,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -4349,6 +4542,15 @@
             "description": "ID of the price schedule.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "priceSchedule",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PriceSchedule"
+            }
           }
         ]
       },
@@ -4375,7 +4577,10 @@
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Patch",
@@ -4389,6 +4594,15 @@
             "description": "ID of the price schedule.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "priceSchedule",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PriceSchedule"
+            }
           }
         ]
       }
@@ -4442,15 +4656,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "priceSchedule",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/PriceSchedule"
-            }
           }
         ]
       },
@@ -4484,7 +4689,10 @@
       "post": {
         "responses": {
           "201": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "SavePriceBreak",
@@ -4498,6 +4706,15 @@
             "description": "ID of the price schedule.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "priceBreak",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PriceBreak"
+            }
           }
         ]
       },
@@ -4533,7 +4750,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -4553,7 +4773,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -4567,6 +4790,15 @@
             "description": "ID of the spec.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "spec",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Spec"
+            }
           }
         ]
       },
@@ -4593,7 +4825,10 @@
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Patch",
@@ -4607,6 +4842,15 @@
             "description": "ID of the spec.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "spec",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Spec"
+            }
           }
         ]
       }
@@ -4660,15 +4904,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "spec",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Spec"
-            }
           }
         ]
       },
@@ -4702,7 +4937,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "ListProductAssignments",
@@ -4737,15 +4975,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "productAssignment",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/SpecProductAssignment"
-            }
           }
         ]
       },
@@ -4822,6 +5051,15 @@
             "description": "ID of the spec.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "option",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SpecOption"
+            }
           }
         ]
       },
@@ -4888,7 +5126,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "UpdateOption",
@@ -4909,13 +5150,25 @@
             "description": "ID of the option.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "option",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SpecOption"
+            }
           }
         ]
       },
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "PatchOption",
@@ -4936,13 +5189,25 @@
             "description": "ID of the option.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "option",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SpecOption"
+            }
           }
         ]
       },
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "GetOption",
@@ -4998,7 +5263,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -5018,7 +5286,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -5032,6 +5303,15 @@
             "description": "ID of the promotion.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "promo",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Promotion"
+            }
           }
         ]
       },
@@ -5058,7 +5338,10 @@
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Patch",
@@ -5072,6 +5355,15 @@
             "description": "ID of the promotion.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "partialPromotion",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Promotion"
+            }
           }
         ]
       }
@@ -5125,15 +5417,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "promo",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Promotion"
-            }
           }
         ]
       },
@@ -5167,7 +5450,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "ListAssignments",
@@ -5223,15 +5509,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "assignment",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/PromotionAssignment"
-            }
           }
         ]
       },
@@ -5385,7 +5662,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -5406,22 +5686,16 @@
             "description": "ID of the user.",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "user",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
           }
         ]
       },
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -5478,15 +5752,6 @@
             "description": "ID of the user.",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "user",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
           }
         ]
       },
@@ -5590,15 +5855,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "user",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
           }
         ]
       },
@@ -5680,7 +5936,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -5707,7 +5966,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -5728,6 +5990,15 @@
             "description": "ID of the user group.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "group",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserGroup"
+            }
           }
         ]
       },
@@ -5782,6 +6053,15 @@
             "description": "ID of the user group.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "group",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserGroup"
+            }
           }
         ]
       }
@@ -5842,15 +6122,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "group",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/UserGroup"
-            }
           }
         ]
       },
@@ -5891,7 +6162,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "ListUserAssignments",
@@ -5933,15 +6207,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "userGroupAssignment",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/UserGroupAssignment"
-            }
           }
         ]
       },
@@ -6015,7 +6280,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -6036,22 +6304,16 @@
             "description": "ID of the category.",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "category",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Category"
-            }
           }
         ]
       },
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -6108,15 +6370,6 @@
             "description": "ID of the category.",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "category",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Category"
-            }
           }
         ]
       },
@@ -6227,15 +6480,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "category",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Category"
-            }
           }
         ]
       },
@@ -6336,7 +6580,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "ListProductAssignments",
@@ -6378,15 +6625,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "productAssignment",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CategoryProductAssignment"
-            }
           }
         ]
       },
@@ -6460,7 +6698,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "ListAssignments",
@@ -6516,15 +6757,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "categoryAssignment",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CategoryAssignment"
-            }
           }
         ]
       },
@@ -6605,7 +6837,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -6632,7 +6867,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -6653,6 +6891,15 @@
             "description": "ID of the address.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Address"
+            }
           }
         ]
       },
@@ -6686,7 +6933,10 @@
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Patch",
@@ -6707,6 +6957,15 @@
             "description": "ID of the address.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Address"
+            }
           }
         ]
       }
@@ -6767,15 +7026,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "address",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Address"
-            }
           }
         ]
       },
@@ -6816,7 +7066,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "ListAssignments",
@@ -6886,15 +7139,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "assignment",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/AddressAssignment"
-            }
           }
         ]
       },
@@ -6975,7 +7219,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -7002,7 +7249,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -7023,6 +7273,15 @@
             "description": "ID of the spending account.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "spendingAccount",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SpendingAccount"
+            }
           }
         ]
       },
@@ -7056,7 +7315,10 @@
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Patch",
@@ -7077,6 +7339,15 @@
             "description": "ID of the spending account.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "spendingAccount",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SpendingAccount"
+            }
           }
         ]
       }
@@ -7137,15 +7408,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "spendingAccount",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/SpendingAccount"
-            }
           }
         ]
       },
@@ -7186,7 +7448,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "ListAssignments",
@@ -7242,15 +7507,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "assignment",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/SpendingAccountAssignment"
-            }
           }
         ]
       },
@@ -7331,7 +7587,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -7358,7 +7617,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -7379,6 +7641,15 @@
             "description": "ID of the cost center.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "costCenter",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CostCenter"
+            }
           }
         ]
       },
@@ -7412,7 +7683,10 @@
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Patch",
@@ -7433,6 +7707,15 @@
             "description": "ID of the cost center.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "costCenter",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CostCenter"
+            }
           }
         ]
       }
@@ -7493,15 +7776,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "costCenter",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CostCenter"
-            }
           }
         ]
       },
@@ -7542,7 +7816,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "ListAssignments",
@@ -7598,15 +7875,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "assignment",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CostCenterAssignment"
-            }
           }
         ]
       },
@@ -7687,7 +7955,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -7714,7 +7985,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -7735,6 +8009,15 @@
             "description": "ID of the approval rule.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "approvalRule",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ApprovalRule"
+            }
           }
         ]
       },
@@ -7768,7 +8051,10 @@
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Patch",
@@ -7789,6 +8075,15 @@
             "description": "ID of the approval rule.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "partialApprovalRule",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ApprovalRule"
+            }
           }
         ]
       }
@@ -7849,15 +8144,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "approvalRule",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ApprovalRule"
-            }
           }
         ]
       },
@@ -7898,7 +8184,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -7925,7 +8214,10 @@
       "put": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Update",
@@ -7946,6 +8238,15 @@
             "description": "ID of the credit card.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "card",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreditCard"
+            }
           }
         ]
       },
@@ -7979,7 +8280,10 @@
       "patch": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Patch",
@@ -8000,6 +8304,15 @@
             "description": "ID of the credit card.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "card",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreditCard"
+            }
           }
         ]
       }
@@ -8060,15 +8373,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "card",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CreditCard"
-            }
           }
         ]
       },
@@ -8109,7 +8413,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "ListAssignments",
@@ -8165,15 +8472,6 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
-          },
-          {
-            "name": "assignment",
-            "in": "body",
-            "description": "",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CreditCardAssignment"
-            }
           }
         ]
       },
@@ -8254,7 +8552,10 @@
       "get": {
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "operationId": "Get",
@@ -8302,6 +8603,15 @@
             "description": "Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "emailTemplate",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EmailTemplate"
+            }
           }
         ]
       },
@@ -8329,6 +8639,15 @@
             "description": "Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode.",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "emailTemplate",
+            "in": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EmailTemplate"
+            }
           }
         ]
       },
@@ -8432,6 +8751,45 @@
         }
       }
     },
+    "Partial`1": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Username": {
+          "type": "string"
+        },
+        "Password": {
+          "type": "string"
+        },
+        "FirstName": {
+          "type": "string"
+        },
+        "LastName": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Phone": {
+          "type": "string"
+        },
+        "TermsAccepted": {
+          "format": "date",
+          "type": "string"
+        },
+        "Active": {
+          "type": "boolean"
+        },
+        "xp": {
+          "type": "object"
+        },
+        "SecurityProfileID": {
+          "type": "string"
+        }
+      }
+    },
     "BuyerAddress": {
       "type": "object",
       "properties": {
@@ -8479,6 +8837,62 @@
         }
       }
     },
+    "BuyerCreditCard": {
+      "type": "object",
+      "properties": {
+        "Token": {
+          "type": "string"
+        },
+        "CardType": {
+          "type": "string"
+        },
+        "PartialAccountNumber": {
+          "type": "string"
+        },
+        "CardholderName": {
+          "type": "string"
+        },
+        "ExpirationDate": {
+          "format": "date",
+          "type": "string"
+        },
+        "xp": {
+          "type": "object"
+        }
+      }
+    },
+    "Order": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "FromUserID": {
+          "type": "string"
+        },
+        "BillingAddressID": {
+          "type": "string"
+        },
+        "ShippingAddressID": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "ShippingCost": {
+          "type": "number"
+        },
+        "TaxCost": {
+          "type": "number"
+        },
+        "xp": {
+          "type": "object"
+        }
+      }
+    },
     "Shipment": {
       "type": "object",
       "properties": {
@@ -8509,7 +8923,7 @@
         }
       }
     },
-    "Partial`1": {
+    "Address": {
       "type": "object",
       "properties": {
         "ID": {
@@ -8729,6 +9143,49 @@
         }
       }
     },
+    "Variant": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "boolean"
+        },
+        "xp": {
+          "type": "object"
+        }
+      }
+    },
+    "ProductAssignment": {
+      "type": "object",
+      "properties": {
+        "ProductID": {
+          "type": "string"
+        },
+        "StandardPriceScheduleID": {
+          "type": "string"
+        },
+        "ReplenishmentPriceScheduleID": {
+          "type": "string"
+        },
+        "UserID": {
+          "type": "string"
+        },
+        "UserGroupID": {
+          "type": "string"
+        },
+        "BuyerID": {
+          "type": "string"
+        }
+      }
+    },
     "PriceSchedule": {
       "type": "object",
       "properties": {
@@ -8764,6 +9221,17 @@
         },
         "xp": {
           "type": "object"
+        }
+      }
+    },
+    "PriceBreak": {
+      "type": "object",
+      "properties": {
+        "Quantity": {
+          "type": "integer"
+        },
+        "Price": {
+          "type": "number"
         }
       }
     },
@@ -8807,6 +9275,32 @@
         },
         "DefinesVariant": {
           "type": "boolean"
+        }
+      }
+    },
+    "SpecOption": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        },
+        "ListOrder": {
+          "type": "integer"
+        },
+        "IsOpenText": {
+          "type": "boolean"
+        },
+        "PriceMarkupType": {
+          "type": "string"
+        },
+        "PriceMarkup": {
+          "type": "number"
+        },
+        "xp": {
+          "type": "object"
         }
       }
     },
@@ -8963,50 +9457,6 @@
         },
         "UserGroupID": {
           "type": "string"
-        }
-      }
-    },
-    "Address": {
-      "type": "object",
-      "properties": {
-        "ID": {
-          "type": "string"
-        },
-        "CompanyName": {
-          "type": "string"
-        },
-        "FirstName": {
-          "type": "string"
-        },
-        "LastName": {
-          "type": "string"
-        },
-        "Street1": {
-          "type": "string"
-        },
-        "Street2": {
-          "type": "string"
-        },
-        "City": {
-          "type": "string"
-        },
-        "State": {
-          "type": "string"
-        },
-        "Zip": {
-          "type": "string"
-        },
-        "Country": {
-          "type": "string"
-        },
-        "Phone": {
-          "type": "string"
-        },
-        "AddressName": {
-          "type": "string"
-        },
-        "xp": {
-          "type": "object"
         }
       }
     },
@@ -9191,6 +9641,26 @@
           "type": "string"
         },
         "UserGroupID": {
+          "type": "string"
+        }
+      }
+    },
+    "EmailTemplate": {
+      "type": "object",
+      "properties": {
+        "Subject": {
+          "type": "string"
+        },
+        "Body": {
+          "type": "string"
+        },
+        "ReplyEmail": {
+          "type": "string"
+        },
+        "SendMessageType": {
+          "type": "boolean"
+        },
+        "EmailFormatType": {
           "type": "string"
         }
       }

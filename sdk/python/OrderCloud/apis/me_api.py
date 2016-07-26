@@ -155,7 +155,7 @@ class MeApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def create_credit_card(self, **kwargs):
+    def create_credit_card(self, credit_card, **kwargs):
         """
         
         
@@ -166,22 +166,23 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_credit_card(callback=callback_function)
+        >>> thread = api.create_credit_card(credit_card, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param BuyerCreditCard credit_card:  (required)
         :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_credit_card_with_http_info(**kwargs)
+            return self.create_credit_card_with_http_info(credit_card, **kwargs)
         else:
-            (data) = self.create_credit_card_with_http_info(**kwargs)
+            (data) = self.create_credit_card_with_http_info(credit_card, **kwargs)
             return data
 
-    def create_credit_card_with_http_info(self, **kwargs):
+    def create_credit_card_with_http_info(self, credit_card, **kwargs):
         """
         
         
@@ -192,16 +193,17 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_credit_card_with_http_info(callback=callback_function)
+        >>> thread = api.create_credit_card_with_http_info(credit_card, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param BuyerCreditCard credit_card:  (required)
         :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []
+        all_params = ['credit_card']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -214,6 +216,9 @@ class MeApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'credit_card' is set
+        if ('credit_card' not in params) or (params['credit_card'] is None):
+            raise ValueError("Missing the required parameter `credit_card` when calling `create_credit_card`")
 
         resource_path = '/me/creditcards'.replace('{format}', 'json')
         path_params = {}
@@ -226,6 +231,8 @@ class MeApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'credit_card' in params:
+            body_params = params['credit_card']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -460,7 +467,7 @@ class MeApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def get(self, user, **kwargs):
+    def get(self, **kwargs):
         """
         
         
@@ -471,23 +478,22 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get(user, callback=callback_function)
+        >>> thread = api.get(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param User user:  (required)
         :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_with_http_info(user, **kwargs)
+            return self.get_with_http_info(**kwargs)
         else:
-            (data) = self.get_with_http_info(user, **kwargs)
+            (data) = self.get_with_http_info(**kwargs)
             return data
 
-    def get_with_http_info(self, user, **kwargs):
+    def get_with_http_info(self, **kwargs):
         """
         
         
@@ -498,17 +504,16 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_with_http_info(user, callback=callback_function)
+        >>> thread = api.get_with_http_info(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param User user:  (required)
         :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['user']
+        all_params = []
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -521,9 +526,6 @@ class MeApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'user' is set
-        if ('user' not in params) or (params['user'] is None):
-            raise ValueError("Missing the required parameter `user` when calling `get`")
 
         resource_path = '/me'.replace('{format}', 'json')
         path_params = {}
@@ -536,8 +538,6 @@ class MeApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'user' in params:
-            body_params = params['user']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -580,7 +580,7 @@ class MeApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str address_id: ID of the address. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -607,7 +607,7 @@ class MeApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str address_id: ID of the address. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -663,7 +663,7 @@ class MeApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -684,7 +684,7 @@ class MeApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str creditcard_id: ID of the creditcard. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -711,7 +711,7 @@ class MeApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str creditcard_id: ID of the creditcard. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -767,7 +767,7 @@ class MeApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -1195,7 +1195,7 @@ class MeApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list_addresses(self, address, **kwargs):
+    def list_addresses(self, **kwargs):
         """
         
         
@@ -1206,11 +1206,10 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_addresses(address, callback=callback_function)
+        >>> thread = api.list_addresses(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param BuyerAddress address:  (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -1222,12 +1221,12 @@ class MeApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_addresses_with_http_info(address, **kwargs)
+            return self.list_addresses_with_http_info(**kwargs)
         else:
-            (data) = self.list_addresses_with_http_info(address, **kwargs)
+            (data) = self.list_addresses_with_http_info(**kwargs)
             return data
 
-    def list_addresses_with_http_info(self, address, **kwargs):
+    def list_addresses_with_http_info(self, **kwargs):
         """
         
         
@@ -1238,11 +1237,10 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_addresses_with_http_info(address, callback=callback_function)
+        >>> thread = api.list_addresses_with_http_info(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param BuyerAddress address:  (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -1253,7 +1251,7 @@ class MeApi(object):
                  returns the request thread.
         """
 
-        all_params = ['address', 'search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1266,9 +1264,6 @@ class MeApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'address' is set
-        if ('address' not in params) or (params['address'] is None):
-            raise ValueError("Missing the required parameter `address` when calling `list_addresses`")
 
         resource_path = '/me/addresses'.replace('{format}', 'json')
         path_params = {}
@@ -1291,8 +1286,6 @@ class MeApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'address' in params:
-            body_params = params['address']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -2635,7 +2628,7 @@ class MeApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch_address(self, address_id, **kwargs):
+    def patch_address(self, address_id, address, **kwargs):
         """
         
         
@@ -2646,23 +2639,24 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_address(address_id, callback=callback_function)
+        >>> thread = api.patch_address(address_id, address, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str address_id: ID of the address. (required)
+        :param BuyerAddress address:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_address_with_http_info(address_id, **kwargs)
+            return self.patch_address_with_http_info(address_id, address, **kwargs)
         else:
-            (data) = self.patch_address_with_http_info(address_id, **kwargs)
+            (data) = self.patch_address_with_http_info(address_id, address, **kwargs)
             return data
 
-    def patch_address_with_http_info(self, address_id, **kwargs):
+    def patch_address_with_http_info(self, address_id, address, **kwargs):
         """
         
         
@@ -2673,17 +2667,18 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_address_with_http_info(address_id, callback=callback_function)
+        >>> thread = api.patch_address_with_http_info(address_id, address, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str address_id: ID of the address. (required)
+        :param BuyerAddress address:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['address_id']
+        all_params = ['address_id', 'address']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -2699,6 +2694,9 @@ class MeApi(object):
         # verify the required parameter 'address_id' is set
         if ('address_id' not in params) or (params['address_id'] is None):
             raise ValueError("Missing the required parameter `address_id` when calling `patch_address`")
+        # verify the required parameter 'address' is set
+        if ('address' not in params) or (params['address'] is None):
+            raise ValueError("Missing the required parameter `address` when calling `patch_address`")
 
         resource_path = '/me/addresses/{addressID}'.replace('{format}', 'json')
         path_params = {}
@@ -2713,6 +2711,8 @@ class MeApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'address' in params:
+            body_params = params['address']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -2739,7 +2739,7 @@ class MeApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch_credit_card(self, creditcard_id, **kwargs):
+    def patch_credit_card(self, creditcard_id, credit_card, **kwargs):
         """
         
         
@@ -2750,23 +2750,24 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_credit_card(creditcard_id, callback=callback_function)
+        >>> thread = api.patch_credit_card(creditcard_id, credit_card, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str creditcard_id: ID of the creditcard. (required)
+        :param BuyerCreditCard credit_card:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_credit_card_with_http_info(creditcard_id, **kwargs)
+            return self.patch_credit_card_with_http_info(creditcard_id, credit_card, **kwargs)
         else:
-            (data) = self.patch_credit_card_with_http_info(creditcard_id, **kwargs)
+            (data) = self.patch_credit_card_with_http_info(creditcard_id, credit_card, **kwargs)
             return data
 
-    def patch_credit_card_with_http_info(self, creditcard_id, **kwargs):
+    def patch_credit_card_with_http_info(self, creditcard_id, credit_card, **kwargs):
         """
         
         
@@ -2777,17 +2778,18 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_credit_card_with_http_info(creditcard_id, callback=callback_function)
+        >>> thread = api.patch_credit_card_with_http_info(creditcard_id, credit_card, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str creditcard_id: ID of the creditcard. (required)
+        :param BuyerCreditCard credit_card:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['creditcard_id']
+        all_params = ['creditcard_id', 'credit_card']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -2803,6 +2805,9 @@ class MeApi(object):
         # verify the required parameter 'creditcard_id' is set
         if ('creditcard_id' not in params) or (params['creditcard_id'] is None):
             raise ValueError("Missing the required parameter `creditcard_id` when calling `patch_credit_card`")
+        # verify the required parameter 'credit_card' is set
+        if ('credit_card' not in params) or (params['credit_card'] is None):
+            raise ValueError("Missing the required parameter `credit_card` when calling `patch_credit_card`")
 
         resource_path = '/me/creditcards/{creditcardID}'.replace('{format}', 'json')
         path_params = {}
@@ -2817,6 +2822,8 @@ class MeApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'credit_card' in params:
+            body_params = params['credit_card']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -2947,7 +2954,7 @@ class MeApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update_address(self, address_id, **kwargs):
+    def update_address(self, address_id, address, **kwargs):
         """
         
         
@@ -2958,23 +2965,24 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_address(address_id, callback=callback_function)
+        >>> thread = api.update_address(address_id, address, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str address_id: ID of the address. (required)
-        :return: None
+        :param BuyerAddress address:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_address_with_http_info(address_id, **kwargs)
+            return self.update_address_with_http_info(address_id, address, **kwargs)
         else:
-            (data) = self.update_address_with_http_info(address_id, **kwargs)
+            (data) = self.update_address_with_http_info(address_id, address, **kwargs)
             return data
 
-    def update_address_with_http_info(self, address_id, **kwargs):
+    def update_address_with_http_info(self, address_id, address, **kwargs):
         """
         
         
@@ -2985,17 +2993,18 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_address_with_http_info(address_id, callback=callback_function)
+        >>> thread = api.update_address_with_http_info(address_id, address, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str address_id: ID of the address. (required)
-        :return: None
+        :param BuyerAddress address:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['address_id']
+        all_params = ['address_id', 'address']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -3011,6 +3020,9 @@ class MeApi(object):
         # verify the required parameter 'address_id' is set
         if ('address_id' not in params) or (params['address_id'] is None):
             raise ValueError("Missing the required parameter `address_id` when calling `update_address`")
+        # verify the required parameter 'address' is set
+        if ('address' not in params) or (params['address'] is None):
+            raise ValueError("Missing the required parameter `address` when calling `update_address`")
 
         resource_path = '/me/addresses/{addressID}'.replace('{format}', 'json')
         path_params = {}
@@ -3025,6 +3037,8 @@ class MeApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'address' in params:
+            body_params = params['address']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -3046,12 +3060,12 @@ class MeApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update_credit_card(self, creditcard_id, **kwargs):
+    def update_credit_card(self, creditcard_id, credit_card, **kwargs):
         """
         
         
@@ -3062,23 +3076,24 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_credit_card(creditcard_id, callback=callback_function)
+        >>> thread = api.update_credit_card(creditcard_id, credit_card, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str creditcard_id: ID of the creditcard. (required)
-        :return: None
+        :param BuyerCreditCard credit_card:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_credit_card_with_http_info(creditcard_id, **kwargs)
+            return self.update_credit_card_with_http_info(creditcard_id, credit_card, **kwargs)
         else:
-            (data) = self.update_credit_card_with_http_info(creditcard_id, **kwargs)
+            (data) = self.update_credit_card_with_http_info(creditcard_id, credit_card, **kwargs)
             return data
 
-    def update_credit_card_with_http_info(self, creditcard_id, **kwargs):
+    def update_credit_card_with_http_info(self, creditcard_id, credit_card, **kwargs):
         """
         
         
@@ -3089,17 +3104,18 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_credit_card_with_http_info(creditcard_id, callback=callback_function)
+        >>> thread = api.update_credit_card_with_http_info(creditcard_id, credit_card, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str creditcard_id: ID of the creditcard. (required)
-        :return: None
+        :param BuyerCreditCard credit_card:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['creditcard_id']
+        all_params = ['creditcard_id', 'credit_card']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -3115,6 +3131,9 @@ class MeApi(object):
         # verify the required parameter 'creditcard_id' is set
         if ('creditcard_id' not in params) or (params['creditcard_id'] is None):
             raise ValueError("Missing the required parameter `creditcard_id` when calling `update_credit_card`")
+        # verify the required parameter 'credit_card' is set
+        if ('credit_card' not in params) or (params['credit_card'] is None):
+            raise ValueError("Missing the required parameter `credit_card` when calling `update_credit_card`")
 
         resource_path = '/me/creditcards/{creditcardID}'.replace('{format}', 'json')
         path_params = {}
@@ -3129,6 +3148,8 @@ class MeApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'credit_card' in params:
+            body_params = params['credit_card']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -3150,7 +3171,7 @@ class MeApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

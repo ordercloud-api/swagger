@@ -394,7 +394,7 @@ class PromotionApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str promotion_id: ID of the promotion. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -421,7 +421,7 @@ class PromotionApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str promotion_id: ID of the promotion. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -477,12 +477,12 @@ class PromotionApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list(self, promo, **kwargs):
+    def list(self, **kwargs):
         """
         
         
@@ -493,11 +493,10 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(promo, callback=callback_function)
+        >>> thread = api.list(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param Promotion promo:  (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -509,12 +508,12 @@ class PromotionApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_with_http_info(promo, **kwargs)
+            return self.list_with_http_info(**kwargs)
         else:
-            (data) = self.list_with_http_info(promo, **kwargs)
+            (data) = self.list_with_http_info(**kwargs)
             return data
 
-    def list_with_http_info(self, promo, **kwargs):
+    def list_with_http_info(self, **kwargs):
         """
         
         
@@ -525,11 +524,10 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_with_http_info(promo, callback=callback_function)
+        >>> thread = api.list_with_http_info(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param Promotion promo:  (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -540,7 +538,7 @@ class PromotionApi(object):
                  returns the request thread.
         """
 
-        all_params = ['promo', 'search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -553,9 +551,6 @@ class PromotionApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'promo' is set
-        if ('promo' not in params) or (params['promo'] is None):
-            raise ValueError("Missing the required parameter `promo` when calling `list`")
 
         resource_path = '/promotions'.replace('{format}', 'json')
         path_params = {}
@@ -578,8 +573,6 @@ class PromotionApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'promo' in params:
-            body_params = params['promo']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -606,7 +599,7 @@ class PromotionApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list_assignments(self, buyer_id, assignment, **kwargs):
+    def list_assignments(self, buyer_id, **kwargs):
         """
         
         
@@ -617,30 +610,29 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_assignments(buyer_id, assignment, callback=callback_function)
+        >>> thread = api.list_assignments(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param PromotionAssignment assignment:  (required)
         :param str promotion_id: ID of the promotion.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
         :param str level: Level of the promotion.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_assignments_with_http_info(buyer_id, assignment, **kwargs)
+            return self.list_assignments_with_http_info(buyer_id, **kwargs)
         else:
-            (data) = self.list_assignments_with_http_info(buyer_id, assignment, **kwargs)
+            (data) = self.list_assignments_with_http_info(buyer_id, **kwargs)
             return data
 
-    def list_assignments_with_http_info(self, buyer_id, assignment, **kwargs):
+    def list_assignments_with_http_info(self, buyer_id, **kwargs):
         """
         
         
@@ -651,24 +643,23 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_assignments_with_http_info(buyer_id, assignment, callback=callback_function)
+        >>> thread = api.list_assignments_with_http_info(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param PromotionAssignment assignment:  (required)
         :param str promotion_id: ID of the promotion.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
         :param str level: Level of the promotion.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'assignment', 'promotion_id', 'user_id', 'user_group_id', 'level', 'page', 'page_size']
+        all_params = ['buyer_id', 'promotion_id', 'user_id', 'user_group_id', 'level', 'page', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -684,9 +675,6 @@ class PromotionApi(object):
         # verify the required parameter 'buyer_id' is set
         if ('buyer_id' not in params) or (params['buyer_id'] is None):
             raise ValueError("Missing the required parameter `buyer_id` when calling `list_assignments`")
-        # verify the required parameter 'assignment' is set
-        if ('assignment' not in params) or (params['assignment'] is None):
-            raise ValueError("Missing the required parameter `assignment` when calling `list_assignments`")
 
         resource_path = '/promotions/assignments'.replace('{format}', 'json')
         path_params = {}
@@ -713,8 +701,6 @@ class PromotionApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'assignment' in params:
-            body_params = params['assignment']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -736,12 +722,12 @@ class PromotionApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch(self, promotion_id, **kwargs):
+    def patch(self, promotion_id, partial_promotion, **kwargs):
         """
         
         
@@ -752,23 +738,24 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch(promotion_id, callback=callback_function)
+        >>> thread = api.patch(promotion_id, partial_promotion, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str promotion_id: ID of the promotion. (required)
-        :return: None
+        :param Promotion partial_promotion:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(promotion_id, **kwargs)
+            return self.patch_with_http_info(promotion_id, partial_promotion, **kwargs)
         else:
-            (data) = self.patch_with_http_info(promotion_id, **kwargs)
+            (data) = self.patch_with_http_info(promotion_id, partial_promotion, **kwargs)
             return data
 
-    def patch_with_http_info(self, promotion_id, **kwargs):
+    def patch_with_http_info(self, promotion_id, partial_promotion, **kwargs):
         """
         
         
@@ -779,17 +766,18 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(promotion_id, callback=callback_function)
+        >>> thread = api.patch_with_http_info(promotion_id, partial_promotion, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str promotion_id: ID of the promotion. (required)
-        :return: None
+        :param Promotion partial_promotion:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['promotion_id']
+        all_params = ['promotion_id', 'partial_promotion']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -805,6 +793,9 @@ class PromotionApi(object):
         # verify the required parameter 'promotion_id' is set
         if ('promotion_id' not in params) or (params['promotion_id'] is None):
             raise ValueError("Missing the required parameter `promotion_id` when calling `patch`")
+        # verify the required parameter 'partial_promotion' is set
+        if ('partial_promotion' not in params) or (params['partial_promotion'] is None):
+            raise ValueError("Missing the required parameter `partial_promotion` when calling `patch`")
 
         resource_path = '/promotions/{promotionID}'.replace('{format}', 'json')
         path_params = {}
@@ -819,6 +810,8 @@ class PromotionApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'partial_promotion' in params:
+            body_params = params['partial_promotion']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -840,7 +833,7 @@ class PromotionApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -949,7 +942,7 @@ class PromotionApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update(self, promotion_id, **kwargs):
+    def update(self, promotion_id, promo, **kwargs):
         """
         
         
@@ -960,23 +953,24 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(promotion_id, callback=callback_function)
+        >>> thread = api.update(promotion_id, promo, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str promotion_id: ID of the promotion. (required)
-        :return: None
+        :param Promotion promo:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(promotion_id, **kwargs)
+            return self.update_with_http_info(promotion_id, promo, **kwargs)
         else:
-            (data) = self.update_with_http_info(promotion_id, **kwargs)
+            (data) = self.update_with_http_info(promotion_id, promo, **kwargs)
             return data
 
-    def update_with_http_info(self, promotion_id, **kwargs):
+    def update_with_http_info(self, promotion_id, promo, **kwargs):
         """
         
         
@@ -987,17 +981,18 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(promotion_id, callback=callback_function)
+        >>> thread = api.update_with_http_info(promotion_id, promo, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str promotion_id: ID of the promotion. (required)
-        :return: None
+        :param Promotion promo:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['promotion_id']
+        all_params = ['promotion_id', 'promo']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1013,6 +1008,9 @@ class PromotionApi(object):
         # verify the required parameter 'promotion_id' is set
         if ('promotion_id' not in params) or (params['promotion_id'] is None):
             raise ValueError("Missing the required parameter `promotion_id` when calling `update`")
+        # verify the required parameter 'promo' is set
+        if ('promo' not in params) or (params['promo'] is None):
+            raise ValueError("Missing the required parameter `promo` when calling `update`")
 
         resource_path = '/promotions/{promotionID}'.replace('{format}', 'json')
         path_params = {}
@@ -1027,6 +1025,8 @@ class PromotionApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'promo' in params:
+            body_params = params['promo']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -1048,7 +1048,7 @@ class PromotionApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

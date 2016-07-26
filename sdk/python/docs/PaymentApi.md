@@ -223,7 +223,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> get(buyer_id, order_id, payment_id)
+> object get(buyer_id, order_id, payment_id)
 
 
 
@@ -244,7 +244,8 @@ order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 
 try: 
-    api_instance.get(buyer_id, order_id, payment_id)
+    api_response = api_instance.get(buyer_id, order_id, payment_id)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling PaymentApi->get: %s\n" % e
 ```
@@ -259,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -273,7 +274,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> object list(buyer_id, order_id, payment, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> object list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
 
 
 
@@ -291,7 +292,6 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
-payment = OrderCloud.Payment() # Payment | 
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -299,7 +299,7 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(buyer_id, order_id, payment, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    api_response = api_instance.list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling PaymentApi->list: %s\n" % e
@@ -311,7 +311,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
  **order_id** | **str**| ID of the order. | 
- **payment** | [**Payment**](Payment.md)|  | 
  **search** | **str**| Word or phrase to search for. | [optional] 
  **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
@@ -334,7 +333,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> patch(buyer_id, order_id, payment_id)
+> object patch(buyer_id, order_id, payment_id, partial_payment)
 
 
 
@@ -353,9 +352,11 @@ api_instance = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
+partial_payment = OrderCloud.Payment() # Payment | 
 
 try: 
-    api_instance.patch(buyer_id, order_id, payment_id)
+    api_response = api_instance.patch(buyer_id, order_id, payment_id, partial_payment)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling PaymentApi->patch: %s\n" % e
 ```
@@ -367,10 +368,11 @@ Name | Type | Description  | Notes
  **buyer_id** | **str**| ID of the buyer. | 
  **order_id** | **str**| ID of the order. | 
  **payment_id** | **str**| ID of the payment. | 
+ **partial_payment** | [**Payment**](Payment.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -384,7 +386,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_transaction**
-> patch_transaction(buyer_id, order_id, payment_id, transaction_id)
+> object patch_transaction(buyer_id, order_id, payment_id, transaction_id, partial_transaction)
 
 
 
@@ -404,9 +406,11 @@ buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 transaction_id = 'transaction_id_example' # str | ID of the transaction.
+partial_transaction = OrderCloud.PaymentTransaction() # PaymentTransaction | 
 
 try: 
-    api_instance.patch_transaction(buyer_id, order_id, payment_id, transaction_id)
+    api_response = api_instance.patch_transaction(buyer_id, order_id, payment_id, transaction_id, partial_transaction)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling PaymentApi->patch_transaction: %s\n" % e
 ```
@@ -419,10 +423,11 @@ Name | Type | Description  | Notes
  **order_id** | **str**| ID of the order. | 
  **payment_id** | **str**| ID of the payment. | 
  **transaction_id** | **str**| ID of the transaction. | 
+ **partial_transaction** | [**PaymentTransaction**](PaymentTransaction.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -436,7 +441,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> update(buyer_id, order_id, payment_id)
+> object update(buyer_id, order_id, payment_id, payment)
 
 
 
@@ -455,9 +460,11 @@ api_instance = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
+payment = OrderCloud.Payment() # Payment | 
 
 try: 
-    api_instance.update(buyer_id, order_id, payment_id)
+    api_response = api_instance.update(buyer_id, order_id, payment_id, payment)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling PaymentApi->update: %s\n" % e
 ```
@@ -469,10 +476,11 @@ Name | Type | Description  | Notes
  **buyer_id** | **str**| ID of the buyer. | 
  **order_id** | **str**| ID of the order. | 
  **payment_id** | **str**| ID of the payment. | 
+ **payment** | [**Payment**](Payment.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -486,7 +494,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_transaction**
-> update_transaction(buyer_id, order_id, payment_id, transaction_id)
+> object update_transaction(buyer_id, order_id, payment_id, transaction_id, transaction)
 
 
 
@@ -506,9 +514,11 @@ buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 transaction_id = 'transaction_id_example' # str | ID of the transaction.
+transaction = OrderCloud.PaymentTransaction() # PaymentTransaction | 
 
 try: 
-    api_instance.update_transaction(buyer_id, order_id, payment_id, transaction_id)
+    api_response = api_instance.update_transaction(buyer_id, order_id, payment_id, transaction_id, transaction)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling PaymentApi->update_transaction: %s\n" % e
 ```
@@ -521,10 +531,11 @@ Name | Type | Description  | Notes
  **order_id** | **str**| ID of the order. | 
  **payment_id** | **str**| ID of the payment. | 
  **transaction_id** | **str**| ID of the transaction. | 
+ **transaction** | [**PaymentTransaction**](PaymentTransaction.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 

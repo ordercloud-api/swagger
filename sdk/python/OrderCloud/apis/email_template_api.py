@@ -68,7 +68,7 @@ class EmailTemplateApi(object):
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str email_template_type: Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -96,7 +96,7 @@ class EmailTemplateApi(object):
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str email_template_type: Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -157,12 +157,12 @@ class EmailTemplateApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch(self, buyer_id, email_template_type, **kwargs):
+    def patch(self, buyer_id, email_template_type, email_template, **kwargs):
         """
         
         
@@ -173,24 +173,25 @@ class EmailTemplateApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch(buyer_id, email_template_type, callback=callback_function)
+        >>> thread = api.patch(buyer_id, email_template_type, email_template, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str email_template_type: Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode. (required)
+        :param EmailTemplate email_template:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(buyer_id, email_template_type, **kwargs)
+            return self.patch_with_http_info(buyer_id, email_template_type, email_template, **kwargs)
         else:
-            (data) = self.patch_with_http_info(buyer_id, email_template_type, **kwargs)
+            (data) = self.patch_with_http_info(buyer_id, email_template_type, email_template, **kwargs)
             return data
 
-    def patch_with_http_info(self, buyer_id, email_template_type, **kwargs):
+    def patch_with_http_info(self, buyer_id, email_template_type, email_template, **kwargs):
         """
         
         
@@ -201,18 +202,19 @@ class EmailTemplateApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(buyer_id, email_template_type, callback=callback_function)
+        >>> thread = api.patch_with_http_info(buyer_id, email_template_type, email_template, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str email_template_type: Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode. (required)
+        :param EmailTemplate email_template:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'email_template_type']
+        all_params = ['buyer_id', 'email_template_type', 'email_template']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -231,6 +233,9 @@ class EmailTemplateApi(object):
         # verify the required parameter 'email_template_type' is set
         if ('email_template_type' not in params) or (params['email_template_type'] is None):
             raise ValueError("Missing the required parameter `email_template_type` when calling `patch`")
+        # verify the required parameter 'email_template' is set
+        if ('email_template' not in params) or (params['email_template'] is None):
+            raise ValueError("Missing the required parameter `email_template` when calling `patch`")
 
         resource_path = '/buyers/{buyerID}/emailtemplates/{emailTemplateType}'.replace('{format}', 'json')
         path_params = {}
@@ -247,6 +252,8 @@ class EmailTemplateApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'email_template' in params:
+            body_params = params['email_template']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -384,7 +391,7 @@ class EmailTemplateApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update(self, buyer_id, email_template_type, **kwargs):
+    def update(self, buyer_id, email_template_type, email_template, **kwargs):
         """
         
         
@@ -395,24 +402,25 @@ class EmailTemplateApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(buyer_id, email_template_type, callback=callback_function)
+        >>> thread = api.update(buyer_id, email_template_type, email_template, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str email_template_type: Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode. (required)
+        :param EmailTemplate email_template:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(buyer_id, email_template_type, **kwargs)
+            return self.update_with_http_info(buyer_id, email_template_type, email_template, **kwargs)
         else:
-            (data) = self.update_with_http_info(buyer_id, email_template_type, **kwargs)
+            (data) = self.update_with_http_info(buyer_id, email_template_type, email_template, **kwargs)
             return data
 
-    def update_with_http_info(self, buyer_id, email_template_type, **kwargs):
+    def update_with_http_info(self, buyer_id, email_template_type, email_template, **kwargs):
         """
         
         
@@ -423,18 +431,19 @@ class EmailTemplateApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(buyer_id, email_template_type, callback=callback_function)
+        >>> thread = api.update_with_http_info(buyer_id, email_template_type, email_template, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str email_template_type: Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode. (required)
+        :param EmailTemplate email_template:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'email_template_type']
+        all_params = ['buyer_id', 'email_template_type', 'email_template']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -453,6 +462,9 @@ class EmailTemplateApi(object):
         # verify the required parameter 'email_template_type' is set
         if ('email_template_type' not in params) or (params['email_template_type'] is None):
             raise ValueError("Missing the required parameter `email_template_type` when calling `update`")
+        # verify the required parameter 'email_template' is set
+        if ('email_template' not in params) or (params['email_template'] is None):
+            raise ValueError("Missing the required parameter `email_template` when calling `update`")
 
         resource_path = '/buyers/{buyerID}/emailtemplates/{emailTemplateType}'.replace('{format}', 'json')
         path_params = {}
@@ -469,6 +481,8 @@ class EmailTemplateApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'email_template' in params:
+            body_params = params['email_template']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\

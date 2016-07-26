@@ -30,6 +30,7 @@ from .models.address_assignment import AddressAssignment
 from .models.approval_rule import ApprovalRule
 from .models.buyer import Buyer
 from .models.buyer_address import BuyerAddress
+from .models.buyer_credit_card import BuyerCreditCard
 from .models.category import Category
 from .models.category_assignment import CategoryAssignment
 from .models.category_product_assignment import CategoryProductAssignment
@@ -37,26 +38,32 @@ from .models.cost_center import CostCenter
 from .models.cost_center_assignment import CostCenterAssignment
 from .models.credit_card import CreditCard
 from .models.credit_card_assignment import CreditCardAssignment
+from .models.email_template import EmailTemplate
 from .models.impersonate_token_request import ImpersonateTokenRequest
 from .models.line_item import LineItem
+from .models.order import Order
 from .models.partial1 import Partial1
 from .models.password_reset import PasswordReset
 from .models.password_reset_request import PasswordResetRequest
 from .models.payment import Payment
 from .models.payment_transaction import PaymentTransaction
+from .models.price_break import PriceBreak
 from .models.price_schedule import PriceSchedule
 from .models.product import Product
+from .models.product_assignment import ProductAssignment
 from .models.promotion import Promotion
 from .models.promotion_assignment import PromotionAssignment
 from .models.shipment import Shipment
 from .models.shipment_item import ShipmentItem
 from .models.spec import Spec
+from .models.spec_option import SpecOption
 from .models.spec_product_assignment import SpecProductAssignment
 from .models.spending_account import SpendingAccount
 from .models.spending_account_assignment import SpendingAccountAssignment
 from .models.user import User
 from .models.user_group import UserGroup
 from .models.user_group_assignment import UserGroupAssignment
+from .models.variant import Variant
 
 # import apis into sdk package
 from .apis.address_api import AddressApi

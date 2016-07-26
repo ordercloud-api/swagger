@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create**
-> create(buyer_id)
+> object create(buyer_id, order)
 
 
 
@@ -197,9 +197,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
+order = OrderCloud.Order() # Order | 
 
 try: 
-    api_instance.create(buyer_id)
+    api_response = api_instance.create(buyer_id, order)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling OrderApi->create: %s\n" % e
 ```
@@ -209,10 +211,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
+ **order** | [**Order**](Order.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -325,7 +328,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> get(buyer_id, order_id)
+> object get(buyer_id, order_id)
 
 
 
@@ -345,7 +348,8 @@ buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 
 try: 
-    api_instance.get(buyer_id, order_id)
+    api_response = api_instance.get(buyer_id, order_id)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling OrderApi->get: %s\n" % e
 ```
@@ -359,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -672,7 +676,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> patch(buyer_id, order_id)
+> object patch(buyer_id, order_id, partial_order)
 
 
 
@@ -690,9 +694,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
+partial_order = OrderCloud.Order() # Order | 
 
 try: 
-    api_instance.patch(buyer_id, order_id)
+    api_response = api_instance.patch(buyer_id, order_id, partial_order)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling OrderApi->patch: %s\n" % e
 ```
@@ -703,10 +709,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
  **order_id** | **str**| ID of the order. | 
+ **partial_order** | [**Order**](Order.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -1123,7 +1130,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> update(buyer_id, order_id)
+> object update(buyer_id, order_id, order)
 
 
 
@@ -1141,9 +1148,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
+order = OrderCloud.Order() # Order | 
 
 try: 
-    api_instance.update(buyer_id, order_id)
+    api_response = api_instance.update(buyer_id, order_id, order)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling OrderApi->update: %s\n" % e
 ```
@@ -1154,10 +1163,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
  **order_id** | **str**| ID of the order. | 
+ **order** | [**Order**](Order.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 

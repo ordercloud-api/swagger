@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete**
-> delete(buyer_id, category_id, category)
+> delete(buyer_id, category_id)
 
 
 
@@ -87,10 +87,9 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
-category = OrderCloud.Category() # Category | 
 
 try: 
-    api_instance.delete(buyer_id, category_id, category)
+    api_instance.delete(buyer_id, category_id)
 except ApiException as e:
     print "Exception when calling CategoryApi->delete: %s\n" % e
 ```
@@ -101,7 +100,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
  **category_id** | **str**| ID of the category. | 
- **category** | [**Category**](Category.md)|  | 
 
 ### Return type
 
@@ -221,7 +219,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> get(buyer_id, category_id, category)
+> object get(buyer_id, category_id)
 
 
 
@@ -239,10 +237,10 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
-category = OrderCloud.Category() # Category | 
 
 try: 
-    api_instance.get(buyer_id, category_id, category)
+    api_response = api_instance.get(buyer_id, category_id)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling CategoryApi->get: %s\n" % e
 ```
@@ -253,11 +251,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
  **category_id** | **str**| ID of the category. | 
- **category** | [**Category**](Category.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -271,7 +268,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> object list(buyer_id, category, parent_id=parent_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> object list(buyer_id, parent_id=parent_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
 
 
 
@@ -288,7 +285,6 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
-category = OrderCloud.Category() # Category | 
 parent_id = 'parent_id_example' # str | ID of the parent. (optional)
 depth = 'depth_example' # str | Depth of the category. (optional)
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -298,7 +294,7 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(buyer_id, category, parent_id=parent_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    api_response = api_instance.list(buyer_id, parent_id=parent_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling CategoryApi->list: %s\n" % e
@@ -309,7 +305,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
- **category** | [**Category**](Category.md)|  | 
  **parent_id** | **str**| ID of the parent. | [optional] 
  **depth** | **str**| Depth of the category. | [optional] 
  **search** | **str**| Word or phrase to search for. | [optional] 
@@ -334,7 +329,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_assignments**
-> list_assignments(buyer_id, category_assignment, category_id=category_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+> object list_assignments(buyer_id, category_id=category_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
 
 
 
@@ -351,7 +346,6 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
-category_assignment = OrderCloud.CategoryAssignment() # CategoryAssignment | 
 category_id = 'category_id_example' # str | ID of the category. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
@@ -360,7 +354,8 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_instance.list_assignments(buyer_id, category_assignment, category_id=category_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+    api_response = api_instance.list_assignments(buyer_id, category_id=category_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling CategoryApi->list_assignments: %s\n" % e
 ```
@@ -370,7 +365,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
- **category_assignment** | [**CategoryAssignment**](CategoryAssignment.md)|  | 
  **category_id** | **str**| ID of the category. | [optional] 
  **user_id** | **str**| ID of the user. | [optional] 
  **user_group_id** | **str**| ID of the user group. | [optional] 
@@ -380,7 +374,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -451,7 +445,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_product_assignments**
-> list_product_assignments(buyer_id, product_assignment, category_id=category_id, product_id=product_id, page=page, page_size=page_size)
+> object list_product_assignments(buyer_id, category_id=category_id, product_id=product_id, page=page, page_size=page_size)
 
 
 
@@ -468,14 +462,14 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
-product_assignment = OrderCloud.CategoryProductAssignment() # CategoryProductAssignment | 
 category_id = 'category_id_example' # str | ID of the category. (optional)
 product_id = 'product_id_example' # str | ID of the product. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_instance.list_product_assignments(buyer_id, product_assignment, category_id=category_id, product_id=product_id, page=page, page_size=page_size)
+    api_response = api_instance.list_product_assignments(buyer_id, category_id=category_id, product_id=product_id, page=page, page_size=page_size)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling CategoryApi->list_product_assignments: %s\n" % e
 ```
@@ -485,7 +479,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
- **product_assignment** | [**CategoryProductAssignment**](CategoryProductAssignment.md)|  | 
  **category_id** | **str**| ID of the category. | [optional] 
  **product_id** | **str**| ID of the product. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
@@ -493,7 +486,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -653,7 +646,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> update(buyer_id, category_id, category)
+> object update(buyer_id, category_id, category)
 
 
 
@@ -674,7 +667,8 @@ category_id = 'category_id_example' # str | ID of the category.
 category = OrderCloud.Category() # Category | 
 
 try: 
-    api_instance.update(buyer_id, category_id, category)
+    api_response = api_instance.update(buyer_id, category_id, category)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling CategoryApi->update: %s\n" % e
 ```
@@ -689,7 +683,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 

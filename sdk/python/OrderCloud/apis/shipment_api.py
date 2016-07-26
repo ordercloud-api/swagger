@@ -415,7 +415,7 @@ class ShipmentApi(object):
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str shipment_id: ID of the shipment. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -443,7 +443,7 @@ class ShipmentApi(object):
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str shipment_id: ID of the shipment. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -504,12 +504,12 @@ class ShipmentApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list(self, buyer_id, shipment, **kwargs):
+    def list(self, buyer_id, **kwargs):
         """
         
         
@@ -520,12 +520,11 @@ class ShipmentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(buyer_id, shipment, callback=callback_function)
+        >>> thread = api.list(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param Shipment shipment:  (required)
         :param str order_id: ID of the order.
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
@@ -538,12 +537,12 @@ class ShipmentApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_with_http_info(buyer_id, shipment, **kwargs)
+            return self.list_with_http_info(buyer_id, **kwargs)
         else:
-            (data) = self.list_with_http_info(buyer_id, shipment, **kwargs)
+            (data) = self.list_with_http_info(buyer_id, **kwargs)
             return data
 
-    def list_with_http_info(self, buyer_id, shipment, **kwargs):
+    def list_with_http_info(self, buyer_id, **kwargs):
         """
         
         
@@ -554,12 +553,11 @@ class ShipmentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_with_http_info(buyer_id, shipment, callback=callback_function)
+        >>> thread = api.list_with_http_info(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param Shipment shipment:  (required)
         :param str order_id: ID of the order.
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
@@ -571,7 +569,7 @@ class ShipmentApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'shipment', 'order_id', 'search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params = ['buyer_id', 'order_id', 'search', 'search_on', 'sort_by', 'page', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -587,9 +585,6 @@ class ShipmentApi(object):
         # verify the required parameter 'buyer_id' is set
         if ('buyer_id' not in params) or (params['buyer_id'] is None):
             raise ValueError("Missing the required parameter `buyer_id` when calling `list`")
-        # verify the required parameter 'shipment' is set
-        if ('shipment' not in params) or (params['shipment'] is None):
-            raise ValueError("Missing the required parameter `shipment` when calling `list`")
 
         resource_path = '/buyers/{buyerID}/shipments'.replace('{format}', 'json')
         path_params = {}
@@ -616,8 +611,6 @@ class ShipmentApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'shipment' in params:
-            body_params = params['shipment']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -644,7 +637,7 @@ class ShipmentApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch(self, buyer_id, shipment_id, **kwargs):
+    def patch(self, buyer_id, shipment_id, shipment, **kwargs):
         """
         
         
@@ -655,24 +648,25 @@ class ShipmentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch(buyer_id, shipment_id, callback=callback_function)
+        >>> thread = api.patch(buyer_id, shipment_id, shipment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str shipment_id: ID of the shipment. (required)
-        :return: None
+        :param Shipment shipment:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(buyer_id, shipment_id, **kwargs)
+            return self.patch_with_http_info(buyer_id, shipment_id, shipment, **kwargs)
         else:
-            (data) = self.patch_with_http_info(buyer_id, shipment_id, **kwargs)
+            (data) = self.patch_with_http_info(buyer_id, shipment_id, shipment, **kwargs)
             return data
 
-    def patch_with_http_info(self, buyer_id, shipment_id, **kwargs):
+    def patch_with_http_info(self, buyer_id, shipment_id, shipment, **kwargs):
         """
         
         
@@ -683,18 +677,19 @@ class ShipmentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(buyer_id, shipment_id, callback=callback_function)
+        >>> thread = api.patch_with_http_info(buyer_id, shipment_id, shipment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str shipment_id: ID of the shipment. (required)
-        :return: None
+        :param Shipment shipment:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'shipment_id']
+        all_params = ['buyer_id', 'shipment_id', 'shipment']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -713,6 +708,9 @@ class ShipmentApi(object):
         # verify the required parameter 'shipment_id' is set
         if ('shipment_id' not in params) or (params['shipment_id'] is None):
             raise ValueError("Missing the required parameter `shipment_id` when calling `patch`")
+        # verify the required parameter 'shipment' is set
+        if ('shipment' not in params) or (params['shipment'] is None):
+            raise ValueError("Missing the required parameter `shipment` when calling `patch`")
 
         resource_path = '/buyers/{buyerID}/shipments/{shipmentID}'.replace('{format}', 'json')
         path_params = {}
@@ -729,6 +727,8 @@ class ShipmentApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'shipment' in params:
+            body_params = params['shipment']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -750,7 +750,7 @@ class ShipmentApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -873,7 +873,7 @@ class ShipmentApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update(self, buyer_id, shipment_id, **kwargs):
+    def update(self, buyer_id, shipment_id, shipment, **kwargs):
         """
         
         
@@ -884,24 +884,25 @@ class ShipmentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(buyer_id, shipment_id, callback=callback_function)
+        >>> thread = api.update(buyer_id, shipment_id, shipment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str shipment_id: ID of the shipment. (required)
-        :return: None
+        :param Shipment shipment:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(buyer_id, shipment_id, **kwargs)
+            return self.update_with_http_info(buyer_id, shipment_id, shipment, **kwargs)
         else:
-            (data) = self.update_with_http_info(buyer_id, shipment_id, **kwargs)
+            (data) = self.update_with_http_info(buyer_id, shipment_id, shipment, **kwargs)
             return data
 
-    def update_with_http_info(self, buyer_id, shipment_id, **kwargs):
+    def update_with_http_info(self, buyer_id, shipment_id, shipment, **kwargs):
         """
         
         
@@ -912,18 +913,19 @@ class ShipmentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(buyer_id, shipment_id, callback=callback_function)
+        >>> thread = api.update_with_http_info(buyer_id, shipment_id, shipment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str shipment_id: ID of the shipment. (required)
-        :return: None
+        :param Shipment shipment:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'shipment_id']
+        all_params = ['buyer_id', 'shipment_id', 'shipment']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -942,6 +944,9 @@ class ShipmentApi(object):
         # verify the required parameter 'shipment_id' is set
         if ('shipment_id' not in params) or (params['shipment_id'] is None):
             raise ValueError("Missing the required parameter `shipment_id` when calling `update`")
+        # verify the required parameter 'shipment' is set
+        if ('shipment' not in params) or (params['shipment'] is None):
+            raise ValueError("Missing the required parameter `shipment` when calling `update`")
 
         resource_path = '/buyers/{buyerID}/shipments/{shipmentID}'.replace('{format}', 'json')
         path_params = {}
@@ -958,6 +963,8 @@ class ShipmentApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'shipment' in params:
+            body_params = params['shipment']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -979,7 +986,7 @@ class ShipmentApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

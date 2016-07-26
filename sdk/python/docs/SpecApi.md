@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_option**
-> object create_option(spec_id)
+> object create_option(spec_id, option)
 
 
 
@@ -86,9 +86,10 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
+option = OrderCloud.SpecOption() # SpecOption | 
 
 try: 
-    api_response = api_instance.create_option(spec_id)
+    api_response = api_instance.create_option(spec_id, option)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling SpecApi->create_option: %s\n" % e
@@ -99,6 +100,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **spec_id** | **str**| ID of the spec. | 
+ **option** | [**SpecOption**](SpecOption.md)|  | 
 
 ### Return type
 
@@ -258,7 +260,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> get(spec_id)
+> object get(spec_id)
 
 
 
@@ -277,7 +279,8 @@ api_instance = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 
 try: 
-    api_instance.get(spec_id)
+    api_response = api_instance.get(spec_id)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling SpecApi->get: %s\n" % e
 ```
@@ -290,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -304,7 +307,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_option**
-> get_option(spec_id, option_id)
+> object get_option(spec_id, option_id)
 
 
 
@@ -324,7 +327,8 @@ spec_id = 'spec_id_example' # str | ID of the spec.
 option_id = 'option_id_example' # str | ID of the option.
 
 try: 
-    api_instance.get_option(spec_id, option_id)
+    api_response = api_instance.get_option(spec_id, option_id)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling SpecApi->get_option: %s\n" % e
 ```
@@ -338,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -352,7 +356,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> object list(spec, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> object list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
 
 
 
@@ -368,7 +372,6 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = OrderCloud.SpecApi()
-spec = OrderCloud.Spec() # Spec | 
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -376,7 +379,7 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(spec, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    api_response = api_instance.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling SpecApi->list: %s\n" % e
@@ -386,7 +389,6 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **spec** | [**Spec**](Spec.md)|  | 
  **search** | **str**| Word or phrase to search for. | [optional] 
  **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
@@ -466,7 +468,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_product_assignments**
-> list_product_assignments(product_assignment, spec_id=spec_id, product_id=product_id, page=page, page_size=page_size)
+> object list_product_assignments(spec_id=spec_id, product_id=product_id, page=page, page_size=page_size)
 
 
 
@@ -482,14 +484,14 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = OrderCloud.SpecApi()
-product_assignment = OrderCloud.SpecProductAssignment() # SpecProductAssignment | 
 spec_id = 'spec_id_example' # str | ID of the spec. (optional)
 product_id = 'product_id_example' # str | ID of the product. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_instance.list_product_assignments(product_assignment, spec_id=spec_id, product_id=product_id, page=page, page_size=page_size)
+    api_response = api_instance.list_product_assignments(spec_id=spec_id, product_id=product_id, page=page, page_size=page_size)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling SpecApi->list_product_assignments: %s\n" % e
 ```
@@ -498,7 +500,6 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **product_assignment** | [**SpecProductAssignment**](SpecProductAssignment.md)|  | 
  **spec_id** | **str**| ID of the spec. | [optional] 
  **product_id** | **str**| ID of the product. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
@@ -506,7 +507,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -520,7 +521,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> patch(spec_id)
+> object patch(spec_id, spec)
 
 
 
@@ -537,9 +538,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
+spec = OrderCloud.Spec() # Spec | 
 
 try: 
-    api_instance.patch(spec_id)
+    api_response = api_instance.patch(spec_id, spec)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling SpecApi->patch: %s\n" % e
 ```
@@ -549,10 +552,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **spec_id** | **str**| ID of the spec. | 
+ **spec** | [**Spec**](Spec.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -566,7 +570,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_option**
-> patch_option(spec_id, option_id)
+> object patch_option(spec_id, option_id, option)
 
 
 
@@ -584,9 +588,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 option_id = 'option_id_example' # str | ID of the option.
+option = OrderCloud.SpecOption() # SpecOption | 
 
 try: 
-    api_instance.patch_option(spec_id, option_id)
+    api_response = api_instance.patch_option(spec_id, option_id, option)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling SpecApi->patch_option: %s\n" % e
 ```
@@ -597,10 +603,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **spec_id** | **str**| ID of the spec. | 
  **option_id** | **str**| ID of the option. | 
+ **option** | [**SpecOption**](SpecOption.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -660,7 +667,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> update(spec_id)
+> object update(spec_id, spec)
 
 
 
@@ -677,9 +684,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
+spec = OrderCloud.Spec() # Spec | 
 
 try: 
-    api_instance.update(spec_id)
+    api_response = api_instance.update(spec_id, spec)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling SpecApi->update: %s\n" % e
 ```
@@ -689,10 +698,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **spec_id** | **str**| ID of the spec. | 
+ **spec** | [**Spec**](Spec.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -706,7 +716,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_option**
-> update_option(spec_id, option_id)
+> object update_option(spec_id, option_id, option)
 
 
 
@@ -724,9 +734,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 option_id = 'option_id_example' # str | ID of the option.
+option = OrderCloud.SpecOption() # SpecOption | 
 
 try: 
-    api_instance.update_option(spec_id, option_id)
+    api_response = api_instance.update_option(spec_id, option_id, option)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling SpecApi->update_option: %s\n" % e
 ```
@@ -737,10 +749,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **spec_id** | **str**| ID of the spec. | 
  **option_id** | **str**| ID of the option. | 
+ **option** | [**SpecOption**](SpecOption.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 

@@ -409,7 +409,7 @@ class CreditCardApi(object):
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str credit_card_id: ID of the credit card. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -437,7 +437,7 @@ class CreditCardApi(object):
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str credit_card_id: ID of the credit card. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -498,12 +498,12 @@ class CreditCardApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list(self, buyer_id, card, **kwargs):
+    def list(self, buyer_id, **kwargs):
         """
         
         
@@ -514,12 +514,11 @@ class CreditCardApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(buyer_id, card, callback=callback_function)
+        >>> thread = api.list(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param CreditCard card:  (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -531,12 +530,12 @@ class CreditCardApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_with_http_info(buyer_id, card, **kwargs)
+            return self.list_with_http_info(buyer_id, **kwargs)
         else:
-            (data) = self.list_with_http_info(buyer_id, card, **kwargs)
+            (data) = self.list_with_http_info(buyer_id, **kwargs)
             return data
 
-    def list_with_http_info(self, buyer_id, card, **kwargs):
+    def list_with_http_info(self, buyer_id, **kwargs):
         """
         
         
@@ -547,12 +546,11 @@ class CreditCardApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_with_http_info(buyer_id, card, callback=callback_function)
+        >>> thread = api.list_with_http_info(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param CreditCard card:  (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -563,7 +561,7 @@ class CreditCardApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'card', 'search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params = ['buyer_id', 'search', 'search_on', 'sort_by', 'page', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -579,9 +577,6 @@ class CreditCardApi(object):
         # verify the required parameter 'buyer_id' is set
         if ('buyer_id' not in params) or (params['buyer_id'] is None):
             raise ValueError("Missing the required parameter `buyer_id` when calling `list`")
-        # verify the required parameter 'card' is set
-        if ('card' not in params) or (params['card'] is None):
-            raise ValueError("Missing the required parameter `card` when calling `list`")
 
         resource_path = '/buyers/{buyerID}/creditcards'.replace('{format}', 'json')
         path_params = {}
@@ -606,8 +601,6 @@ class CreditCardApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'card' in params:
-            body_params = params['card']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -634,7 +627,7 @@ class CreditCardApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list_assignments(self, buyer_id, assignment, **kwargs):
+    def list_assignments(self, buyer_id, **kwargs):
         """
         
         
@@ -645,30 +638,29 @@ class CreditCardApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_assignments(buyer_id, assignment, callback=callback_function)
+        >>> thread = api.list_assignments(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param CreditCardAssignment assignment:  (required)
         :param str credit_card_id: ID of the credit card.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
         :param str level: Level of the credit card.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_assignments_with_http_info(buyer_id, assignment, **kwargs)
+            return self.list_assignments_with_http_info(buyer_id, **kwargs)
         else:
-            (data) = self.list_assignments_with_http_info(buyer_id, assignment, **kwargs)
+            (data) = self.list_assignments_with_http_info(buyer_id, **kwargs)
             return data
 
-    def list_assignments_with_http_info(self, buyer_id, assignment, **kwargs):
+    def list_assignments_with_http_info(self, buyer_id, **kwargs):
         """
         
         
@@ -679,24 +671,23 @@ class CreditCardApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_assignments_with_http_info(buyer_id, assignment, callback=callback_function)
+        >>> thread = api.list_assignments_with_http_info(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param CreditCardAssignment assignment:  (required)
         :param str credit_card_id: ID of the credit card.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
         :param str level: Level of the credit card.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'assignment', 'credit_card_id', 'user_id', 'user_group_id', 'level', 'page', 'page_size']
+        all_params = ['buyer_id', 'credit_card_id', 'user_id', 'user_group_id', 'level', 'page', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -712,9 +703,6 @@ class CreditCardApi(object):
         # verify the required parameter 'buyer_id' is set
         if ('buyer_id' not in params) or (params['buyer_id'] is None):
             raise ValueError("Missing the required parameter `buyer_id` when calling `list_assignments`")
-        # verify the required parameter 'assignment' is set
-        if ('assignment' not in params) or (params['assignment'] is None):
-            raise ValueError("Missing the required parameter `assignment` when calling `list_assignments`")
 
         resource_path = '/buyers/{buyerID}/creditcards/assignments'.replace('{format}', 'json')
         path_params = {}
@@ -741,8 +729,6 @@ class CreditCardApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'assignment' in params:
-            body_params = params['assignment']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -764,12 +750,12 @@ class CreditCardApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch(self, buyer_id, credit_card_id, **kwargs):
+    def patch(self, buyer_id, credit_card_id, card, **kwargs):
         """
         
         
@@ -780,24 +766,25 @@ class CreditCardApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch(buyer_id, credit_card_id, callback=callback_function)
+        >>> thread = api.patch(buyer_id, credit_card_id, card, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str credit_card_id: ID of the credit card. (required)
-        :return: None
+        :param CreditCard card:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(buyer_id, credit_card_id, **kwargs)
+            return self.patch_with_http_info(buyer_id, credit_card_id, card, **kwargs)
         else:
-            (data) = self.patch_with_http_info(buyer_id, credit_card_id, **kwargs)
+            (data) = self.patch_with_http_info(buyer_id, credit_card_id, card, **kwargs)
             return data
 
-    def patch_with_http_info(self, buyer_id, credit_card_id, **kwargs):
+    def patch_with_http_info(self, buyer_id, credit_card_id, card, **kwargs):
         """
         
         
@@ -808,18 +795,19 @@ class CreditCardApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(buyer_id, credit_card_id, callback=callback_function)
+        >>> thread = api.patch_with_http_info(buyer_id, credit_card_id, card, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str credit_card_id: ID of the credit card. (required)
-        :return: None
+        :param CreditCard card:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'credit_card_id']
+        all_params = ['buyer_id', 'credit_card_id', 'card']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -838,6 +826,9 @@ class CreditCardApi(object):
         # verify the required parameter 'credit_card_id' is set
         if ('credit_card_id' not in params) or (params['credit_card_id'] is None):
             raise ValueError("Missing the required parameter `credit_card_id` when calling `patch`")
+        # verify the required parameter 'card' is set
+        if ('card' not in params) or (params['card'] is None):
+            raise ValueError("Missing the required parameter `card` when calling `patch`")
 
         resource_path = '/buyers/{buyerID}/creditcards/{creditCardID}'.replace('{format}', 'json')
         path_params = {}
@@ -854,6 +845,8 @@ class CreditCardApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'card' in params:
+            body_params = params['card']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -875,7 +868,7 @@ class CreditCardApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -991,7 +984,7 @@ class CreditCardApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update(self, buyer_id, credit_card_id, **kwargs):
+    def update(self, buyer_id, credit_card_id, card, **kwargs):
         """
         
         
@@ -1002,24 +995,25 @@ class CreditCardApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(buyer_id, credit_card_id, callback=callback_function)
+        >>> thread = api.update(buyer_id, credit_card_id, card, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str credit_card_id: ID of the credit card. (required)
-        :return: None
+        :param CreditCard card:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(buyer_id, credit_card_id, **kwargs)
+            return self.update_with_http_info(buyer_id, credit_card_id, card, **kwargs)
         else:
-            (data) = self.update_with_http_info(buyer_id, credit_card_id, **kwargs)
+            (data) = self.update_with_http_info(buyer_id, credit_card_id, card, **kwargs)
             return data
 
-    def update_with_http_info(self, buyer_id, credit_card_id, **kwargs):
+    def update_with_http_info(self, buyer_id, credit_card_id, card, **kwargs):
         """
         
         
@@ -1030,18 +1024,19 @@ class CreditCardApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(buyer_id, credit_card_id, callback=callback_function)
+        >>> thread = api.update_with_http_info(buyer_id, credit_card_id, card, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str credit_card_id: ID of the credit card. (required)
-        :return: None
+        :param CreditCard card:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'credit_card_id']
+        all_params = ['buyer_id', 'credit_card_id', 'card']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1060,6 +1055,9 @@ class CreditCardApi(object):
         # verify the required parameter 'credit_card_id' is set
         if ('credit_card_id' not in params) or (params['credit_card_id'] is None):
             raise ValueError("Missing the required parameter `credit_card_id` when calling `update`")
+        # verify the required parameter 'card' is set
+        if ('card' not in params) or (params['card'] is None):
+            raise ValueError("Missing the required parameter `card` when calling `update`")
 
         resource_path = '/buyers/{buyerID}/creditcards/{creditCardID}'.replace('{format}', 'json')
         path_params = {}
@@ -1076,6 +1074,8 @@ class CreditCardApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'card' in params:
+            body_params = params['card']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -1097,7 +1097,7 @@ class CreditCardApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

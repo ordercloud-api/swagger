@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> get(product_id)
+> object get(product_id)
 
 
 
@@ -240,7 +240,8 @@ api_instance = OrderCloud.ProductApi()
 product_id = 'product_id_example' # str | ID of the product.
 
 try: 
-    api_instance.get(product_id)
+    api_response = api_instance.get(product_id)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling ProductApi->get: %s\n" % e
 ```
@@ -253,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -412,7 +413,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> object list(product, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> object list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
 
 
 
@@ -428,7 +429,6 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = OrderCloud.ProductApi()
-product = OrderCloud.Product() # Product | 
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -436,7 +436,7 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(product, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    api_response = api_instance.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling ProductApi->list: %s\n" % e
@@ -446,7 +446,6 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **product** | [**Product**](Product.md)|  | 
  **search** | **str**| Word or phrase to search for. | [optional] 
  **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
@@ -699,7 +698,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> patch(product_id)
+> patch(product_id, product)
 
 
 
@@ -716,9 +715,10 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.ProductApi()
 product_id = 'product_id_example' # str | ID of the product.
+product = OrderCloud.Product() # Product | 
 
 try: 
-    api_instance.patch(product_id)
+    api_instance.patch(product_id, product)
 except ApiException as e:
     print "Exception when calling ProductApi->patch: %s\n" % e
 ```
@@ -728,6 +728,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **product_id** | **str**| ID of the product. | 
+ **product** | [**Product**](Product.md)|  | 
 
 ### Return type
 
@@ -745,7 +746,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_variant**
-> object patch_variant(product_id, variant_id)
+> object patch_variant(product_id, variant_id, variant)
 
 
 
@@ -763,9 +764,10 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.ProductApi()
 product_id = 'product_id_example' # str | ID of the product.
 variant_id = 'variant_id_example' # str | ID of the variant.
+variant = OrderCloud.Variant() # Variant | 
 
 try: 
-    api_response = api_instance.patch_variant(product_id, variant_id)
+    api_response = api_instance.patch_variant(product_id, variant_id, variant)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling ProductApi->patch_variant: %s\n" % e
@@ -777,6 +779,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **product_id** | **str**| ID of the product. | 
  **variant_id** | **str**| ID of the variant. | 
+ **variant** | [**Variant**](Variant.md)|  | 
 
 ### Return type
 
@@ -794,7 +797,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **save_assignment**
-> save_assignment()
+> save_assignment(product_assignment)
 
 
 
@@ -810,15 +813,19 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = OrderCloud.ProductApi()
+product_assignment = OrderCloud.ProductAssignment() # ProductAssignment | 
 
 try: 
-    api_instance.save_assignment()
+    api_instance.save_assignment(product_assignment)
 except ApiException as e:
     print "Exception when calling ProductApi->save_assignment: %s\n" % e
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_assignment** | [**ProductAssignment**](ProductAssignment.md)|  | 
 
 ### Return type
 
@@ -836,7 +843,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> update(product_id)
+> object update(product_id, product)
 
 
 
@@ -853,9 +860,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.ProductApi()
 product_id = 'product_id_example' # str | ID of the product.
+product = OrderCloud.Product() # Product | 
 
 try: 
-    api_instance.update(product_id)
+    api_response = api_instance.update(product_id, product)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling ProductApi->update: %s\n" % e
 ```
@@ -865,10 +874,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **product_id** | **str**| ID of the product. | 
+ **product** | [**Product**](Product.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -931,7 +941,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_variant**
-> object update_variant(product_id, variant_id)
+> object update_variant(product_id, variant_id, variant)
 
 
 
@@ -949,9 +959,10 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.ProductApi()
 product_id = 'product_id_example' # str | ID of the product.
 variant_id = 'variant_id_example' # str | ID of the variant.
+variant = OrderCloud.Variant() # Variant | 
 
 try: 
-    api_response = api_instance.update_variant(product_id, variant_id)
+    api_response = api_instance.update_variant(product_id, variant_id, variant)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling ProductApi->update_variant: %s\n" % e
@@ -963,6 +974,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **product_id** | **str**| ID of the product. | 
  **variant_id** | **str**| ID of the variant. | 
+ **variant** | [**Variant**](Variant.md)|  | 
 
 ### Return type
 

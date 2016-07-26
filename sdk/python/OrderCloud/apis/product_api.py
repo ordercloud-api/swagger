@@ -502,7 +502,7 @@ class ProductApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str product_id: ID of the product. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -529,7 +529,7 @@ class ProductApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str product_id: ID of the product. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -585,7 +585,7 @@ class ProductApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -916,7 +916,7 @@ class ProductApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list(self, product, **kwargs):
+    def list(self, **kwargs):
         """
         
         
@@ -927,11 +927,10 @@ class ProductApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(product, callback=callback_function)
+        >>> thread = api.list(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param Product product:  (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -943,12 +942,12 @@ class ProductApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_with_http_info(product, **kwargs)
+            return self.list_with_http_info(**kwargs)
         else:
-            (data) = self.list_with_http_info(product, **kwargs)
+            (data) = self.list_with_http_info(**kwargs)
             return data
 
-    def list_with_http_info(self, product, **kwargs):
+    def list_with_http_info(self, **kwargs):
         """
         
         
@@ -959,11 +958,10 @@ class ProductApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_with_http_info(product, callback=callback_function)
+        >>> thread = api.list_with_http_info(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param Product product:  (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -974,7 +972,7 @@ class ProductApi(object):
                  returns the request thread.
         """
 
-        all_params = ['product', 'search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -987,9 +985,6 @@ class ProductApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'product' is set
-        if ('product' not in params) or (params['product'] is None):
-            raise ValueError("Missing the required parameter `product` when calling `list`")
 
         resource_path = '/products'.replace('{format}', 'json')
         path_params = {}
@@ -1012,8 +1007,6 @@ class ProductApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'product' in params:
-            body_params = params['product']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -1534,7 +1527,7 @@ class ProductApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch(self, product_id, **kwargs):
+    def patch(self, product_id, product, **kwargs):
         """
         
         
@@ -1545,23 +1538,24 @@ class ProductApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch(product_id, callback=callback_function)
+        >>> thread = api.patch(product_id, product, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str product_id: ID of the product. (required)
+        :param Product product:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(product_id, **kwargs)
+            return self.patch_with_http_info(product_id, product, **kwargs)
         else:
-            (data) = self.patch_with_http_info(product_id, **kwargs)
+            (data) = self.patch_with_http_info(product_id, product, **kwargs)
             return data
 
-    def patch_with_http_info(self, product_id, **kwargs):
+    def patch_with_http_info(self, product_id, product, **kwargs):
         """
         
         
@@ -1572,17 +1566,18 @@ class ProductApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(product_id, callback=callback_function)
+        >>> thread = api.patch_with_http_info(product_id, product, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str product_id: ID of the product. (required)
+        :param Product product:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['product_id']
+        all_params = ['product_id', 'product']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1598,6 +1593,9 @@ class ProductApi(object):
         # verify the required parameter 'product_id' is set
         if ('product_id' not in params) or (params['product_id'] is None):
             raise ValueError("Missing the required parameter `product_id` when calling `patch`")
+        # verify the required parameter 'product' is set
+        if ('product' not in params) or (params['product'] is None):
+            raise ValueError("Missing the required parameter `product` when calling `patch`")
 
         resource_path = '/products/{productID}'.replace('{format}', 'json')
         path_params = {}
@@ -1612,6 +1610,8 @@ class ProductApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'product' in params:
+            body_params = params['product']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -1638,7 +1638,7 @@ class ProductApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch_variant(self, product_id, variant_id, **kwargs):
+    def patch_variant(self, product_id, variant_id, variant, **kwargs):
         """
         
         
@@ -1649,24 +1649,25 @@ class ProductApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_variant(product_id, variant_id, callback=callback_function)
+        >>> thread = api.patch_variant(product_id, variant_id, variant, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str product_id: ID of the product. (required)
         :param str variant_id: ID of the variant. (required)
+        :param Variant variant:  (required)
         :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_variant_with_http_info(product_id, variant_id, **kwargs)
+            return self.patch_variant_with_http_info(product_id, variant_id, variant, **kwargs)
         else:
-            (data) = self.patch_variant_with_http_info(product_id, variant_id, **kwargs)
+            (data) = self.patch_variant_with_http_info(product_id, variant_id, variant, **kwargs)
             return data
 
-    def patch_variant_with_http_info(self, product_id, variant_id, **kwargs):
+    def patch_variant_with_http_info(self, product_id, variant_id, variant, **kwargs):
         """
         
         
@@ -1677,18 +1678,19 @@ class ProductApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_variant_with_http_info(product_id, variant_id, callback=callback_function)
+        >>> thread = api.patch_variant_with_http_info(product_id, variant_id, variant, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str product_id: ID of the product. (required)
         :param str variant_id: ID of the variant. (required)
+        :param Variant variant:  (required)
         :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['product_id', 'variant_id']
+        all_params = ['product_id', 'variant_id', 'variant']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1707,6 +1709,9 @@ class ProductApi(object):
         # verify the required parameter 'variant_id' is set
         if ('variant_id' not in params) or (params['variant_id'] is None):
             raise ValueError("Missing the required parameter `variant_id` when calling `patch_variant`")
+        # verify the required parameter 'variant' is set
+        if ('variant' not in params) or (params['variant'] is None):
+            raise ValueError("Missing the required parameter `variant` when calling `patch_variant`")
 
         resource_path = '/products/{productID}/variants/{variantID}'.replace('{format}', 'json')
         path_params = {}
@@ -1723,6 +1728,8 @@ class ProductApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'variant' in params:
+            body_params = params['variant']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -1749,7 +1756,7 @@ class ProductApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def save_assignment(self, **kwargs):
+    def save_assignment(self, product_assignment, **kwargs):
         """
         
         
@@ -1760,22 +1767,23 @@ class ProductApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.save_assignment(callback=callback_function)
+        >>> thread = api.save_assignment(product_assignment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param ProductAssignment product_assignment:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.save_assignment_with_http_info(**kwargs)
+            return self.save_assignment_with_http_info(product_assignment, **kwargs)
         else:
-            (data) = self.save_assignment_with_http_info(**kwargs)
+            (data) = self.save_assignment_with_http_info(product_assignment, **kwargs)
             return data
 
-    def save_assignment_with_http_info(self, **kwargs):
+    def save_assignment_with_http_info(self, product_assignment, **kwargs):
         """
         
         
@@ -1786,16 +1794,17 @@ class ProductApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.save_assignment_with_http_info(callback=callback_function)
+        >>> thread = api.save_assignment_with_http_info(product_assignment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param ProductAssignment product_assignment:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []
+        all_params = ['product_assignment']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1808,6 +1817,9 @@ class ProductApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'product_assignment' is set
+        if ('product_assignment' not in params) or (params['product_assignment'] is None):
+            raise ValueError("Missing the required parameter `product_assignment` when calling `save_assignment`")
 
         resource_path = '/products/assignments'.replace('{format}', 'json')
         path_params = {}
@@ -1820,6 +1832,8 @@ class ProductApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'product_assignment' in params:
+            body_params = params['product_assignment']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -1846,7 +1860,7 @@ class ProductApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update(self, product_id, **kwargs):
+    def update(self, product_id, product, **kwargs):
         """
         
         
@@ -1857,23 +1871,24 @@ class ProductApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(product_id, callback=callback_function)
+        >>> thread = api.update(product_id, product, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str product_id: ID of the product. (required)
-        :return: None
+        :param Product product:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(product_id, **kwargs)
+            return self.update_with_http_info(product_id, product, **kwargs)
         else:
-            (data) = self.update_with_http_info(product_id, **kwargs)
+            (data) = self.update_with_http_info(product_id, product, **kwargs)
             return data
 
-    def update_with_http_info(self, product_id, **kwargs):
+    def update_with_http_info(self, product_id, product, **kwargs):
         """
         
         
@@ -1884,17 +1899,18 @@ class ProductApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(product_id, callback=callback_function)
+        >>> thread = api.update_with_http_info(product_id, product, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str product_id: ID of the product. (required)
-        :return: None
+        :param Product product:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['product_id']
+        all_params = ['product_id', 'product']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1910,6 +1926,9 @@ class ProductApi(object):
         # verify the required parameter 'product_id' is set
         if ('product_id' not in params) or (params['product_id'] is None):
             raise ValueError("Missing the required parameter `product_id` when calling `update`")
+        # verify the required parameter 'product' is set
+        if ('product' not in params) or (params['product'] is None):
+            raise ValueError("Missing the required parameter `product` when calling `update`")
 
         resource_path = '/products/{productID}'.replace('{format}', 'json')
         path_params = {}
@@ -1924,6 +1943,8 @@ class ProductApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'product' in params:
+            body_params = params['product']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -1945,7 +1966,7 @@ class ProductApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -2061,7 +2082,7 @@ class ProductApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update_variant(self, product_id, variant_id, **kwargs):
+    def update_variant(self, product_id, variant_id, variant, **kwargs):
         """
         
         
@@ -2072,24 +2093,25 @@ class ProductApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_variant(product_id, variant_id, callback=callback_function)
+        >>> thread = api.update_variant(product_id, variant_id, variant, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str product_id: ID of the product. (required)
         :param str variant_id: ID of the variant. (required)
+        :param Variant variant:  (required)
         :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_variant_with_http_info(product_id, variant_id, **kwargs)
+            return self.update_variant_with_http_info(product_id, variant_id, variant, **kwargs)
         else:
-            (data) = self.update_variant_with_http_info(product_id, variant_id, **kwargs)
+            (data) = self.update_variant_with_http_info(product_id, variant_id, variant, **kwargs)
             return data
 
-    def update_variant_with_http_info(self, product_id, variant_id, **kwargs):
+    def update_variant_with_http_info(self, product_id, variant_id, variant, **kwargs):
         """
         
         
@@ -2100,18 +2122,19 @@ class ProductApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_variant_with_http_info(product_id, variant_id, callback=callback_function)
+        >>> thread = api.update_variant_with_http_info(product_id, variant_id, variant, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str product_id: ID of the product. (required)
         :param str variant_id: ID of the variant. (required)
+        :param Variant variant:  (required)
         :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['product_id', 'variant_id']
+        all_params = ['product_id', 'variant_id', 'variant']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -2130,6 +2153,9 @@ class ProductApi(object):
         # verify the required parameter 'variant_id' is set
         if ('variant_id' not in params) or (params['variant_id'] is None):
             raise ValueError("Missing the required parameter `variant_id` when calling `update_variant`")
+        # verify the required parameter 'variant' is set
+        if ('variant' not in params) or (params['variant'] is None):
+            raise ValueError("Missing the required parameter `variant` when calling `update_variant`")
 
         resource_path = '/products/{productID}/variants/{variantID}'.replace('{format}', 'json')
         path_params = {}
@@ -2146,6 +2172,8 @@ class ProductApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'variant' in params:
+            body_params = params['variant']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\

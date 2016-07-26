@@ -162,7 +162,7 @@ class UserApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def delete(self, buyer_id, user_id, user, **kwargs):
+    def delete(self, buyer_id, user_id, **kwargs):
         """
         
         
@@ -173,25 +173,24 @@ class UserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete(buyer_id, user_id, user, callback=callback_function)
+        >>> thread = api.delete(buyer_id, user_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str user_id: ID of the user. (required)
-        :param User user:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.delete_with_http_info(buyer_id, user_id, user, **kwargs)
+            return self.delete_with_http_info(buyer_id, user_id, **kwargs)
         else:
-            (data) = self.delete_with_http_info(buyer_id, user_id, user, **kwargs)
+            (data) = self.delete_with_http_info(buyer_id, user_id, **kwargs)
             return data
 
-    def delete_with_http_info(self, buyer_id, user_id, user, **kwargs):
+    def delete_with_http_info(self, buyer_id, user_id, **kwargs):
         """
         
         
@@ -202,19 +201,18 @@ class UserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_with_http_info(buyer_id, user_id, user, callback=callback_function)
+        >>> thread = api.delete_with_http_info(buyer_id, user_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str user_id: ID of the user. (required)
-        :param User user:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'user_id', 'user']
+        all_params = ['buyer_id', 'user_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -233,9 +231,6 @@ class UserApi(object):
         # verify the required parameter 'user_id' is set
         if ('user_id' not in params) or (params['user_id'] is None):
             raise ValueError("Missing the required parameter `user_id` when calling `delete`")
-        # verify the required parameter 'user' is set
-        if ('user' not in params) or (params['user'] is None):
-            raise ValueError("Missing the required parameter `user` when calling `delete`")
 
         resource_path = '/buyers/{buyerID}/users/{userID}'.replace('{format}', 'json')
         path_params = {}
@@ -252,8 +247,6 @@ class UserApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'user' in params:
-            body_params = params['user']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -280,7 +273,7 @@ class UserApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def get(self, buyer_id, user_id, user, **kwargs):
+    def get(self, buyer_id, user_id, **kwargs):
         """
         
         
@@ -291,25 +284,24 @@ class UserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get(buyer_id, user_id, user, callback=callback_function)
+        >>> thread = api.get(buyer_id, user_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str user_id: ID of the user. (required)
-        :param User user:  (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_with_http_info(buyer_id, user_id, user, **kwargs)
+            return self.get_with_http_info(buyer_id, user_id, **kwargs)
         else:
-            (data) = self.get_with_http_info(buyer_id, user_id, user, **kwargs)
+            (data) = self.get_with_http_info(buyer_id, user_id, **kwargs)
             return data
 
-    def get_with_http_info(self, buyer_id, user_id, user, **kwargs):
+    def get_with_http_info(self, buyer_id, user_id, **kwargs):
         """
         
         
@@ -320,19 +312,18 @@ class UserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_with_http_info(buyer_id, user_id, user, callback=callback_function)
+        >>> thread = api.get_with_http_info(buyer_id, user_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str user_id: ID of the user. (required)
-        :param User user:  (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'user_id', 'user']
+        all_params = ['buyer_id', 'user_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -351,9 +342,6 @@ class UserApi(object):
         # verify the required parameter 'user_id' is set
         if ('user_id' not in params) or (params['user_id'] is None):
             raise ValueError("Missing the required parameter `user_id` when calling `get`")
-        # verify the required parameter 'user' is set
-        if ('user' not in params) or (params['user'] is None):
-            raise ValueError("Missing the required parameter `user` when calling `get`")
 
         resource_path = '/buyers/{buyerID}/users/{userID}'.replace('{format}', 'json')
         path_params = {}
@@ -370,8 +358,6 @@ class UserApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'user' in params:
-            body_params = params['user']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -393,7 +379,7 @@ class UserApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -516,7 +502,7 @@ class UserApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list(self, buyer_id, user, **kwargs):
+    def list(self, buyer_id, **kwargs):
         """
         
         
@@ -527,12 +513,11 @@ class UserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(buyer_id, user, callback=callback_function)
+        >>> thread = api.list(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param User user:  (required)
         :param str user_group_id: ID of the user group.
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
@@ -545,12 +530,12 @@ class UserApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_with_http_info(buyer_id, user, **kwargs)
+            return self.list_with_http_info(buyer_id, **kwargs)
         else:
-            (data) = self.list_with_http_info(buyer_id, user, **kwargs)
+            (data) = self.list_with_http_info(buyer_id, **kwargs)
             return data
 
-    def list_with_http_info(self, buyer_id, user, **kwargs):
+    def list_with_http_info(self, buyer_id, **kwargs):
         """
         
         
@@ -561,12 +546,11 @@ class UserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_with_http_info(buyer_id, user, callback=callback_function)
+        >>> thread = api.list_with_http_info(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param User user:  (required)
         :param str user_group_id: ID of the user group.
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
@@ -578,7 +562,7 @@ class UserApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'user', 'user_group_id', 'search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params = ['buyer_id', 'user_group_id', 'search', 'search_on', 'sort_by', 'page', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -594,9 +578,6 @@ class UserApi(object):
         # verify the required parameter 'buyer_id' is set
         if ('buyer_id' not in params) or (params['buyer_id'] is None):
             raise ValueError("Missing the required parameter `buyer_id` when calling `list`")
-        # verify the required parameter 'user' is set
-        if ('user' not in params) or (params['user'] is None):
-            raise ValueError("Missing the required parameter `user` when calling `list`")
 
         resource_path = '/buyers/{buyerID}/users'.replace('{format}', 'json')
         path_params = {}
@@ -623,8 +604,6 @@ class UserApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'user' in params:
-            body_params = params['user']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -787,7 +766,7 @@ class UserApi(object):
         :param str buyer_id: ID of the buyer. (required)
         :param str user_id: ID of the user. (required)
         :param User user:  (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -816,7 +795,7 @@ class UserApi(object):
         :param str buyer_id: ID of the buyer. (required)
         :param str user_id: ID of the user. (required)
         :param User user:  (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -882,7 +861,7 @@ class UserApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

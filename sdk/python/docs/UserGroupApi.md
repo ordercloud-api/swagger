@@ -163,7 +163,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> get(buyer_id, user_group_id)
+> object get(buyer_id, user_group_id)
 
 
 
@@ -183,7 +183,8 @@ buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_group_id = 'user_group_id_example' # str | ID of the user group.
 
 try: 
-    api_instance.get(buyer_id, user_group_id)
+    api_response = api_instance.get(buyer_id, user_group_id)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling UserGroupApi->get: %s\n" % e
 ```
@@ -197,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -211,7 +212,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> object list(buyer_id, group, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> object list(buyer_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
 
 
 
@@ -228,7 +229,6 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.UserGroupApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
-group = OrderCloud.UserGroup() # UserGroup | 
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -236,7 +236,7 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(buyer_id, group, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    api_response = api_instance.list(buyer_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling UserGroupApi->list: %s\n" % e
@@ -247,7 +247,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
- **group** | [**UserGroup**](UserGroup.md)|  | 
  **search** | **str**| Word or phrase to search for. | [optional] 
  **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
@@ -270,7 +269,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_user_assignments**
-> list_user_assignments(buyer_id, user_group_assignment, user_group_id=user_group_id, user_id=user_id, page=page, page_size=page_size)
+> object list_user_assignments(buyer_id, user_group_id=user_group_id, user_id=user_id, page=page, page_size=page_size)
 
 
 
@@ -287,14 +286,14 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.UserGroupApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
-user_group_assignment = OrderCloud.UserGroupAssignment() # UserGroupAssignment | 
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_instance.list_user_assignments(buyer_id, user_group_assignment, user_group_id=user_group_id, user_id=user_id, page=page, page_size=page_size)
+    api_response = api_instance.list_user_assignments(buyer_id, user_group_id=user_group_id, user_id=user_id, page=page, page_size=page_size)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling UserGroupApi->list_user_assignments: %s\n" % e
 ```
@@ -304,7 +303,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
- **user_group_assignment** | [**UserGroupAssignment**](UserGroupAssignment.md)|  | 
  **user_group_id** | **str**| ID of the user group. | [optional] 
  **user_id** | **str**| ID of the user. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
@@ -312,7 +310,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -326,7 +324,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> patch(buyer_id, user_group_id)
+> patch(buyer_id, user_group_id, group)
 
 
 
@@ -344,9 +342,10 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.UserGroupApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_group_id = 'user_group_id_example' # str | ID of the user group.
+group = OrderCloud.UserGroup() # UserGroup | 
 
 try: 
-    api_instance.patch(buyer_id, user_group_id)
+    api_instance.patch(buyer_id, user_group_id, group)
 except ApiException as e:
     print "Exception when calling UserGroupApi->patch: %s\n" % e
 ```
@@ -357,6 +356,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
  **user_group_id** | **str**| ID of the user group. | 
+ **group** | [**UserGroup**](UserGroup.md)|  | 
 
 ### Return type
 
@@ -422,7 +422,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> update(buyer_id, user_group_id)
+> object update(buyer_id, user_group_id, group)
 
 
 
@@ -440,9 +440,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = OrderCloud.UserGroupApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_group_id = 'user_group_id_example' # str | ID of the user group.
+group = OrderCloud.UserGroup() # UserGroup | 
 
 try: 
-    api_instance.update(buyer_id, user_group_id)
+    api_response = api_instance.update(buyer_id, user_group_id, group)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling UserGroupApi->update: %s\n" % e
 ```
@@ -453,10 +455,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | 
  **user_group_id** | **str**| ID of the user group. | 
+ **group** | [**UserGroup**](UserGroup.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 

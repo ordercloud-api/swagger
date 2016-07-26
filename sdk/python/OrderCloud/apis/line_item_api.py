@@ -305,7 +305,7 @@ class LineItemApi(object):
         :param str buyer_id: ID of the buyer. (required)
         :param str order_id: ID of the order. (required)
         :param str line_item_id: ID of the line item. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -334,7 +334,7 @@ class LineItemApi(object):
         :param str buyer_id: ID of the buyer. (required)
         :param str order_id: ID of the order. (required)
         :param str line_item_id: ID of the line item. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -400,12 +400,12 @@ class LineItemApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list(self, buyer_id, order_id, line_item, **kwargs):
+    def list(self, buyer_id, order_id, **kwargs):
         """
         
         
@@ -416,13 +416,12 @@ class LineItemApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(buyer_id, order_id, line_item, callback=callback_function)
+        >>> thread = api.list(buyer_id, order_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str order_id: ID of the order. (required)
-        :param LineItem line_item:  (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -434,12 +433,12 @@ class LineItemApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_with_http_info(buyer_id, order_id, line_item, **kwargs)
+            return self.list_with_http_info(buyer_id, order_id, **kwargs)
         else:
-            (data) = self.list_with_http_info(buyer_id, order_id, line_item, **kwargs)
+            (data) = self.list_with_http_info(buyer_id, order_id, **kwargs)
             return data
 
-    def list_with_http_info(self, buyer_id, order_id, line_item, **kwargs):
+    def list_with_http_info(self, buyer_id, order_id, **kwargs):
         """
         
         
@@ -450,13 +449,12 @@ class LineItemApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_with_http_info(buyer_id, order_id, line_item, callback=callback_function)
+        >>> thread = api.list_with_http_info(buyer_id, order_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str order_id: ID of the order. (required)
-        :param LineItem line_item:  (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -467,7 +465,7 @@ class LineItemApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'order_id', 'line_item', 'search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params = ['buyer_id', 'order_id', 'search', 'search_on', 'sort_by', 'page', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -486,9 +484,6 @@ class LineItemApi(object):
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
             raise ValueError("Missing the required parameter `order_id` when calling `list`")
-        # verify the required parameter 'line_item' is set
-        if ('line_item' not in params) or (params['line_item'] is None):
-            raise ValueError("Missing the required parameter `line_item` when calling `list`")
 
         resource_path = '/buyers/{buyerID}/orders/{orderID}/lineitems'.replace('{format}', 'json')
         path_params = {}
@@ -515,8 +510,6 @@ class LineItemApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'line_item' in params:
-            body_params = params['line_item']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -543,7 +536,7 @@ class LineItemApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch(self, buyer_id, order_id, line_item_id, **kwargs):
+    def patch(self, buyer_id, order_id, line_item_id, partial_line_item, **kwargs):
         """
         
         
@@ -554,25 +547,26 @@ class LineItemApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch(buyer_id, order_id, line_item_id, callback=callback_function)
+        >>> thread = api.patch(buyer_id, order_id, line_item_id, partial_line_item, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str order_id: ID of the order. (required)
         :param str line_item_id: ID of the line item. (required)
-        :return: None
+        :param LineItem partial_line_item:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(buyer_id, order_id, line_item_id, **kwargs)
+            return self.patch_with_http_info(buyer_id, order_id, line_item_id, partial_line_item, **kwargs)
         else:
-            (data) = self.patch_with_http_info(buyer_id, order_id, line_item_id, **kwargs)
+            (data) = self.patch_with_http_info(buyer_id, order_id, line_item_id, partial_line_item, **kwargs)
             return data
 
-    def patch_with_http_info(self, buyer_id, order_id, line_item_id, **kwargs):
+    def patch_with_http_info(self, buyer_id, order_id, line_item_id, partial_line_item, **kwargs):
         """
         
         
@@ -583,19 +577,20 @@ class LineItemApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(buyer_id, order_id, line_item_id, callback=callback_function)
+        >>> thread = api.patch_with_http_info(buyer_id, order_id, line_item_id, partial_line_item, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str order_id: ID of the order. (required)
         :param str line_item_id: ID of the line item. (required)
-        :return: None
+        :param LineItem partial_line_item:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'order_id', 'line_item_id']
+        all_params = ['buyer_id', 'order_id', 'line_item_id', 'partial_line_item']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -617,6 +612,9 @@ class LineItemApi(object):
         # verify the required parameter 'line_item_id' is set
         if ('line_item_id' not in params) or (params['line_item_id'] is None):
             raise ValueError("Missing the required parameter `line_item_id` when calling `patch`")
+        # verify the required parameter 'partial_line_item' is set
+        if ('partial_line_item' not in params) or (params['partial_line_item'] is None):
+            raise ValueError("Missing the required parameter `partial_line_item` when calling `patch`")
 
         resource_path = '/buyers/{buyerID}/orders/{orderID}/lineitems/{lineItemID}'.replace('{format}', 'json')
         path_params = {}
@@ -635,6 +633,8 @@ class LineItemApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'partial_line_item' in params:
+            body_params = params['partial_line_item']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -656,7 +656,7 @@ class LineItemApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -911,7 +911,7 @@ class LineItemApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update(self, buyer_id, order_id, line_item_id, **kwargs):
+    def update(self, buyer_id, order_id, line_item_id, line_item, **kwargs):
         """
         
         
@@ -922,25 +922,26 @@ class LineItemApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(buyer_id, order_id, line_item_id, callback=callback_function)
+        >>> thread = api.update(buyer_id, order_id, line_item_id, line_item, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str order_id: ID of the order. (required)
         :param str line_item_id: ID of the line item. (required)
-        :return: None
+        :param LineItem line_item:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(buyer_id, order_id, line_item_id, **kwargs)
+            return self.update_with_http_info(buyer_id, order_id, line_item_id, line_item, **kwargs)
         else:
-            (data) = self.update_with_http_info(buyer_id, order_id, line_item_id, **kwargs)
+            (data) = self.update_with_http_info(buyer_id, order_id, line_item_id, line_item, **kwargs)
             return data
 
-    def update_with_http_info(self, buyer_id, order_id, line_item_id, **kwargs):
+    def update_with_http_info(self, buyer_id, order_id, line_item_id, line_item, **kwargs):
         """
         
         
@@ -951,19 +952,20 @@ class LineItemApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(buyer_id, order_id, line_item_id, callback=callback_function)
+        >>> thread = api.update_with_http_info(buyer_id, order_id, line_item_id, line_item, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
         :param str order_id: ID of the order. (required)
         :param str line_item_id: ID of the line item. (required)
-        :return: None
+        :param LineItem line_item:  (required)
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'order_id', 'line_item_id']
+        all_params = ['buyer_id', 'order_id', 'line_item_id', 'line_item']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -985,6 +987,9 @@ class LineItemApi(object):
         # verify the required parameter 'line_item_id' is set
         if ('line_item_id' not in params) or (params['line_item_id'] is None):
             raise ValueError("Missing the required parameter `line_item_id` when calling `update`")
+        # verify the required parameter 'line_item' is set
+        if ('line_item' not in params) or (params['line_item'] is None):
+            raise ValueError("Missing the required parameter `line_item` when calling `update`")
 
         resource_path = '/buyers/{buyerID}/orders/{orderID}/lineitems/{lineItemID}'.replace('{format}', 'json')
         path_params = {}
@@ -1003,6 +1008,8 @@ class LineItemApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'line_item' in params:
+            body_params = params['line_item']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -1024,7 +1031,7 @@ class LineItemApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type=None,
+                                            response_type='object',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

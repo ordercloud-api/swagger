@@ -156,7 +156,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> get(price_schedule_id)
+> object get(price_schedule_id)
 
 
 
@@ -175,7 +175,8 @@ api_instance = OrderCloud.PriceScheduleApi()
 price_schedule_id = 'price_schedule_id_example' # str | ID of the price schedule.
 
 try: 
-    api_instance.get(price_schedule_id)
+    api_response = api_instance.get(price_schedule_id)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling PriceScheduleApi->get: %s\n" % e
 ```
@@ -188,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -202,7 +203,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> object list(price_schedule, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> object list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
 
 
 
@@ -218,7 +219,6 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = OrderCloud.PriceScheduleApi()
-price_schedule = OrderCloud.PriceSchedule() # PriceSchedule | 
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -226,7 +226,7 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(price_schedule, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    api_response = api_instance.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
     pprint(api_response)
 except ApiException as e:
     print "Exception when calling PriceScheduleApi->list: %s\n" % e
@@ -236,7 +236,6 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **price_schedule** | [**PriceSchedule**](PriceSchedule.md)|  | 
  **search** | **str**| Word or phrase to search for. | [optional] 
  **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
@@ -259,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> patch(price_schedule_id)
+> object patch(price_schedule_id, price_schedule)
 
 
 
@@ -276,9 +275,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.PriceScheduleApi()
 price_schedule_id = 'price_schedule_id_example' # str | ID of the price schedule.
+price_schedule = OrderCloud.PriceSchedule() # PriceSchedule | 
 
 try: 
-    api_instance.patch(price_schedule_id)
+    api_response = api_instance.patch(price_schedule_id, price_schedule)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling PriceScheduleApi->patch: %s\n" % e
 ```
@@ -288,10 +289,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **price_schedule_id** | **str**| ID of the price schedule. | 
+ **price_schedule** | [**PriceSchedule**](PriceSchedule.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -305,7 +307,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **save_price_break**
-> save_price_break(price_schedule_id)
+> object save_price_break(price_schedule_id, price_break)
 
 
 
@@ -322,9 +324,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.PriceScheduleApi()
 price_schedule_id = 'price_schedule_id_example' # str | ID of the price schedule.
+price_break = OrderCloud.PriceBreak() # PriceBreak | 
 
 try: 
-    api_instance.save_price_break(price_schedule_id)
+    api_response = api_instance.save_price_break(price_schedule_id, price_break)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling PriceScheduleApi->save_price_break: %s\n" % e
 ```
@@ -334,10 +338,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **price_schedule_id** | **str**| ID of the price schedule. | 
+ **price_break** | [**PriceBreak**](PriceBreak.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -351,7 +356,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> update(price_schedule_id)
+> object update(price_schedule_id, price_schedule)
 
 
 
@@ -368,9 +373,11 @@ OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = OrderCloud.PriceScheduleApi()
 price_schedule_id = 'price_schedule_id_example' # str | ID of the price schedule.
+price_schedule = OrderCloud.PriceSchedule() # PriceSchedule | 
 
 try: 
-    api_instance.update(price_schedule_id)
+    api_response = api_instance.update(price_schedule_id, price_schedule)
+    pprint(api_response)
 except ApiException as e:
     print "Exception when calling PriceScheduleApi->update: %s\n" % e
 ```
@@ -380,10 +387,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **price_schedule_id** | **str**| ID of the price schedule. | 
+ **price_schedule** | [**PriceSchedule**](PriceSchedule.md)|  | 
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
