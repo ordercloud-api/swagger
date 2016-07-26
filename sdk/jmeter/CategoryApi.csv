@@ -1,0 +1,2 @@
+testCase,httpStatusCode,buyerID,category,buyerID,categoryID,buyerID,categoryID,userID,userGroupID,buyerID,categoryID,productID,buyerID,categoryID,buyerID,parentID,depth,search,searchOn,sortBy,page,pageSize,buyerID,categoryID,userID,userGroupID,level,page,pageSize,buyerID,parentID,search,depth,page,pageSize,buyerID,categoryID,productID,page,pageSize,buyerID,categoryID,category,buyerID,categoryAssignment,buyerID,productAssignment,buyerID,categoryID,category
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
