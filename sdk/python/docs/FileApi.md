@@ -16,23 +16,19 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.FileApi()
+FileApi = OrderCloud.FileApi()
 file_id = 'file_id_example' # str | ID of the file.
 
 try: 
-    api_response = api_instance.get(file_id)
-    pprint(api_response)
+    response = FileApi.get(file_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling FileApi->get: %s\n" % e
+    print("Exception when calling FileApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -63,24 +59,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.FileApi()
+FileApi = OrderCloud.FileApi()
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(page=page, page_size=page_size)
-    pprint(api_response)
+    response = FileApi.list(page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling FileApi->list: %s\n" % e
+    print("Exception when calling FileApi->list: %s\n" % e)
 ```
 
 ### Parameters
@@ -112,23 +104,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.FileApi()
+FileApi = OrderCloud.FileApi()
 filename = 'filename_example' # str | Filename of the file. (optional)
 
 try: 
-    api_response = api_instance.post_file_data(filename=filename)
-    pprint(api_response)
+    response = FileApi.post_file_data(filename=filename)
+    print(response)
 except ApiException as e:
-    print "Exception when calling FileApi->post_file_data: %s\n" % e
+    print("Exception when calling FileApi->post_file_data: %s\n" % e)
 ```
 
 ### Parameters

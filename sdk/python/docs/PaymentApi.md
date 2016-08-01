@@ -23,25 +23,21 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PaymentApi()
+PaymentApi = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment = OrderCloud.Payment() # Payment | 
 
 try: 
-    api_response = api_instance.create(buyer_id, order_id, payment)
-    pprint(api_response)
+    response = PaymentApi.create(buyer_id, order_id, payment)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PaymentApi->create: %s\n" % e
+    print("Exception when calling PaymentApi->create: %s\n" % e)
 ```
 
 ### Parameters
@@ -74,26 +70,22 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PaymentApi()
+PaymentApi = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 transaction = OrderCloud.PaymentTransaction() # PaymentTransaction | 
 
 try: 
-    api_response = api_instance.create_transaction(buyer_id, order_id, payment_id, transaction)
-    pprint(api_response)
+    response = PaymentApi.create_transaction(buyer_id, order_id, payment_id, transaction)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PaymentApi->create_transaction: %s\n" % e
+    print("Exception when calling PaymentApi->create_transaction: %s\n" % e)
 ```
 
 ### Parameters
@@ -127,24 +119,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PaymentApi()
+PaymentApi = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 
 try: 
-    api_instance.delete(buyer_id, order_id, payment_id)
+    PaymentApi.delete(buyer_id, order_id, payment_id)
 except ApiException as e:
-    print "Exception when calling PaymentApi->delete: %s\n" % e
+    print("Exception when calling PaymentApi->delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -177,25 +165,21 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PaymentApi()
+PaymentApi = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 transaction_id = 'transaction_id_example' # str | ID of the transaction.
 
 try: 
-    api_instance.delete_transaction(buyer_id, order_id, payment_id, transaction_id)
+    PaymentApi.delete_transaction(buyer_id, order_id, payment_id, transaction_id)
 except ApiException as e:
-    print "Exception when calling PaymentApi->delete_transaction: %s\n" % e
+    print("Exception when calling PaymentApi->delete_transaction: %s\n" % e)
 ```
 
 ### Parameters
@@ -229,25 +213,21 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PaymentApi()
+PaymentApi = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 
 try: 
-    api_response = api_instance.get(buyer_id, order_id, payment_id)
-    pprint(api_response)
+    response = PaymentApi.get(buyer_id, order_id, payment_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PaymentApi->get: %s\n" % e
+    print("Exception when calling PaymentApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -280,16 +260,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PaymentApi()
+PaymentApi = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -299,10 +275,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = PaymentApi.list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PaymentApi->list: %s\n" % e
+    print("Exception when calling PaymentApi->list: %s\n" % e)
 ```
 
 ### Parameters
@@ -339,26 +315,22 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PaymentApi()
+PaymentApi = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 partial_payment = OrderCloud.Payment() # Payment | 
 
 try: 
-    api_response = api_instance.patch(buyer_id, order_id, payment_id, partial_payment)
-    pprint(api_response)
+    response = PaymentApi.patch(buyer_id, order_id, payment_id, partial_payment)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PaymentApi->patch: %s\n" % e
+    print("Exception when calling PaymentApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -392,16 +364,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PaymentApi()
+PaymentApi = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
@@ -409,10 +377,10 @@ transaction_id = 'transaction_id_example' # str | ID of the transaction.
 partial_transaction = OrderCloud.PaymentTransaction() # PaymentTransaction | 
 
 try: 
-    api_response = api_instance.patch_transaction(buyer_id, order_id, payment_id, transaction_id, partial_transaction)
-    pprint(api_response)
+    response = PaymentApi.patch_transaction(buyer_id, order_id, payment_id, transaction_id, partial_transaction)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PaymentApi->patch_transaction: %s\n" % e
+    print("Exception when calling PaymentApi->patch_transaction: %s\n" % e)
 ```
 
 ### Parameters
@@ -447,26 +415,22 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PaymentApi()
+PaymentApi = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 payment = OrderCloud.Payment() # Payment | 
 
 try: 
-    api_response = api_instance.update(buyer_id, order_id, payment_id, payment)
-    pprint(api_response)
+    response = PaymentApi.update(buyer_id, order_id, payment_id, payment)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PaymentApi->update: %s\n" % e
+    print("Exception when calling PaymentApi->update: %s\n" % e)
 ```
 
 ### Parameters
@@ -500,16 +464,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PaymentApi()
+PaymentApi = OrderCloud.PaymentApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
@@ -517,10 +477,10 @@ transaction_id = 'transaction_id_example' # str | ID of the transaction.
 transaction = OrderCloud.PaymentTransaction() # PaymentTransaction | 
 
 try: 
-    api_response = api_instance.update_transaction(buyer_id, order_id, payment_id, transaction_id, transaction)
-    pprint(api_response)
+    response = PaymentApi.update_transaction(buyer_id, order_id, payment_id, transaction_id, transaction)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PaymentApi->update_transaction: %s\n" % e
+    print("Exception when calling PaymentApi->update_transaction: %s\n" % e)
 ```
 
 ### Parameters

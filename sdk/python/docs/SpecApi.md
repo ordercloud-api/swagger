@@ -28,23 +28,19 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec = OrderCloud.Spec() # Spec | 
 
 try: 
-    api_response = api_instance.create(spec)
-    pprint(api_response)
+    response = SpecApi.create(spec)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpecApi->create: %s\n" % e
+    print("Exception when calling SpecApi->create: %s\n" % e)
 ```
 
 ### Parameters
@@ -75,24 +71,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 option = OrderCloud.SpecOption() # SpecOption | 
 
 try: 
-    api_response = api_instance.create_option(spec_id, option)
-    pprint(api_response)
+    response = SpecApi.create_option(spec_id, option)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpecApi->create_option: %s\n" % e
+    print("Exception when calling SpecApi->create_option: %s\n" % e)
 ```
 
 ### Parameters
@@ -124,22 +116,18 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 
 try: 
-    api_instance.delete(spec_id)
+    SpecApi.delete(spec_id)
 except ApiException as e:
-    print "Exception when calling SpecApi->delete: %s\n" % e
+    print("Exception when calling SpecApi->delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -170,23 +158,19 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 option_id = 'option_id_example' # str | ID of the option.
 
 try: 
-    api_instance.delete_option(spec_id, option_id)
+    SpecApi.delete_option(spec_id, option_id)
 except ApiException as e:
-    print "Exception when calling SpecApi->delete_option: %s\n" % e
+    print("Exception when calling SpecApi->delete_option: %s\n" % e)
 ```
 
 ### Parameters
@@ -218,23 +202,19 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 product_id = 'product_id_example' # str | ID of the product.
 
 try: 
-    api_instance.delete_product_assignment(spec_id, product_id)
+    SpecApi.delete_product_assignment(spec_id, product_id)
 except ApiException as e:
-    print "Exception when calling SpecApi->delete_product_assignment: %s\n" % e
+    print("Exception when calling SpecApi->delete_product_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -266,23 +246,19 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 
 try: 
-    api_response = api_instance.get(spec_id)
-    pprint(api_response)
+    response = SpecApi.get(spec_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpecApi->get: %s\n" % e
+    print("Exception when calling SpecApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -313,24 +289,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 option_id = 'option_id_example' # str | ID of the option.
 
 try: 
-    api_response = api_instance.get_option(spec_id, option_id)
-    pprint(api_response)
+    response = SpecApi.get_option(spec_id, option_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpecApi->get_option: %s\n" % e
+    print("Exception when calling SpecApi->get_option: %s\n" % e)
 ```
 
 ### Parameters
@@ -362,16 +334,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -379,10 +347,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = SpecApi.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpecApi->list: %s\n" % e
+    print("Exception when calling SpecApi->list: %s\n" % e)
 ```
 
 ### Parameters
@@ -417,16 +385,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -435,10 +399,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_options(spec_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = SpecApi.list_options(spec_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpecApi->list_options: %s\n" % e
+    print("Exception when calling SpecApi->list_options: %s\n" % e)
 ```
 
 ### Parameters
@@ -474,26 +438,22 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec. (optional)
 product_id = 'product_id_example' # str | ID of the product. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_product_assignments(spec_id=spec_id, product_id=product_id, page=page, page_size=page_size)
-    pprint(api_response)
+    response = SpecApi.list_product_assignments(spec_id=spec_id, product_id=product_id, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpecApi->list_product_assignments: %s\n" % e
+    print("Exception when calling SpecApi->list_product_assignments: %s\n" % e)
 ```
 
 ### Parameters
@@ -527,24 +487,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 spec = OrderCloud.Spec() # Spec | 
 
 try: 
-    api_response = api_instance.patch(spec_id, spec)
-    pprint(api_response)
+    response = SpecApi.patch(spec_id, spec)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpecApi->patch: %s\n" % e
+    print("Exception when calling SpecApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -576,25 +532,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 option_id = 'option_id_example' # str | ID of the option.
 option = OrderCloud.SpecOption() # SpecOption | 
 
 try: 
-    api_response = api_instance.patch_option(spec_id, option_id, option)
-    pprint(api_response)
+    response = SpecApi.patch_option(spec_id, option_id, option)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpecApi->patch_option: %s\n" % e
+    print("Exception when calling SpecApi->patch_option: %s\n" % e)
 ```
 
 ### Parameters
@@ -627,22 +579,18 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 product_assignment = OrderCloud.SpecProductAssignment() # SpecProductAssignment | 
 
 try: 
-    api_instance.save_product_assignment(product_assignment)
+    SpecApi.save_product_assignment(product_assignment)
 except ApiException as e:
-    print "Exception when calling SpecApi->save_product_assignment: %s\n" % e
+    print("Exception when calling SpecApi->save_product_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -673,24 +621,20 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 spec = OrderCloud.Spec() # Spec | 
 
 try: 
-    api_response = api_instance.update(spec_id, spec)
-    pprint(api_response)
+    response = SpecApi.update(spec_id, spec)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpecApi->update: %s\n" % e
+    print("Exception when calling SpecApi->update: %s\n" % e)
 ```
 
 ### Parameters
@@ -722,25 +666,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi()
 spec_id = 'spec_id_example' # str | ID of the spec.
 option_id = 'option_id_example' # str | ID of the option.
 option = OrderCloud.SpecOption() # SpecOption | 
 
 try: 
-    api_response = api_instance.update_option(spec_id, option_id, option)
-    pprint(api_response)
+    response = SpecApi.update_option(spec_id, option_id, option)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpecApi->update_option: %s\n" % e
+    print("Exception when calling SpecApi->update_option: %s\n" % e)
 ```
 
 ### Parameters

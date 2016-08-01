@@ -22,24 +22,20 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.AddressApi()
+AddressApi = OrderCloud.AddressApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 address = OrderCloud.Address() # Address | 
 
 try: 
-    api_response = api_instance.create(buyer_id, address)
-    pprint(api_response)
+    response = AddressApi.create(buyer_id, address)
+    print(response)
 except ApiException as e:
-    print "Exception when calling AddressApi->create: %s\n" % e
+    print("Exception when calling AddressApi->create: %s\n" % e)
 ```
 
 ### Parameters
@@ -71,23 +67,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.AddressApi()
+AddressApi = OrderCloud.AddressApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 address_id = 'address_id_example' # str | ID of the address.
 
 try: 
-    api_instance.delete(buyer_id, address_id)
+    AddressApi.delete(buyer_id, address_id)
 except ApiException as e:
-    print "Exception when calling AddressApi->delete: %s\n" % e
+    print("Exception when calling AddressApi->delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -119,25 +111,21 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.AddressApi()
+AddressApi = OrderCloud.AddressApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 address_id = 'address_id_example' # str | ID of the address.
 user_id = 'user_id_example' # str | ID of the user. (optional)
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
 
 try: 
-    api_instance.delete_assignment(buyer_id, address_id, user_id=user_id, user_group_id=user_group_id)
+    AddressApi.delete_assignment(buyer_id, address_id, user_id=user_id, user_group_id=user_group_id)
 except ApiException as e:
-    print "Exception when calling AddressApi->delete_assignment: %s\n" % e
+    print("Exception when calling AddressApi->delete_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -171,24 +159,20 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.AddressApi()
+AddressApi = OrderCloud.AddressApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 address_id = 'address_id_example' # str | ID of the address.
 
 try: 
-    api_response = api_instance.get(buyer_id, address_id)
-    pprint(api_response)
+    response = AddressApi.get(buyer_id, address_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling AddressApi->get: %s\n" % e
+    print("Exception when calling AddressApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -220,16 +204,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.AddressApi()
+AddressApi = OrderCloud.AddressApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -238,10 +218,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(buyer_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = AddressApi.list(buyer_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling AddressApi->list: %s\n" % e
+    print("Exception when calling AddressApi->list: %s\n" % e)
 ```
 
 ### Parameters
@@ -277,16 +257,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.AddressApi()
+AddressApi = OrderCloud.AddressApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 address_id = 'address_id_example' # str | ID of the address. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -298,10 +274,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_assignments(buyer_id, address_id=address_id, user_id=user_id, user_group_id=user_group_id, level=level, is_shipping=is_shipping, is_billing=is_billing, page=page, page_size=page_size)
-    pprint(api_response)
+    response = AddressApi.list_assignments(buyer_id, address_id=address_id, user_id=user_id, user_group_id=user_group_id, level=level, is_shipping=is_shipping, is_billing=is_billing, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling AddressApi->list_assignments: %s\n" % e
+    print("Exception when calling AddressApi->list_assignments: %s\n" % e)
 ```
 
 ### Parameters
@@ -340,25 +316,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.AddressApi()
+AddressApi = OrderCloud.AddressApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 address_id = 'address_id_example' # str | ID of the address.
 address = OrderCloud.Address() # Address | 
 
 try: 
-    api_response = api_instance.patch(buyer_id, address_id, address)
-    pprint(api_response)
+    response = AddressApi.patch(buyer_id, address_id, address)
+    print(response)
 except ApiException as e:
-    print "Exception when calling AddressApi->patch: %s\n" % e
+    print("Exception when calling AddressApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -391,23 +363,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.AddressApi()
+AddressApi = OrderCloud.AddressApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 assignment = OrderCloud.AddressAssignment() # AddressAssignment | 
 
 try: 
-    api_instance.save_assignment(buyer_id, assignment)
+    AddressApi.save_assignment(buyer_id, assignment)
 except ApiException as e:
-    print "Exception when calling AddressApi->save_assignment: %s\n" % e
+    print("Exception when calling AddressApi->save_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -439,25 +407,21 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.AddressApi()
+AddressApi = OrderCloud.AddressApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 address_id = 'address_id_example' # str | ID of the address.
 address = OrderCloud.Address() # Address | 
 
 try: 
-    api_response = api_instance.update(buyer_id, address_id, address)
-    pprint(api_response)
+    response = AddressApi.update(buyer_id, address_id, address)
+    print(response)
 except ApiException as e:
-    print "Exception when calling AddressApi->update: %s\n" % e
+    print("Exception when calling AddressApi->update: %s\n" % e)
 ```
 
 ### Parameters

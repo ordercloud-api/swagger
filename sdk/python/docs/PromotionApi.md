@@ -22,23 +22,19 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi()
 promo = OrderCloud.Promotion() # Promotion | 
 
 try: 
-    api_response = api_instance.create(promo)
-    pprint(api_response)
+    response = PromotionApi.create(promo)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PromotionApi->create: %s\n" % e
+    print("Exception when calling PromotionApi->create: %s\n" % e)
 ```
 
 ### Parameters
@@ -69,22 +65,18 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi()
 promotion_id = 'promotion_id_example' # str | ID of the promotion.
 
 try: 
-    api_instance.delete(promotion_id)
+    PromotionApi.delete(promotion_id)
 except ApiException as e:
-    print "Exception when calling PromotionApi->delete: %s\n" % e
+    print("Exception when calling PromotionApi->delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -115,25 +107,21 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi()
 promotion_id = 'promotion_id_example' # str | ID of the promotion.
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_id = 'user_id_example' # str | ID of the user. (optional)
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
 
 try: 
-    api_instance.delete_assignment(promotion_id, buyer_id, user_id=user_id, user_group_id=user_group_id)
+    PromotionApi.delete_assignment(promotion_id, buyer_id, user_id=user_id, user_group_id=user_group_id)
 except ApiException as e:
-    print "Exception when calling PromotionApi->delete_assignment: %s\n" % e
+    print("Exception when calling PromotionApi->delete_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -167,23 +155,19 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi()
 promotion_id = 'promotion_id_example' # str | ID of the promotion.
 
 try: 
-    api_response = api_instance.get(promotion_id)
-    pprint(api_response)
+    response = PromotionApi.get(promotion_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PromotionApi->get: %s\n" % e
+    print("Exception when calling PromotionApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -214,16 +198,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi()
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -231,10 +211,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = PromotionApi.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PromotionApi->list: %s\n" % e
+    print("Exception when calling PromotionApi->list: %s\n" % e)
 ```
 
 ### Parameters
@@ -269,16 +249,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 promotion_id = 'promotion_id_example' # str | ID of the promotion. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -288,10 +264,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_assignments(buyer_id, promotion_id=promotion_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
-    pprint(api_response)
+    response = PromotionApi.list_assignments(buyer_id, promotion_id=promotion_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PromotionApi->list_assignments: %s\n" % e
+    print("Exception when calling PromotionApi->list_assignments: %s\n" % e)
 ```
 
 ### Parameters
@@ -328,24 +304,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi()
 promotion_id = 'promotion_id_example' # str | ID of the promotion.
 partial_promotion = OrderCloud.Promotion() # Promotion | 
 
 try: 
-    api_response = api_instance.patch(promotion_id, partial_promotion)
-    pprint(api_response)
+    response = PromotionApi.patch(promotion_id, partial_promotion)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PromotionApi->patch: %s\n" % e
+    print("Exception when calling PromotionApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -377,22 +349,18 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi()
 assignment = OrderCloud.PromotionAssignment() # PromotionAssignment | 
 
 try: 
-    api_instance.save_assignment(assignment)
+    PromotionApi.save_assignment(assignment)
 except ApiException as e:
-    print "Exception when calling PromotionApi->save_assignment: %s\n" % e
+    print("Exception when calling PromotionApi->save_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -423,24 +391,20 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi()
 promotion_id = 'promotion_id_example' # str | ID of the promotion.
 promo = OrderCloud.Promotion() # Promotion | 
 
 try: 
-    api_response = api_instance.update(promotion_id, promo)
-    pprint(api_response)
+    response = PromotionApi.update(promotion_id, promo)
+    print(response)
 except ApiException as e:
-    print "Exception when calling PromotionApi->update: %s\n" % e
+    print("Exception when calling PromotionApi->update: %s\n" % e)
 ```
 
 ### Parameters

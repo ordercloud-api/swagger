@@ -21,25 +21,21 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item = OrderCloud.LineItem() # LineItem | 
 
 try: 
-    api_response = api_instance.create(buyer_id, order_id, line_item)
-    pprint(api_response)
+    response = LineItemApi.create(buyer_id, order_id, line_item)
+    print(response)
 except ApiException as e:
-    print "Exception when calling LineItemApi->create: %s\n" % e
+    print("Exception when calling LineItemApi->create: %s\n" % e)
 ```
 
 ### Parameters
@@ -72,24 +68,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
 
 try: 
-    api_instance.delete(buyer_id, order_id, line_item_id)
+    LineItemApi.delete(buyer_id, order_id, line_item_id)
 except ApiException as e:
-    print "Exception when calling LineItemApi->delete: %s\n" % e
+    print("Exception when calling LineItemApi->delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -122,25 +114,21 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
 
 try: 
-    api_response = api_instance.get(buyer_id, order_id, line_item_id)
-    pprint(api_response)
+    response = LineItemApi.get(buyer_id, order_id, line_item_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling LineItemApi->get: %s\n" % e
+    print("Exception when calling LineItemApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -173,16 +161,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -192,10 +176,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = LineItemApi.list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling LineItemApi->list: %s\n" % e
+    print("Exception when calling LineItemApi->list: %s\n" % e)
 ```
 
 ### Parameters
@@ -232,26 +216,22 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
 partial_line_item = OrderCloud.LineItem() # LineItem | 
 
 try: 
-    api_response = api_instance.patch(buyer_id, order_id, line_item_id, partial_line_item)
-    pprint(api_response)
+    response = LineItemApi.patch(buyer_id, order_id, line_item_id, partial_line_item)
+    print(response)
 except ApiException as e:
-    print "Exception when calling LineItemApi->patch: %s\n" % e
+    print("Exception when calling LineItemApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -285,26 +265,22 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
 address = OrderCloud.Address() # Address | 
 
 try: 
-    api_response = api_instance.patch_shipping_address(buyer_id, order_id, line_item_id, address)
-    pprint(api_response)
+    response = LineItemApi.patch_shipping_address(buyer_id, order_id, line_item_id, address)
+    print(response)
 except ApiException as e:
-    print "Exception when calling LineItemApi->patch_shipping_address: %s\n" % e
+    print("Exception when calling LineItemApi->patch_shipping_address: %s\n" % e)
 ```
 
 ### Parameters
@@ -338,26 +314,22 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
 address = OrderCloud.Address() # Address | 
 
 try: 
-    api_response = api_instance.set_shipping_address(buyer_id, order_id, line_item_id, address)
-    pprint(api_response)
+    response = LineItemApi.set_shipping_address(buyer_id, order_id, line_item_id, address)
+    print(response)
 except ApiException as e:
-    print "Exception when calling LineItemApi->set_shipping_address: %s\n" % e
+    print("Exception when calling LineItemApi->set_shipping_address: %s\n" % e)
 ```
 
 ### Parameters
@@ -391,26 +363,22 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
 line_item = OrderCloud.LineItem() # LineItem | 
 
 try: 
-    api_response = api_instance.update(buyer_id, order_id, line_item_id, line_item)
-    pprint(api_response)
+    response = LineItemApi.update(buyer_id, order_id, line_item_id, line_item)
+    print(response)
 except ApiException as e:
-    print "Exception when calling LineItemApi->update: %s\n" % e
+    print("Exception when calling LineItemApi->update: %s\n" % e)
 ```
 
 ### Parameters

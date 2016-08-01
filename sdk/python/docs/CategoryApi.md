@@ -26,24 +26,20 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category = OrderCloud.Category() # Category | 
 
 try: 
-    api_response = api_instance.create(buyer_id, category)
-    pprint(api_response)
+    response = CategoryApi.create(buyer_id, category)
+    print(response)
 except ApiException as e:
-    print "Exception when calling CategoryApi->create: %s\n" % e
+    print("Exception when calling CategoryApi->create: %s\n" % e)
 ```
 
 ### Parameters
@@ -75,23 +71,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
 
 try: 
-    api_instance.delete(buyer_id, category_id)
+    CategoryApi.delete(buyer_id, category_id)
 except ApiException as e:
-    print "Exception when calling CategoryApi->delete: %s\n" % e
+    print("Exception when calling CategoryApi->delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -123,25 +115,21 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
 user_id = 'user_id_example' # str | ID of the user. (optional)
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
 
 try: 
-    api_instance.delete_assignment(buyer_id, category_id, user_id=user_id, user_group_id=user_group_id)
+    CategoryApi.delete_assignment(buyer_id, category_id, user_id=user_id, user_group_id=user_group_id)
 except ApiException as e:
-    print "Exception when calling CategoryApi->delete_assignment: %s\n" % e
+    print("Exception when calling CategoryApi->delete_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -175,24 +163,20 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
 product_id = 'product_id_example' # str | ID of the product.
 
 try: 
-    api_instance.delete_product_assignment(buyer_id, category_id, product_id)
+    CategoryApi.delete_product_assignment(buyer_id, category_id, product_id)
 except ApiException as e:
-    print "Exception when calling CategoryApi->delete_product_assignment: %s\n" % e
+    print("Exception when calling CategoryApi->delete_product_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -225,24 +209,20 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
 
 try: 
-    api_response = api_instance.get(buyer_id, category_id)
-    pprint(api_response)
+    response = CategoryApi.get(buyer_id, category_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling CategoryApi->get: %s\n" % e
+    print("Exception when calling CategoryApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -274,16 +254,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 parent_id = 'parent_id_example' # str | ID of the parent. (optional)
 depth = 'depth_example' # str | Depth of the category. (optional)
@@ -294,10 +270,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(buyer_id, parent_id=parent_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = CategoryApi.list(buyer_id, parent_id=parent_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling CategoryApi->list: %s\n" % e
+    print("Exception when calling CategoryApi->list: %s\n" % e)
 ```
 
 ### Parameters
@@ -335,16 +311,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -354,10 +326,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_assignments(buyer_id, category_id=category_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
-    pprint(api_response)
+    response = CategoryApi.list_assignments(buyer_id, category_id=category_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling CategoryApi->list_assignments: %s\n" % e
+    print("Exception when calling CategoryApi->list_assignments: %s\n" % e)
 ```
 
 ### Parameters
@@ -394,16 +366,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 parent_id = 'parent_id_example' # str | ID of the parent.
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -412,10 +380,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_children(buyer_id, parent_id, search=search, depth=depth, page=page, page_size=page_size)
-    pprint(api_response)
+    response = CategoryApi.list_children(buyer_id, parent_id, search=search, depth=depth, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling CategoryApi->list_children: %s\n" % e
+    print("Exception when calling CategoryApi->list_children: %s\n" % e)
 ```
 
 ### Parameters
@@ -451,16 +419,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category. (optional)
 product_id = 'product_id_example' # str | ID of the product. (optional)
@@ -468,10 +432,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_product_assignments(buyer_id, category_id=category_id, product_id=product_id, page=page, page_size=page_size)
-    pprint(api_response)
+    response = CategoryApi.list_product_assignments(buyer_id, category_id=category_id, product_id=product_id, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling CategoryApi->list_product_assignments: %s\n" % e
+    print("Exception when calling CategoryApi->list_product_assignments: %s\n" % e)
 ```
 
 ### Parameters
@@ -506,24 +470,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
 category = OrderCloud.Category() # Category | 
 
 try: 
-    api_instance.patch(buyer_id, category_id, category)
+    CategoryApi.patch(buyer_id, category_id, category)
 except ApiException as e:
-    print "Exception when calling CategoryApi->patch: %s\n" % e
+    print("Exception when calling CategoryApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -556,23 +516,19 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_assignment = OrderCloud.CategoryAssignment() # CategoryAssignment | 
 
 try: 
-    api_instance.save_assignment(buyer_id, category_assignment)
+    CategoryApi.save_assignment(buyer_id, category_assignment)
 except ApiException as e:
-    print "Exception when calling CategoryApi->save_assignment: %s\n" % e
+    print("Exception when calling CategoryApi->save_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -604,23 +560,19 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 product_assignment = OrderCloud.CategoryProductAssignment() # CategoryProductAssignment | 
 
 try: 
-    api_instance.save_product_assignment(buyer_id, product_assignment)
+    CategoryApi.save_product_assignment(buyer_id, product_assignment)
 except ApiException as e:
-    print "Exception when calling CategoryApi->save_product_assignment: %s\n" % e
+    print("Exception when calling CategoryApi->save_product_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -652,25 +604,21 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
 category = OrderCloud.Category() # Category | 
 
 try: 
-    api_response = api_instance.update(buyer_id, category_id, category)
-    pprint(api_response)
+    response = CategoryApi.update(buyer_id, category_id, category)
+    print(response)
 except ApiException as e:
-    print "Exception when calling CategoryApi->update: %s\n" % e
+    print("Exception when calling CategoryApi->update: %s\n" % e)
 ```
 
 ### Parameters

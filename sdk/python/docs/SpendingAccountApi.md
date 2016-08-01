@@ -22,24 +22,20 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account = OrderCloud.SpendingAccount() # SpendingAccount | 
 
 try: 
-    api_response = api_instance.create(buyer_id, spending_account)
-    pprint(api_response)
+    response = SpendingAccountApi.create(buyer_id, spending_account)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpendingAccountApi->create: %s\n" % e
+    print("Exception when calling SpendingAccountApi->create: %s\n" % e)
 ```
 
 ### Parameters
@@ -71,23 +67,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account_id = 'spending_account_id_example' # str | ID of the spending account.
 
 try: 
-    api_instance.delete(buyer_id, spending_account_id)
+    SpendingAccountApi.delete(buyer_id, spending_account_id)
 except ApiException as e:
-    print "Exception when calling SpendingAccountApi->delete: %s\n" % e
+    print("Exception when calling SpendingAccountApi->delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -119,25 +111,21 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account_id = 'spending_account_id_example' # str | ID of the spending account.
 user_id = 'user_id_example' # str | ID of the user. (optional)
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
 
 try: 
-    api_instance.delete_assignment(buyer_id, spending_account_id, user_id=user_id, user_group_id=user_group_id)
+    SpendingAccountApi.delete_assignment(buyer_id, spending_account_id, user_id=user_id, user_group_id=user_group_id)
 except ApiException as e:
-    print "Exception when calling SpendingAccountApi->delete_assignment: %s\n" % e
+    print("Exception when calling SpendingAccountApi->delete_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -171,24 +159,20 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account_id = 'spending_account_id_example' # str | ID of the spending account.
 
 try: 
-    api_response = api_instance.get(buyer_id, spending_account_id)
-    pprint(api_response)
+    response = SpendingAccountApi.get(buyer_id, spending_account_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpendingAccountApi->get: %s\n" % e
+    print("Exception when calling SpendingAccountApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -220,16 +204,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -238,10 +218,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(buyer_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = SpendingAccountApi.list(buyer_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpendingAccountApi->list: %s\n" % e
+    print("Exception when calling SpendingAccountApi->list: %s\n" % e)
 ```
 
 ### Parameters
@@ -277,16 +257,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account_id = 'spending_account_id_example' # str | ID of the spending account. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -296,10 +272,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_assignments(buyer_id, spending_account_id=spending_account_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
-    pprint(api_response)
+    response = SpendingAccountApi.list_assignments(buyer_id, spending_account_id=spending_account_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpendingAccountApi->list_assignments: %s\n" % e
+    print("Exception when calling SpendingAccountApi->list_assignments: %s\n" % e)
 ```
 
 ### Parameters
@@ -336,25 +312,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account_id = 'spending_account_id_example' # str | ID of the spending account.
 spending_account = OrderCloud.SpendingAccount() # SpendingAccount | 
 
 try: 
-    api_response = api_instance.patch(buyer_id, spending_account_id, spending_account)
-    pprint(api_response)
+    response = SpendingAccountApi.patch(buyer_id, spending_account_id, spending_account)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpendingAccountApi->patch: %s\n" % e
+    print("Exception when calling SpendingAccountApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -387,23 +359,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 assignment = OrderCloud.SpendingAccountAssignment() # SpendingAccountAssignment | 
 
 try: 
-    api_instance.save_assignment(buyer_id, assignment)
+    SpendingAccountApi.save_assignment(buyer_id, assignment)
 except ApiException as e:
-    print "Exception when calling SpendingAccountApi->save_assignment: %s\n" % e
+    print("Exception when calling SpendingAccountApi->save_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -435,25 +403,21 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account_id = 'spending_account_id_example' # str | ID of the spending account.
 spending_account = OrderCloud.SpendingAccount() # SpendingAccount | 
 
 try: 
-    api_response = api_instance.update(buyer_id, spending_account_id, spending_account)
-    pprint(api_response)
+    response = SpendingAccountApi.update(buyer_id, spending_account_id, spending_account)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SpendingAccountApi->update: %s\n" % e
+    print("Exception when calling SpendingAccountApi->update: %s\n" % e)
 ```
 
 ### Parameters

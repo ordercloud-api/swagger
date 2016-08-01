@@ -35,25 +35,21 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 promo_code = 'promo_code_example' # str | Promo code of the order.
 
 try: 
-    api_response = api_instance.add_promotion(buyer_id, order_id, promo_code)
-    pprint(api_response)
+    response = OrderApi.add_promotion(buyer_id, order_id, promo_code)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->add_promotion: %s\n" % e
+    print("Exception when calling OrderApi->add_promotion: %s\n" % e)
 ```
 
 ### Parameters
@@ -86,25 +82,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 comments = 'comments_example' # str | Comments to be saved with the order approval. (optional)
 
 try: 
-    api_response = api_instance.approve(buyer_id, order_id, comments=comments)
-    pprint(api_response)
+    response = OrderApi.approve(buyer_id, order_id, comments=comments)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->approve: %s\n" % e
+    print("Exception when calling OrderApi->approve: %s\n" % e)
 ```
 
 ### Parameters
@@ -137,24 +129,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 
 try: 
-    api_response = api_instance.cancel(buyer_id, order_id)
-    pprint(api_response)
+    response = OrderApi.cancel(buyer_id, order_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->cancel: %s\n" % e
+    print("Exception when calling OrderApi->cancel: %s\n" % e)
 ```
 
 ### Parameters
@@ -186,24 +174,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order = OrderCloud.Order() # Order | 
 
 try: 
-    api_response = api_instance.create(buyer_id, order)
-    pprint(api_response)
+    response = OrderApi.create(buyer_id, order)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->create: %s\n" % e
+    print("Exception when calling OrderApi->create: %s\n" % e)
 ```
 
 ### Parameters
@@ -235,25 +219,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 comments = 'comments_example' # str | Comments to be saved with the order denial. (optional)
 
 try: 
-    api_response = api_instance.decline(buyer_id, order_id, comments=comments)
-    pprint(api_response)
+    response = OrderApi.decline(buyer_id, order_id, comments=comments)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->decline: %s\n" % e
+    print("Exception when calling OrderApi->decline: %s\n" % e)
 ```
 
 ### Parameters
@@ -286,23 +266,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 
 try: 
-    api_instance.delete(buyer_id, order_id)
+    OrderApi.delete(buyer_id, order_id)
 except ApiException as e:
-    print "Exception when calling OrderApi->delete: %s\n" % e
+    print("Exception when calling OrderApi->delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -334,24 +310,20 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 
 try: 
-    api_response = api_instance.get(buyer_id, order_id)
-    pprint(api_response)
+    response = OrderApi.get(buyer_id, order_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->get: %s\n" % e
+    print("Exception when calling OrderApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -383,16 +355,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -402,10 +370,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_approvals(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = OrderApi.list_approvals(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->list_approvals: %s\n" % e
+    print("Exception when calling OrderApi->list_approvals: %s\n" % e)
 ```
 
 ### Parameters
@@ -442,16 +410,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -461,10 +425,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_eligible_approvers(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = OrderApi.list_eligible_approvers(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->list_eligible_approvers: %s\n" % e
+    print("Exception when calling OrderApi->list_eligible_approvers: %s\n" % e)
 ```
 
 ### Parameters
@@ -501,16 +465,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
 _from = '_from_example' # str | Lower bound of date range that the order was submitted. (optional)
 to = 'to_example' # str | Upper bound of date range that the order was submitted. (optional)
@@ -521,10 +481,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_incoming(buyer_id=buyer_id, _from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = OrderApi.list_incoming(buyer_id=buyer_id, _from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->list_incoming: %s\n" % e
+    print("Exception when calling OrderApi->list_incoming: %s\n" % e)
 ```
 
 ### Parameters
@@ -562,16 +522,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
 _from = '_from_example' # str | Lower bound of date range that the order was created. (optional)
 to = 'to_example' # str | Upper bound of date range that the order was created. (optional)
@@ -582,10 +538,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_outgoing(buyer_id=buyer_id, _from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = OrderApi.list_outgoing(buyer_id=buyer_id, _from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->list_outgoing: %s\n" % e
+    print("Exception when calling OrderApi->list_outgoing: %s\n" % e)
 ```
 
 ### Parameters
@@ -623,16 +579,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -642,10 +594,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_promotions(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = OrderApi.list_promotions(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->list_promotions: %s\n" % e
+    print("Exception when calling OrderApi->list_promotions: %s\n" % e)
 ```
 
 ### Parameters
@@ -682,25 +634,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 partial_order = OrderCloud.Order() # Order | 
 
 try: 
-    api_response = api_instance.patch(buyer_id, order_id, partial_order)
-    pprint(api_response)
+    response = OrderApi.patch(buyer_id, order_id, partial_order)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->patch: %s\n" % e
+    print("Exception when calling OrderApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -733,25 +681,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 address = OrderCloud.Address() # Address | 
 
 try: 
-    api_response = api_instance.patch_billing_address(buyer_id, order_id, address)
-    pprint(api_response)
+    response = OrderApi.patch_billing_address(buyer_id, order_id, address)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->patch_billing_address: %s\n" % e
+    print("Exception when calling OrderApi->patch_billing_address: %s\n" % e)
 ```
 
 ### Parameters
@@ -784,25 +728,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 address = OrderCloud.Address() # Address | 
 
 try: 
-    api_response = api_instance.patch_shipping_address(buyer_id, order_id, address)
-    pprint(api_response)
+    response = OrderApi.patch_shipping_address(buyer_id, order_id, address)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->patch_shipping_address: %s\n" % e
+    print("Exception when calling OrderApi->patch_shipping_address: %s\n" % e)
 ```
 
 ### Parameters
@@ -835,25 +775,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 promo_code = 'promo_code_example' # str | Promo code of the order.
 
 try: 
-    api_response = api_instance.remove_promotion(buyer_id, order_id, promo_code)
-    pprint(api_response)
+    response = OrderApi.remove_promotion(buyer_id, order_id, promo_code)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->remove_promotion: %s\n" % e
+    print("Exception when calling OrderApi->remove_promotion: %s\n" % e)
 ```
 
 ### Parameters
@@ -886,25 +822,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 address = OrderCloud.Address() # Address | 
 
 try: 
-    api_response = api_instance.set_billing_address(buyer_id, order_id, address)
-    pprint(api_response)
+    response = OrderApi.set_billing_address(buyer_id, order_id, address)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->set_billing_address: %s\n" % e
+    print("Exception when calling OrderApi->set_billing_address: %s\n" % e)
 ```
 
 ### Parameters
@@ -937,25 +869,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 address = OrderCloud.Address() # Address | 
 
 try: 
-    api_response = api_instance.set_shipping_address(buyer_id, order_id, address)
-    pprint(api_response)
+    response = OrderApi.set_shipping_address(buyer_id, order_id, address)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->set_shipping_address: %s\n" % e
+    print("Exception when calling OrderApi->set_shipping_address: %s\n" % e)
 ```
 
 ### Parameters
@@ -988,25 +916,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 shipment = OrderCloud.Shipment() # Shipment | 
 
 try: 
-    api_response = api_instance.ship(buyer_id, order_id, shipment)
-    pprint(api_response)
+    response = OrderApi.ship(buyer_id, order_id, shipment)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->ship: %s\n" % e
+    print("Exception when calling OrderApi->ship: %s\n" % e)
 ```
 
 ### Parameters
@@ -1039,24 +963,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 
 try: 
-    api_response = api_instance.submit(buyer_id, order_id)
-    pprint(api_response)
+    response = OrderApi.submit(buyer_id, order_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->submit: %s\n" % e
+    print("Exception when calling OrderApi->submit: %s\n" % e)
 ```
 
 ### Parameters
@@ -1088,23 +1008,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 temp_user_token = 'temp_user_token_example' # str | Temp user token of the order.
 
 try: 
-    api_instance.transfer_temp_user_order(buyer_id, temp_user_token)
+    OrderApi.transfer_temp_user_order(buyer_id, temp_user_token)
 except ApiException as e:
-    print "Exception when calling OrderApi->transfer_temp_user_order: %s\n" % e
+    print("Exception when calling OrderApi->transfer_temp_user_order: %s\n" % e)
 ```
 
 ### Parameters
@@ -1136,25 +1052,21 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.OrderApi()
+OrderApi = OrderCloud.OrderApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 order = OrderCloud.Order() # Order | 
 
 try: 
-    api_response = api_instance.update(buyer_id, order_id, order)
-    pprint(api_response)
+    response = OrderApi.update(buyer_id, order_id, order)
+    print(response)
 except ApiException as e:
-    print "Exception when calling OrderApi->update: %s\n" % e
+    print("Exception when calling OrderApi->update: %s\n" % e)
 ```
 
 ### Parameters

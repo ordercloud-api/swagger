@@ -20,24 +20,20 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user = OrderCloud.User() # User | 
 
 try: 
-    api_response = api_instance.create(buyer_id, user)
-    pprint(api_response)
+    response = UserApi.create(buyer_id, user)
+    print(response)
 except ApiException as e:
-    print "Exception when calling UserApi->create: %s\n" % e
+    print("Exception when calling UserApi->create: %s\n" % e)
 ```
 
 ### Parameters
@@ -69,23 +65,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_id = 'user_id_example' # str | ID of the user.
 
 try: 
-    api_instance.delete(buyer_id, user_id)
+    UserApi.delete(buyer_id, user_id)
 except ApiException as e:
-    print "Exception when calling UserApi->delete: %s\n" % e
+    print("Exception when calling UserApi->delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -117,24 +109,20 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_id = 'user_id_example' # str | ID of the user.
 
 try: 
-    api_response = api_instance.get(buyer_id, user_id)
-    pprint(api_response)
+    response = UserApi.get(buyer_id, user_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling UserApi->get: %s\n" % e
+    print("Exception when calling UserApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -166,25 +154,21 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_id = 'user_id_example' # str | ID of the user.
 token_request = OrderCloud.ImpersonateTokenRequest() # ImpersonateTokenRequest | 
 
 try: 
-    api_response = api_instance.get_access_token(buyer_id, user_id, token_request)
-    pprint(api_response)
+    response = UserApi.get_access_token(buyer_id, user_id, token_request)
+    print(response)
 except ApiException as e:
-    print "Exception when calling UserApi->get_access_token: %s\n" % e
+    print("Exception when calling UserApi->get_access_token: %s\n" % e)
 ```
 
 ### Parameters
@@ -217,16 +201,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -236,10 +216,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(buyer_id, user_group_id=user_group_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = UserApi.list(buyer_id, user_group_id=user_group_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling UserApi->list: %s\n" % e
+    print("Exception when calling UserApi->list: %s\n" % e)
 ```
 
 ### Parameters
@@ -276,24 +256,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_id = 'user_id_example' # str | ID of the user.
 user = OrderCloud.User() # User | 
 
 try: 
-    api_instance.patch(buyer_id, user_id, user)
+    UserApi.patch(buyer_id, user_id, user)
 except ApiException as e:
-    print "Exception when calling UserApi->patch: %s\n" % e
+    print("Exception when calling UserApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -326,25 +302,21 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_id = 'user_id_example' # str | ID of the user.
 user = OrderCloud.User() # User | 
 
 try: 
-    api_response = api_instance.update(buyer_id, user_id, user)
-    pprint(api_response)
+    response = UserApi.update(buyer_id, user_id, user)
+    print(response)
 except ApiException as e:
-    print "Exception when calling UserApi->update: %s\n" % e
+    print("Exception when calling UserApi->update: %s\n" % e)
 ```
 
 ### Parameters

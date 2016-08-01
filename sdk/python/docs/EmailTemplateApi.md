@@ -17,24 +17,20 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.EmailTemplateApi()
+EmailTemplateApi = OrderCloud.EmailTemplateApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 email_template_type = 'email_template_type_example' # str | Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode.
 
 try: 
-    api_response = api_instance.get(buyer_id, email_template_type)
-    pprint(api_response)
+    response = EmailTemplateApi.get(buyer_id, email_template_type)
+    print(response)
 except ApiException as e:
-    print "Exception when calling EmailTemplateApi->get: %s\n" % e
+    print("Exception when calling EmailTemplateApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -66,24 +62,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.EmailTemplateApi()
+EmailTemplateApi = OrderCloud.EmailTemplateApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 email_template_type = 'email_template_type_example' # str | Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode.
 email_template = OrderCloud.EmailTemplate() # EmailTemplate | 
 
 try: 
-    api_instance.patch(buyer_id, email_template_type, email_template)
+    EmailTemplateApi.patch(buyer_id, email_template_type, email_template)
 except ApiException as e:
-    print "Exception when calling EmailTemplateApi->patch: %s\n" % e
+    print("Exception when calling EmailTemplateApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -116,23 +108,19 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.EmailTemplateApi()
+EmailTemplateApi = OrderCloud.EmailTemplateApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 email_template_type = 'email_template_type_example' # str | Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode.
 
 try: 
-    api_instance.reset_to_default(buyer_id, email_template_type)
+    EmailTemplateApi.reset_to_default(buyer_id, email_template_type)
 except ApiException as e:
-    print "Exception when calling EmailTemplateApi->reset_to_default: %s\n" % e
+    print("Exception when calling EmailTemplateApi->reset_to_default: %s\n" % e)
 ```
 
 ### Parameters
@@ -164,24 +152,20 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.EmailTemplateApi()
+EmailTemplateApi = OrderCloud.EmailTemplateApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 email_template_type = 'email_template_type_example' # str | Email template type of the email template. Possible values: OrderSubmittedForApproval, CustomerOrderSubmitted, OrderToApprove, OrderDeclined, OrderApproved, PriceRequestSubmitted, CustomerOrderShipped, ProductRequiresAttachment, InventoryPointReached, LineItemExceedsInventory, PriceRequestResponse, CustomerOrderUpdated, OrderCanceled, PriceRequestCanceled, NewOrderReceived, ApprovalNotification, EmailLoginVerificationCode.
 email_template = OrderCloud.EmailTemplate() # EmailTemplate | 
 
 try: 
-    api_instance.update(buyer_id, email_template_type, email_template)
+    EmailTemplateApi.update(buyer_id, email_template_type, email_template)
 except ApiException as e:
-    print "Exception when calling EmailTemplateApi->update: %s\n" % e
+    print("Exception when calling EmailTemplateApi->update: %s\n" % e)
 ```
 
 ### Parameters

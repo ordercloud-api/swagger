@@ -41,23 +41,19 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 address = OrderCloud.BuyerAddress() # BuyerAddress | 
 
 try: 
-    api_response = api_instance.create_address(address)
-    pprint(api_response)
+    response = MeApi.create_address(address)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->create_address: %s\n" % e
+    print("Exception when calling MeApi->create_address: %s\n" % e)
 ```
 
 ### Parameters
@@ -88,23 +84,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 credit_card = OrderCloud.BuyerCreditCard() # BuyerCreditCard | 
 
 try: 
-    api_response = api_instance.create_credit_card(credit_card)
-    pprint(api_response)
+    response = MeApi.create_credit_card(credit_card)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->create_credit_card: %s\n" % e
+    print("Exception when calling MeApi->create_credit_card: %s\n" % e)
 ```
 
 ### Parameters
@@ -135,22 +127,18 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 address_id = 'address_id_example' # str | ID of the address.
 
 try: 
-    api_instance.delete_address(address_id)
+    MeApi.delete_address(address_id)
 except ApiException as e:
-    print "Exception when calling MeApi->delete_address: %s\n" % e
+    print("Exception when calling MeApi->delete_address: %s\n" % e)
 ```
 
 ### Parameters
@@ -181,22 +169,18 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 creditcard_id = 'creditcard_id_example' # str | ID of the creditcard.
 
 try: 
-    api_instance.delete_credit_card(creditcard_id)
+    MeApi.delete_credit_card(creditcard_id)
 except ApiException as e:
-    print "Exception when calling MeApi->delete_credit_card: %s\n" % e
+    print("Exception when calling MeApi->delete_credit_card: %s\n" % e)
 ```
 
 ### Parameters
@@ -227,22 +211,18 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 
 try: 
-    api_response = api_instance.get()
-    pprint(api_response)
+    response = MeApi.get()
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->get: %s\n" % e
+    print("Exception when calling MeApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -270,23 +250,19 @@ This endpoint does not need any parameter.
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 address_id = 'address_id_example' # str | ID of the address.
 
 try: 
-    api_response = api_instance.get_address(address_id)
-    pprint(api_response)
+    response = MeApi.get_address(address_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->get_address: %s\n" % e
+    print("Exception when calling MeApi->get_address: %s\n" % e)
 ```
 
 ### Parameters
@@ -317,23 +293,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 creditcard_id = 'creditcard_id_example' # str | ID of the creditcard.
 
 try: 
-    api_response = api_instance.get_credit_card(creditcard_id)
-    pprint(api_response)
+    response = MeApi.get_credit_card(creditcard_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->get_credit_card: %s\n" % e
+    print("Exception when calling MeApi->get_credit_card: %s\n" % e)
 ```
 
 ### Parameters
@@ -364,23 +336,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 order_id = 'order_id_example' # str | ID of the order.
 
 try: 
-    api_response = api_instance.get_order(order_id)
-    pprint(api_response)
+    response = MeApi.get_order(order_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->get_order: %s\n" % e
+    print("Exception when calling MeApi->get_order: %s\n" % e)
 ```
 
 ### Parameters
@@ -411,23 +379,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 product_id = 'product_id_example' # str | ID of the product.
 
 try: 
-    api_response = api_instance.get_product(product_id)
-    pprint(api_response)
+    response = MeApi.get_product(product_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->get_product: %s\n" % e
+    print("Exception when calling MeApi->get_product: %s\n" % e)
 ```
 
 ### Parameters
@@ -458,23 +422,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 promotion_id = 'promotion_id_example' # str | ID of the promotion.
 
 try: 
-    api_response = api_instance.get_promotion(promotion_id)
-    pprint(api_response)
+    response = MeApi.get_promotion(promotion_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->get_promotion: %s\n" % e
+    print("Exception when calling MeApi->get_promotion: %s\n" % e)
 ```
 
 ### Parameters
@@ -505,24 +465,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 product_id = 'product_id_example' # str | ID of the product.
 spec_id = 'spec_id_example' # str | ID of the spec.
 
 try: 
-    api_response = api_instance.get_spec(product_id, spec_id)
-    pprint(api_response)
+    response = MeApi.get_spec(product_id, spec_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->get_spec: %s\n" % e
+    print("Exception when calling MeApi->get_spec: %s\n" % e)
 ```
 
 ### Parameters
@@ -554,16 +510,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -571,10 +523,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_addresses(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = MeApi.list_addresses(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->list_addresses: %s\n" % e
+    print("Exception when calling MeApi->list_addresses: %s\n" % e)
 ```
 
 ### Parameters
@@ -609,16 +561,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 depth = 'depth_example' # str | Depth of the category. (optional)
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -627,10 +575,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_categories(depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = MeApi.list_categories(depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->list_categories: %s\n" % e
+    print("Exception when calling MeApi->list_categories: %s\n" % e)
 ```
 
 ### Parameters
@@ -666,16 +614,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -683,10 +627,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_cost_centers(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = MeApi.list_cost_centers(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->list_cost_centers: %s\n" % e
+    print("Exception when calling MeApi->list_cost_centers: %s\n" % e)
 ```
 
 ### Parameters
@@ -721,16 +665,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -738,10 +678,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_credit_cards(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = MeApi.list_credit_cards(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->list_credit_cards: %s\n" % e
+    print("Exception when calling MeApi->list_credit_cards: %s\n" % e)
 ```
 
 ### Parameters
@@ -776,16 +716,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 _from = '_from_example' # str | Lower bound of date range that the order was created (if outgoing) or submitted (if incoming). (optional)
 to = 'to_example' # str | Upper bound of date range that the order was created (if outgoing) or submitted (if incoming). (optional)
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -795,10 +731,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_incoming_orders(_from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = MeApi.list_incoming_orders(_from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->list_incoming_orders: %s\n" % e
+    print("Exception when calling MeApi->list_incoming_orders: %s\n" % e)
 ```
 
 ### Parameters
@@ -835,16 +771,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 _from = '_from_example' # str | Lower bound of date range that the order was created (if outgoing) or submitted (if incoming). (optional)
 to = 'to_example' # str | Upper bound of date range that the order was created (if outgoing) or submitted (if incoming). (optional)
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -854,10 +786,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_outgoing_orders(_from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = MeApi.list_outgoing_orders(_from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->list_outgoing_orders: %s\n" % e
+    print("Exception when calling MeApi->list_outgoing_orders: %s\n" % e)
 ```
 
 ### Parameters
@@ -894,16 +826,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 category_id = 'category_id_example' # str | ID of the category. (optional)
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -912,10 +840,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_products(category_id=category_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = MeApi.list_products(category_id=category_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->list_products: %s\n" % e
+    print("Exception when calling MeApi->list_products: %s\n" % e)
 ```
 
 ### Parameters
@@ -951,16 +879,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -968,10 +892,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_promotions(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = MeApi.list_promotions(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->list_promotions: %s\n" % e
+    print("Exception when calling MeApi->list_promotions: %s\n" % e)
 ```
 
 ### Parameters
@@ -1006,16 +930,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 product_id = 'product_id_example' # str | ID of the product.
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -1024,10 +944,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_specs(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = MeApi.list_specs(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->list_specs: %s\n" % e
+    print("Exception when calling MeApi->list_specs: %s\n" % e)
 ```
 
 ### Parameters
@@ -1063,16 +983,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 parent_id = 'parent_id_example' # str | ID of the parent.
 depth = 'depth_example' # str | Depth of the category. (optional)
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -1082,10 +998,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_subcategories(parent_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = MeApi.list_subcategories(parent_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->list_subcategories: %s\n" % e
+    print("Exception when calling MeApi->list_subcategories: %s\n" % e)
 ```
 
 ### Parameters
@@ -1122,16 +1038,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -1139,10 +1051,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list_user_groups(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = MeApi.list_user_groups(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->list_user_groups: %s\n" % e
+    print("Exception when calling MeApi->list_user_groups: %s\n" % e)
 ```
 
 ### Parameters
@@ -1177,23 +1089,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 user = OrderCloud.User() # User | 
 
 try: 
-    api_response = api_instance.patch(user)
-    pprint(api_response)
+    response = MeApi.patch(user)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->patch: %s\n" % e
+    print("Exception when calling MeApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -1224,23 +1132,19 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 address_id = 'address_id_example' # str | ID of the address.
 address = OrderCloud.BuyerAddress() # BuyerAddress | 
 
 try: 
-    api_instance.patch_address(address_id, address)
+    MeApi.patch_address(address_id, address)
 except ApiException as e:
-    print "Exception when calling MeApi->patch_address: %s\n" % e
+    print("Exception when calling MeApi->patch_address: %s\n" % e)
 ```
 
 ### Parameters
@@ -1272,23 +1176,19 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 creditcard_id = 'creditcard_id_example' # str | ID of the creditcard.
 credit_card = OrderCloud.BuyerCreditCard() # BuyerCreditCard | 
 
 try: 
-    api_instance.patch_credit_card(creditcard_id, credit_card)
+    MeApi.patch_credit_card(creditcard_id, credit_card)
 except ApiException as e:
-    print "Exception when calling MeApi->patch_credit_card: %s\n" % e
+    print("Exception when calling MeApi->patch_credit_card: %s\n" % e)
 ```
 
 ### Parameters
@@ -1320,23 +1220,19 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 user = OrderCloud.User() # User | 
 
 try: 
-    api_response = api_instance.update(user)
-    pprint(api_response)
+    response = MeApi.update(user)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->update: %s\n" % e
+    print("Exception when calling MeApi->update: %s\n" % e)
 ```
 
 ### Parameters
@@ -1367,24 +1263,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 address_id = 'address_id_example' # str | ID of the address.
 address = OrderCloud.BuyerAddress() # BuyerAddress | 
 
 try: 
-    api_response = api_instance.update_address(address_id, address)
-    pprint(api_response)
+    response = MeApi.update_address(address_id, address)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->update_address: %s\n" % e
+    print("Exception when calling MeApi->update_address: %s\n" % e)
 ```
 
 ### Parameters
@@ -1416,24 +1308,20 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.MeApi()
+MeApi = OrderCloud.MeApi()
 creditcard_id = 'creditcard_id_example' # str | ID of the creditcard.
 credit_card = OrderCloud.BuyerCreditCard() # BuyerCreditCard | 
 
 try: 
-    api_response = api_instance.update_credit_card(creditcard_id, credit_card)
-    pprint(api_response)
+    response = MeApi.update_credit_card(creditcard_id, credit_card)
+    print(response)
 except ApiException as e:
-    print "Exception when calling MeApi->update_credit_card: %s\n" % e
+    print("Exception when calling MeApi->update_credit_card: %s\n" % e)
 ```
 
 ### Parameters

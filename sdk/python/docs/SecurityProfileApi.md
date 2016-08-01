@@ -15,23 +15,19 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SecurityProfileApi()
+SecurityProfileApi = OrderCloud.SecurityProfileApi()
 security_profile_id = 'security_profile_id_example' # str | ID of the security profile.
 
 try: 
-    api_response = api_instance.get(security_profile_id)
-    pprint(api_response)
+    response = SecurityProfileApi.get(security_profile_id)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SecurityProfileApi->get: %s\n" % e
+    print("Exception when calling SecurityProfileApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -62,16 +58,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.SecurityProfileApi()
+SecurityProfileApi = OrderCloud.SecurityProfileApi()
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -79,10 +71,10 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    api_response = api_instance.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    pprint(api_response)
+    response = SecurityProfileApi.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
 except ApiException as e:
-    print "Exception when calling SecurityProfileApi->list: %s\n" % e
+    print("Exception when calling SecurityProfileApi->list: %s\n" % e)
 ```
 
 ### Parameters

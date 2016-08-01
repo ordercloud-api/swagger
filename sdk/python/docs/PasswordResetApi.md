@@ -15,23 +15,19 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PasswordResetApi()
+PasswordResetApi = OrderCloud.PasswordResetApi()
 verification_code = 'verification_code_example' # str | Verification code of the forgotten password.
 password_reset = OrderCloud.PasswordReset() # PasswordReset | 
 
 try: 
-    api_instance.reset_password(verification_code, password_reset)
+    PasswordResetApi.reset_password(verification_code, password_reset)
 except ApiException as e:
-    print "Exception when calling PasswordResetApi->reset_password: %s\n" % e
+    print("Exception when calling PasswordResetApi->reset_password: %s\n" % e)
 ```
 
 ### Parameters
@@ -63,22 +59,18 @@ void (empty response body)
 
 ### Example 
 ```python
-import time
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-from pprint import pprint
-
-# Configure OAuth2 access token for authorization: auth
-OrderCloud.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
-api_instance = OrderCloud.PasswordResetApi()
+PasswordResetApi = OrderCloud.PasswordResetApi()
 password_reset_request = OrderCloud.PasswordResetRequest() # PasswordResetRequest | 
 
 try: 
-    api_instance.send_verification_code(password_reset_request)
+    PasswordResetApi.send_verification_code(password_reset_request)
 except ApiException as e:
-    print "Exception when calling PasswordResetApi->send_verification_code: %s\n" % e
+    print("Exception when calling PasswordResetApi->send_verification_code: %s\n" % e)
 ```
 
 ### Parameters
