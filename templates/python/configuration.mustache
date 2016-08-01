@@ -85,6 +85,11 @@ class Configuration(object):
         # client key file
         self.key_file = None
 
+        #OrderCloud specific properties 
+        #These must be configured before you can use the API
+        self.client_id = None 
+        self.scopes = []
+
     @property
     def logger_file(self):
         """
@@ -260,8 +265,9 @@ class Auth(object):
         {{/authMethods}}
        
     
-    def login(self, user,passw,clientid,scope):
-        body = "client_id="+clientid+"&grant_type=password&username="+user+"&password="+passw+"&scope="+scope
+    def login(self, user,password):
+        config = Configuration()
+        body = "client_id="+config.client_id+"&grant_type=password&username="+user+"&password="+password+"&scope="+"+".join(config.scopes)
         urllib3.disable_warnings()
         pool = urllib3.PoolManager()
         resp = pool.urlopen("POST",self.tokenurl,body=body)
@@ -270,5 +276,5 @@ class Auth(object):
             raise ValueError(
                 data['error']
             )
-        config = Configuration()
+        #Save the token
         config.access_token = data['access_token']
