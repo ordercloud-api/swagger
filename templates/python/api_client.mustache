@@ -150,6 +150,14 @@ class ApiClient(object):
         # request url
         url = self.host + resource_path
 
+        #Unwrap filters
+        #'filters' is a special keyword. It is not an actual query param, but all its key/value pairs should be injected into the query params
+        if('filters' in query_params):
+            filters = eval(query_params['filters'])
+            for param in filters:
+                query_params[param] = filters[param]
+            del query_params['filters']
+
         # perform request and return response
         response_data = self.request(method, url,
                                      query_params=query_params,
