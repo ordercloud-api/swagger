@@ -9,6 +9,7 @@ from __future__ import absolute_import
 {{/model}}{{/models}}
 # import apis into sdk package
 {{#apiInfo}}{{#apis}}from .apis.{{classVarName}} import {{classname}}
+{{classname}} = {{classname}}()
 {{/apis}}{{/apiInfo}}
 # import ApiClient
 from .api_client import ApiClient
@@ -19,4 +20,6 @@ configuration = Configuration()
 
 #import the auth class
 from .configuration import Auth
+from .configuration import Impersonation
 auth = Auth()
+impersonation = Impersonation()

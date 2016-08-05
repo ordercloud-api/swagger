@@ -90,6 +90,9 @@ class Configuration(object):
         self.client_id = None 
         self.scopes = []
 
+        self._impersonating = False
+        self._impersonateToken = None
+
     @property
     def logger_file(self):
         """
@@ -205,6 +208,9 @@ class Configuration(object):
 
         :return: The Auth Settings information dict.
         """
+        token = self.access_token
+        if(self._impersonating):
+            token = self._impersonateToken
         return {
 {{#authMethods}}
 {{#isApiKey}}
@@ -230,7 +236,7 @@ class Configuration(object):
                     'type': 'oauth2',
                     'in': 'header',
                     'key': 'Authorization',
-                    'value': 'Bearer ' + self.access_token
+                    'value': 'Bearer ' + token
                 },
 {{/isOAuth}}{{/authMethods}}
         }
@@ -251,6 +257,19 @@ class Configuration(object):
 import json
 
 @singleton
+class Impersonation(object):
+    def start(self,access_token=None):
+        config = Configuration()
+        if(access_token == None and config._impersonateToken == None):
+            raise ValueError("You must provide an access token to use when impersonating. Use the UserApi.get_access_token method.")
+        config._impersonating = True;
+        config._impersonateToken = access_token;
+
+    def stop(self):
+        config = Configuration()
+        config._impersonating = False;
+
+@singleton
 class Auth(object):
     """
     Auto-generated, custom made by Four51. 
@@ -265,12 +284,35 @@ class Auth(object):
         {{/authMethods}}
        
     
-    def login(self, user,password):
+    def login(self, user,password,client_secret=None):
+        #Supports the most common OAuth workflow, where you supply the user and pass and its gets and stores
+        #the access token. Optionally supply a client secret for extra security
         config = Configuration()
         body = "client_id="+config.client_id+"&grant_type=password&username="+user+"&password="+password+"&scope="+"+".join(config.scopes)
+        if(client_secret != None):
+            body += "&client_secret="+client_secret
         urllib3.disable_warnings()
         pool = urllib3.PoolManager()
         resp = pool.urlopen("POST",self.tokenurl,body=body)
+        data = json.loads(resp.data.decode('utf-8'))
+        if('error' in data):
+            raise ValueError(
+                data['error']
+            )
+        #Save the token
+        config.access_token = data['access_token']
+
+    def authenticate(self,client_secret=None):
+        #Supports client_secret login for backend systems, as well as anonymous login with no client_secret
+        config = Configuration()
+        body = "client_id="+config.client_id+"&grant_type=client_credentials&scope="+"+".join(config.scopes)
+        if(client_secret != None):
+            body += "&client_secret="+client_secret
+        urllib3.disable_warnings()
+        pool = urllib3.PoolManager()
+        resp = pool.urlopen("POST",self.tokenurl,body=body)
+        if(resp.data == b''):
+            raise ValueError("Empty response! Make sure you've set a Default User Context ID in the developer center. This is because the generated access token needs to associated with some user.")
         data = json.loads(resp.data.decode('utf-8'))
         if('error' in data):
             raise ValueError(

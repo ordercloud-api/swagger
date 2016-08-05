@@ -55,11 +55,9 @@ oc.configuration.scopes = ["FullAccess"]
 #This is a shortcut for authenticating with the password grant type
 oc.auth.login("USERNAME","PASSWORD")
 #This will acquire an access token and store it in oc.configuration.access_token
-#If you want to use a different grant type, you'll have to make an http request,
-# grab the access token, and store it in oc.configuration.access_token
 
 #Now we can use the API, to check if everything worked, this should return the currently authenticated user.
-print(oc.MeApi().get())
+print(oc.MeApi.get())
 
 ```
 
@@ -78,6 +76,42 @@ Class | Method | HTTP request | Description
 {{/model}}{{/models}}
 
 ## Documentation For Authorization
+
+There are four ways to authenticate into an app. All of them acquire an access token and store it in `OrderCloud.configuration.access_token`. 
+
+### Simple user/pass 
+
+This is most commonly used when a human user is logging into the app:
+
+```python
+OrderCloud.auth.login(user,password)
+```
+
+### Elevated user/pass
+
+This is a more stricter form for when you have a `client_secret` set up for your app in the developer center and it needs to be pass in:
+
+```python
+OrderCloud.auth.login(user,password,client_secret)
+```
+
+### Client secret 
+
+This is for when a backend system needs to interact with the app:
+
+```python
+OrderCloud.auth.authenticate(client_secret)
+```
+
+### Anonymous shopping
+
+For when you need to allow anyone to publically access the app:
+
+```python
+OrderCloud.auth.authenticate()
+```
+
+Check the OrderCloud [Authentication guide](https://devcenter.ordercloud.io/docs/guides/authentication/workflows) for more detailed information!
 
 {{^authMethods}} All endpoints do not require authorization.
 {{/authMethods}}{{#authMethods}}{{#last}} Authentication schemes defined for the API:{{/last}}{{/authMethods}}
