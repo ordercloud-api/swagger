@@ -133,6 +133,51 @@ Check the OrderCloud [Authentication guide](https://devcenter.ordercloud.io/docs
 
 {{/authMethods}}
 
+## Impersonating 
+
+The SDK also includes a helpful class `OrderCloud.impersonation` for impersonating users. It has two functions:
+
+```python
+OrderCloud.impersonation.start(access_token)
+```
+
+Now any API calls you make will be on behalf of that user. To stop the impersonation, just do:
+
+```python
+OrderCloud.impersonation.stop()
+```
+
+Even though it was stopped, it still saves the original access token. So the next time you call start, you can call it with no arguments and it will use the last one. 
+
+Here is a full working example:
+
+```python
+#Import the library
+import OrderCloud as oc
+#Configure client id and scopes
+oc.configuration.client_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+oc.configuration.scopes = ["FullAccess"]
+#Acquire and store the access token
+oc.auth.login("user","pass")
+print(oc.MeApi.get())#Should print out the user you just logged in with
+
+#Get an impersonation token 
+token_request = oc.ImpersonateTokenRequest(client_id="[INSERT YOUR BUYER APP CLIENT ID]",claims=[])
+resp = oc.UserApi.get_access_token("buyer_id","user_id",token_request)
+print(resp.access_token) #This is our access token
+
+#Start the impersonation
+oc.impersonation.start(resp.access_token)
+
+print(oc.MeApi.get()) #Should give us the information of the user we just impersonated
+
+oc.impersonation.stop()
+
+print(oc.MeApi.get()) #Our original user is back now 
+
+```
+
+
 ## Author
 
 {{#apiInfo}}{{#apis}}{{^hasMore}}{{infoEmail}}
