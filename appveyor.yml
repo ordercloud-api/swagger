@@ -22,7 +22,7 @@ build_script:
   - cd C:/projects/swagger-codegen
   - mvn clean package
   - cd C:/projects
-  - ps: mkdir C:/projects/output
+  - ps: mkdir output
 
   # Python SDK build
   - ps: mkdir C:/projects/output/python 
