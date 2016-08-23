@@ -1,5 +1,6 @@
 version: '{branch}-{build}'
 os: Windows Server 2012
+
 install:
   - ps: |
       Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -13,12 +14,26 @@ install:
   - cmd: SET PATH=C:\maven\apache-maven-3.2.5\bin;%JAVA_HOME%\bin;%PATH%
   - cmd: SET MAVEN_OPTS=-XX:MaxPermSize=2g -Xmx4g
   - cmd: SET JAVA_OPTS=-XX:MaxPermSize=2g -Xmx4g
-  - git clone https://github.com/swagger-api/swagger-codegen
+  - git clone -q -b dev https://github.com/swagger-api/swagger-codegen C:/projects/swagger-codegen
+  - mkdir C:/projects/output
+  - git clone -q -b dev https://github.com/ordercloud-api/python-sdk.git C:/projects/output/python
+
 build_script:
-  - cmd: cd swagger-codegen
-  - mvn clean install --batch-mode -DskipTest
-test_script:
-  - mvn clean install --batch-mode
+  - cd C:/projects/swagger-codegen
+  - mvn clean package
+  - cd C:/projects
+  - mkdir C:/projects/output
+
+  # Python SDK build
+  - mkdir C:/projects/output/python 
+  - java -jar C:/projects/swagger-codegen/modules/swagger-codegen/cli/target/swagger-codegen-cli.jar generate -i http://api.ordercloud.io/v1/swagger.json -o C:/projects/output/python -t C:/projects/ordercloud-swagger/templates/python -DpackageName=OrderCloud
+
+
+deploy_script:
+  - cd C:/projects/output/python
+  - git commit -am "Updated Python SDK to {branch}-{build'" 
+  - git push
+
 cache:
   - C:\maven\
   - C:\Users\appveyor\.m2
