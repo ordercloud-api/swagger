@@ -10,12 +10,25 @@ The `templates` folder contains any custom templates made to generate the OrderC
 
 # How to Regenerate 
 
+## Windows
+
 To generate and SDK library, the first step is to download and install the [Swagger-Codegen](https://github.com/swagger-api/swagger-codegen) project. (The easiest way is through Docker).
+
 
 Once that is done, you can generate the `python` sdk, for example, by running:
 
 ```
 java -jar modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate -i ordercloud_swagger.json -l python -o output/python -t templates/python -DpackageName=OrderCloud
+```
+
+## OS X
+
+On mac, you merely have to run `brew install swagger-codegen` to install swagger-codegen. 
+
+Then go to your directory and run the following command:
+
+```
+swagger-codegen generate -i ordercloud_swagger.json -l python -o .
 ```
 
 Where `ordercloud_swagger.json` is the Swagger spec for the API. (This can be generated from the C# code on BitBucket).
