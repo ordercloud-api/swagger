@@ -15,14 +15,13 @@ install:
   - cmd: SET MAVEN_OPTS=-XX:MaxPermSize=2g -Xmx4g
   - cmd: SET JAVA_OPTS=-XX:MaxPermSize=2g -Xmx4g
   - git clone -q https://github.com/swagger-api/swagger-codegen C:/projects/swagger-codegen
-  - mkdir C:/projects/output
+  - ps: mkdir output
   - git clone -q -b dev https://github.com/ordercloud-api/python-sdk.git C:/projects/output/python
 
 build_script:
   - cd C:/projects/swagger-codegen
   - mvn clean package
   - cd C:/projects
-  - ps: mkdir output
 
   # Python SDK build
   - ps: mkdir C:/projects/output/python 
