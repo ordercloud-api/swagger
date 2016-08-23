@@ -22,10 +22,10 @@ build_script:
   - cd C:/projects/swagger-codegen
   - mvn clean package
   - cd C:/projects
-  - mkdir C:/projects/output
+  - ps: mkdir C:/projects/output
 
   # Python SDK build
-  - mkdir C:/projects/output/python 
+  - ps: mkdir C:/projects/output/python 
   - java -jar C:/projects/swagger-codegen/modules/swagger-codegen/cli/target/swagger-codegen-cli.jar generate -i http://api.ordercloud.io/v1/swagger.json -o C:/projects/output/python -t C:/projects/ordercloud-swagger/templates/python -DpackageName=OrderCloud
 
 
