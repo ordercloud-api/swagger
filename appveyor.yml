@@ -20,7 +20,7 @@ install:
 
 build_script:
   - cd C:/projects/swagger-codegen
-  - mvn clean package
+  - mvn clean package --quiet
   - cd C:/projects
 
   # Python SDK build
