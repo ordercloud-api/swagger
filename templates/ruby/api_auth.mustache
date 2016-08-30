@@ -1,0 +1,35 @@
+=begin
+{{> api_info}}
+=end
+
+require 'uri'
+require 'singleton'
+
+module {{moduleName}}
+  class Auth
+    include Singleton
+
+    # Defines client id
+    attr_accessor :client_id
+
+    # Defines application scope
+    attr_accessor :scopes
+
+    def initialize
+      @client_id = ''
+      @scopes = {}
+    end
+  end
+
+  class Impersonation
+    include Singleton
+    attr_reader :impersonation_token
+    private
+    attr_writer :impersonation_token
+
+    def self.start
+      
+    end
+
+end
+
