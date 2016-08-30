@@ -24,12 +24,12 @@ build_script:
   - cd C:/projects
 
   # Python SDK build
-  - java -jar C:/projects/swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate -i http://api.ordercloud.io/v1/swagger.json -o C:/projects/output/python -t C:/projects/ordercloud-swagger/templates/python -DpackageName=OrderCloud
+  - java -jar C:/projects/swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate -i http://api.ordercloud.io/v1/swagger.json -l python -o C:/projects/output/python -t C:/projects/ordercloud-swagger/templates/python -DpackageName=OrderCloud
 
 
 deploy_script:
   - cd C:/projects/output/python
-  - git commit -am "Updated Python SDK to {branch}-{build'" 
+  - git commit -am "Updated Python SDK to {branch}-{build}"
   - git push
 
 cache:
