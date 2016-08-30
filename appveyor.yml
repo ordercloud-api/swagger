@@ -14,9 +14,9 @@ install:
   - cmd: SET PATH=C:\maven\apache-maven-3.2.5\bin;%JAVA_HOME%\bin;%PATH%
   - cmd: SET MAVEN_OPTS=-XX:MaxPermSize=2g -Xmx4g
   - cmd: SET JAVA_OPTS=-XX:MaxPermSize=2g -Xmx4g
-  - git clone -q -b {branch} https://github.com/swagger-api/swagger-codegen C:/projects/swagger-codegen
+  - git clone -q -b '{branch}' https://github.com/swagger-api/swagger-codegen C:/projects/swagger-codegen
   - ps: mkdir output
-  - git clone -q -b {branch} https://github.com/ordercloud-api/python-sdk.git C:/projects/output/python
+  - git clone -q -b '{branch}' https://github.com/ordercloud-api/python-sdk.git C:/projects/output/python
 
 build_script:
   - cd C:/projects/swagger-codegen
@@ -24,7 +24,7 @@ build_script:
   - cd C:/projects
 
   # Python SDK build
-  - java -jar C:/projects/swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate -i http://api.ordercloud.io/v1/swagger.json -l python -o C:/projects/output/python -t C:/projects/swagger/templates/python -DpackageName=OrderCloud
+  - java -jar C:/projects/swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate -i http://qaapi.ordercloud.io/v1/swagger.json -l python -o C:/projects/output/python -t C:/projects/swagger/templates/python -DpackageName=OrderCloud
 
 
 deploy_script:
