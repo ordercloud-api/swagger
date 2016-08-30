@@ -14,9 +14,9 @@ install:
   - cmd: SET PATH=C:\maven\apache-maven-3.2.5\bin;%JAVA_HOME%\bin;%PATH%
   - cmd: SET MAVEN_OPTS=-XX:MaxPermSize=2g -Xmx4g
   - cmd: SET JAVA_OPTS=-XX:MaxPermSize=2g -Xmx4g
-  - git clone -q https://github.com/swagger-api/swagger-codegen C:/projects/swagger-codegen
+  - git clone -q -b {branch} https://github.com/swagger-api/swagger-codegen C:/projects/swagger-codegen
   - ps: mkdir output
-  - git clone -q -b dev https://github.com/ordercloud-api/python-sdk.git C:/projects/output/python
+  - git clone -q -b {branch} https://github.com/ordercloud-api/python-sdk.git C:/projects/output/python
 
 build_script:
   - cd C:/projects/swagger-codegen
