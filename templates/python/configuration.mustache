@@ -258,10 +258,12 @@ import json
 
 @singleton
 class Impersonation(object):
-    def start(self,access_token=None):
+    def start(self, access_token=None):
         config = Configuration()
-        if(access_token == None and config._impersonateToken == None):
+
+        if not access_token and not config._impersonateToken:
             raise ValueError("You must provide an access token to use when impersonating. Use the UserApi.get_access_token method.")
+
         config._impersonating = True;
         config._impersonateToken = access_token;
 
@@ -283,40 +285,43 @@ class Auth(object):
         self.tokenurl = "{{{tokenUrl}}}"
         {{/authMethods}}
        
-    
-    def login(self, user,password,client_secret=None):
-        #Supports the most common OAuth workflow, where you supply the user and pass and its gets and stores
-        #the access token. Optionally supply a client secret for extra security
+    #Supports the most common OAuth workflow, where you supply the user and pass and its gets and stores
+    #the access token. Optionally supply a client secret for extra security
+    def login(self, username, password, client_secret=None):
         config = Configuration()
-        body = "client_id="+config.client_id+"&grant_type=password&username="+user+"&password="+password+"&scope="+"+".join(config.scopes)
-        if(client_secret != None):
-            body += "&client_secret="+client_secret
+        body = "client_id={}&grant_type=password&username={}&password={}&scope={}".format(config.client_id, username, password, "+".join(config.scopes))
+        if client_secret:
+          body += "&client_secret={}".format(client_secret)
         urllib3.disable_warnings()
         pool = urllib3.PoolManager()
-        resp = pool.urlopen("POST",self.tokenurl,body=body)
+        resp = pool.urlopen("POST", self.tokenurl, body=body)
         data = json.loads(resp.data.decode('utf-8'))
-        if('error' in data):
-            raise ValueError(
-                data['error']
-            )
+
+        if 'error' in data:
+            raise ValueError(data['error'])
+
         #Save the token
         config.access_token = data['access_token']
 
+    #Supports client_secret login for backend systems, as well as anonymous login with no client_secret
     def authenticate(self,client_secret=None):
-        #Supports client_secret login for backend systems, as well as anonymous login with no client_secret
         config = Configuration()
-        body = "client_id="+config.client_id+"&grant_type=client_credentials&scope="+"+".join(config.scopes)
-        if(client_secret != None):
-            body += "&client_secret="+client_secret
+        body = "client_id={}&grant_type=client_credentials&scope={}".format(config.client_id ,"+".join(config.scopes))
+
+        if client_secret:
+          body += "&client_secret={}".format(client_secret)
+
         urllib3.disable_warnings()
         pool = urllib3.PoolManager()
-        resp = pool.urlopen("POST",self.tokenurl,body=body)
-        if(resp.data == b''):
+        resp = pool.urlopen("POST", self.tokenurl, body=body)
+
+        if not resp.data:
             raise ValueError("Empty response! Make sure you've set a Default User Context ID in the developer center. This is because the generated access token needs to associated with some user.")
+
         data = json.loads(resp.data.decode('utf-8'))
-        if('error' in data):
-            raise ValueError(
-                data['error']
-            )
+
+        if 'error' in data:
+            raise ValueError(data['error'])
+
         #Save the token
         config.access_token = data['access_token']
