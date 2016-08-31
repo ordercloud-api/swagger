@@ -285,8 +285,11 @@ class Auth(object):
         self.tokenurl = "{{{tokenUrl}}}"
         {{/authMethods}}
 
-    def __base_body_for_auth(self, client_id, grant_type, scopes, client_secret = None)
+    def __body_to_string(self, body)
+      # As found on http://codereview.stackexchange.com/questions/7953/flattening-a-dictionary-into-a-string
+      return '&'.join("{!s}={!r}".format(key,val) for (key,val) in body.items()) 
 
+    def __base_body_for_auth(self, client_id, grant_type, scopes, client_secret = None)
       body = {
         "client_id" : client_id,
         "grant_type" : grant_type,
@@ -301,7 +304,7 @@ class Auth(object):
     def _request_access_token(self, body):
         urllib3.disable_warnings()
 
-        resp = urllib3.PoolManager().urlopen("POST", self.tokenurl, body=body)
+        resp = urllib3.PoolManager().urlopen("POST", self.tokenurl, body=self.__body_to_string(body))
         if not resp.data:
             raise ValueError("Empty response! Make sure you've set a Default User Context ID in the developer center. This is because the generated access token needs to associated with some user.")
 
