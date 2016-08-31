@@ -284,44 +284,46 @@ class Auth(object):
         {{#authMethods}}
         self.tokenurl = "{{{tokenUrl}}}"
         {{/authMethods}}
-       
-    #Supports the most common OAuth workflow, where you supply the user and pass and its gets and stores
-    #the access token. Optionally supply a client secret for extra security
-    def login(self, username, password, client_secret=None):
-        config = Configuration()
-        body = "client_id={}&grant_type=password&username={}&password={}&scope={}".format(config.client_id, username, password, "+".join(config.scopes))
-        if client_secret:
-          body += "&client_secret={}".format(client_secret)
+
+    def __base_body_for_auth(self, client_id, grant_type, scopes, client_secret = None)
+
+      body = {
+        "client_id" : client_id,
+        "grant_type" : grant_type,
+        "scope" : "+".join(scopes)
+      }
+
+      if client_secret:
+        body["client_secret"].format(client_secret)
+
+      return body
+
+    def _request_access_token(self, body):
         urllib3.disable_warnings()
-        pool = urllib3.PoolManager()
-        resp = pool.urlopen("POST", self.tokenurl, body=body)
-        data = json.loads(resp.data.decode('utf-8'))
 
-        if 'error' in data:
-            raise ValueError(data['error'])
-
-        #Save the token
-        config.access_token = data['access_token']
-
-    #Supports client_secret login for backend systems, as well as anonymous login with no client_secret
-    def authenticate(self,client_secret=None):
-        config = Configuration()
-        body = "client_id={}&grant_type=client_credentials&scope={}".format(config.client_id ,"+".join(config.scopes))
-
-        if client_secret:
-          body += "&client_secret={}".format(client_secret)
-
-        urllib3.disable_warnings()
-        pool = urllib3.PoolManager()
-        resp = pool.urlopen("POST", self.tokenurl, body=body)
-
+        resp = urllib3.PoolManager().urlopen("POST", self.tokenurl, body=body)
         if not resp.data:
             raise ValueError("Empty response! Make sure you've set a Default User Context ID in the developer center. This is because the generated access token needs to associated with some user.")
 
         data = json.loads(resp.data.decode('utf-8'))
-
         if 'error' in data:
             raise ValueError(data['error'])
 
-        #Save the token
-        config.access_token = data['access_token']
+        return data['access_token']      
+    
+    #Supports the most common OAuth workflow, where you supply the user and pass and its gets and stores
+    #the access token. Optionally supply a client secret for extra security
+    def login(self, username, password, client_secret = None):
+        config = Configuration()
+        body = self.__base_body_for_auth(config.client_id, "password", config.scopes, client_secret) 
+
+        body["username"] = username
+        body["password"] = password
+
+        config.access_token = self._request_access_token(body)
+
+    #Supports client_secret login for backend systems, as well as anonymous login with no client_secret
+    def authenticate(self, client_secret = None):
+        config = Configuration()
+        body = self.__base_body_for_auth(config.client_id, "client_credentials", config.scopes, client_secret) 
+        config.access_token = self._request_access_token(body)
