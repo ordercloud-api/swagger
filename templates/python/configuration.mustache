@@ -297,7 +297,7 @@ class Auth(object):
       }
 
       if client_secret:
-        body["client_secret"].format(client_secret)
+        body["client_secret"] = client_secret
 
       return body
 
@@ -305,8 +305,9 @@ class Auth(object):
         urllib3.disable_warnings()
 
         resp = urllib3.PoolManager().urlopen("POST", self.tokenurl, body=self.__body_to_string(body))
+
         if not resp.data:
-            raise ValueError("Empty response! Make sure you've set a Default User Context ID in the developer center. This is because the generated access token needs to associated with some user.")
+            raise ValueError("Empty response! Make sure you've set a Default User Context ID in the developer center. This is because the generated access token needs to be associated with some user.")
 
         data = json.loads(resp.data.decode('utf-8'))
         if 'error' in data:
