@@ -14,22 +14,79 @@ module {{moduleName}}
 
     # Defines application scope
     attr_accessor :scopes
+    
+    # Defines url to request auth token
+    attr_accessor :auth_url
 
     def initialize
-      @client_id = ''
-      @scopes = {}
+      @auth_url = URI.parse("https://auth.ordercloud.io")
+    end
+
+    private
+    def base_body_for_auth(grant_type, client_secret = nil)
+      body = {
+        :client_id => Configuration.default.client_id,
+        :grant_type => grant_type,
+        :scope => Configuration.default.scopes.join("+")
+      }
+      if client_secret
+        body.concat({ :client_secret => client_secret })
+      end
+      body
+    end
+
+    private
+    def request_access_token(body)
+      request = Typhoeus::Request.new(
+        @auth_url,
+        method: :post,
+        body: URI.encode_www_form(body)
+      )
+
+      request.on_complete do |response|
+        if response.success?
+          log(response)
+        elsif response.timed_out?
+          fail "HTTP Request timed out"
+        elsif response.code == 0
+          fail ArgumentError, "Empty response! Make sure you've set a Default User Context ID in the developer center. This is because the generated access token needs to be associated with some user." 
+        else
+        fail "Http request failed with #{response.code.to_s}. #{response.body}"
+        end
+      end
+      request.run
+    end
+
+    def login(username, password, client_secret = nil)
+      body = base_body_for_auth("password", client_secret)
+      
+      body.concat({
+        :username => username,
+        :password => password
+      })
+      
+      Configuration.default.access_token = request_access_token(body) 
+    end
+
+    def authenticate(client_secret = nil)
+      body = base_body_for_auth("client_credentials", client_secret)
+
+      Configuration.default.access_token = request_access_token(body) 
     end
   end
 
   class Impersonation
     include Singleton
-    attr_reader :impersonation_token
-    private
-    attr_writer :impersonation_token
-
-    def self.start
+    def self.start(impersonation_access_token)
+      if not impersonatin_access_token
+        fail ArgumentError, "You must provide an access token in order to impersonate. Use UserApi.get_access_token to get an impersonation token"
+      end
       
+      Configuration.default.impersonation_token = impersonation_access_token
     end
 
+    def self.stop
+      Configuration.default.impersonation_token = ''
+    end
 end
 
