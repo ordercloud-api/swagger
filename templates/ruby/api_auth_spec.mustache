@@ -1,0 +1,73 @@
+require 'spec_helper'
+
+describe SwaggerClient::ApiAuth do
+  describe 'authentication' do
+    context 'login' do
+      let(:valid_client_id) { "BA89381F-E787-477D-B220-F8A01F0D582A" }
+      let(:valid_username) { "testo5" }
+      let(:valid_password) { "testo5" }
+
+      let(:invalid_client_id) { 'thisisarandomstringorisit' }
+      let(:invalid_username) { 'invaliduser' }
+      let(:invalid_password) { 'invalidpassword' }
+
+      let(:scopes) { ['FullAccess'] }
+      let(:bad_auth_url) { 'thisshouldnotwork.com' }
+
+      it 'does not raise error and set an access token' do
+        SwaggerClient::Configuration.reset
+        SwaggerClient.configure { |c|
+          c.client_id = valid_client_id
+          c.scopes = scopes
+        }
+        expect{ SwaggerClient::ApiAuth::login(valid_username, valid_password)}.to_not raise_error
+        puts SwaggerClient::Configuration.default.access_token
+      end
+
+      it 'fails if the auth url is invalid' do
+        SwaggerClient::Configuration.reset
+        SwaggerClient.configure { |c|
+          c.client_id = valid_client_id
+          c.scopes = scopes
+          c.auth_url = bad_auth_url
+        }
+        expect { SwaggerClient::ApiAuth::login(valid_username, valid_password)}.to raise_error(ArgumentError)
+        puts SwaggerClient::Configuration.default.access_token
+      end
+
+      it 'fails if the client id is not provided' do
+        SwaggerClient.configure { |c|
+          c.scopes = scopes
+        }
+        expect { SwaggerClient::ApiAuth::login(valid_username, valid_password)}.to raise_error(ArgumentError)
+        puts SwaggerClient::Configuration.default.access_token
+      end
+
+      it 'fails if the client id is invalid' do
+        SwaggerClient.configure { |c|
+          c.client_id = invalid_client_id
+          c.scopes = scopes
+        }
+        expect { SwaggerClient::ApiAuth::login(valid_username, valid_password)}.to raise_error(ArgumentError)
+        puts SwaggerClient::Configuration.default.access_token
+      end
+
+      it 'fails if invalid login/username' do
+        SwaggerClient.configure { |c|
+          c.client_id = ''
+          c.scopes = @scopes
+        }
+        expect { SwaggerClient::ApiAuth::login(invalid_username, invalid_password)}.to raise_error(ArgumentError)
+        puts SwaggerClient::Configuration.default.access_token
+      end
+    end
+
+    context '.authentication' do
+
+    end
+  end
+
+  context 'impersonation' do
+
+  end
+end
