@@ -78,9 +78,11 @@ module {{moduleName}}
       query_params = opts[:query_params] || {}
       form_params = opts[:form_params] || {}
 
-      opts[:query_params][:filters].each { |key, value|
-        opts[:query_params][key] = value
+      if query_params[:filters]
+      query_params[:filters].each { |key, value|
+        query_params[key] = value
       }
+      end
 
       {{#hasAuthMethods}}
       update_params_for_auth! header_params, query_params, opts[:auth_names]

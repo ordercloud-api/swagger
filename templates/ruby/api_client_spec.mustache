@@ -15,7 +15,7 @@ describe {{moduleName}}::ApiClient do
 
         it 'removes https from host' do
           {{moduleName}}.configure { |c| c.host = 'https://wookiee.com' }
-          expect({{moduleName}}::ApiClient.default.config.host).to eq('wookiee.com')
+          expect({{moduleName}}::Configuration.default.host).to eq('wookiee.com')
         end
 
         it 'removes trailing path from host' do

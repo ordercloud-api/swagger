@@ -9,19 +9,21 @@ module {{moduleName}}
     ## OrderCloud specific configuration
     attr_accessor :client_id
     attr_accessor :scopes
-
+    attr_accessor :auth_url
     attr_accessor :impersonation_token
 
-    def isImpersonating?
-      @impersonation_token.empty?
+    # Returns true if impersonation is on, false otherwise
+    def impersonating?
+      !@impersonation_token.empty?
     end
 
     # Returns the appropriate token 
     def get_access_token
-      if isImpersonating?
+      if impersonating?
         @impersonation_token
+      else
+        @access_token
       end
-      @access_token
     end
 
     # Defines url scheme
@@ -149,6 +151,7 @@ module {{moduleName}}
       @force_ending_format = false
       @logger = defined?(Rails) ? Rails.logger : Logger.new(STDOUT)
 
+      @auth_url
       @impersonation_token = ''
       @client_id = ''
       @scopes = [] 
@@ -159,6 +162,11 @@ module {{moduleName}}
     # The default Configuration object.
     def self.default
       @@default ||= Configuration.new
+    end
+
+    ## Resets the default configuration object to a clean one
+    def self.reset
+      @@default = Configuration.new
     end
 
     def configure
@@ -229,7 +237,7 @@ module {{moduleName}}
             type: 'oauth2',
             in: 'header',
             key: 'Authorization',
-            value: "Bearer #{getAccessToken}"
+            value: "Bearer #{get_access_token}"
           },
 {{/isOAuth}}
 {{/authMethods}}
