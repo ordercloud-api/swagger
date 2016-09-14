@@ -8,10 +8,10 @@ describe {{moduleName}}::Configuration do
   let(:config) { {{moduleName}}::Configuration.default }
   let(:impersonation_token) { 'sI3PGLztu7HXfLoHobb9' }
   let(:access_token) { 'HteOBUPWe7ccTSpQKLVC' }
-  
+
   before(:each) do
     {{moduleName}}::Configuration.reset
-    require 'URI'
+    require 'uri'
     uri = URI.parse("{{{basePath}}}")
     {{moduleName}}.configure do |c|
       c.host = uri.host
@@ -33,7 +33,7 @@ describe {{moduleName}}::Configuration do
       end
     end
   end
-  
+
   describe '#get_access_token' do
     it 'returns the access_token if not impersonating' do
       config.access_token = access_token
