@@ -101,11 +101,11 @@ swag-gen [LANGUAGE] "[RELEASE NOTE]"
 
 ## Ruby
 
-When developing the ruby sdk, run the following command to run all the specs:
+To develop the Ruby SDK, go through the following steps in the Ruby SDK folder to have a proper environment:
 
-```shell
-bundle exec rake
-```
+1. Install the `bundler` gem with `gem install bundler`
+2. Install the gem dependencies with `bundle install`
+3. Run `bundle exec rake` to run all the tests.
 
 ## Python
 
