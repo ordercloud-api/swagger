@@ -38,28 +38,28 @@ class Configuration
      *
      * @var string
      */
-    protected $clientId = string();
+    protected $clientId = '';
 
     /**
-     * Associate array to store OAuth2 scopes 
+     * Associate array to store OAuth2 scopes
      *
      * @var string[]
      */
     protected $scopes = array();
 
     /**
-     * String to store authorization token url 
+     * String to store authorization token url
      *
      * @var string
      */
     protected $authUrl = 'https://auth.ordercloud.io/oauth/token';
-    
+
     /**
-     * String to store impersonation token 
+     * String to store impersonation token
      *
      * @var string
      */
-    protected $impersonationToken = string();
+    protected $impersonationToken = '';
 
     /**
      * Sets the auth url for OAuth
@@ -79,9 +79,32 @@ class Configuration
      *
      * @return string Authorization URL for OAuth
      */
-    public function getAuthorizationURL()
+    public function getAuthUrl()
     {
         return $this->authUrl;
+    }
+
+    /**
+     * Sets the scopes for OAuth
+     *
+     * @param string[] $scopes String array of scopes desired
+     *
+     * @return Configuration
+     */
+    public function setScopes($scopes)
+    {
+        $this->scopes = $scopes;
+        return $this;
+    }
+
+    /**
+     * Gets the scopes for OAuth
+     *
+     * @return string[] Array of scopes currently set
+     */
+    public function getScopes()
+    {
+        return $this->scopes;
     }
 
     /**
@@ -104,13 +127,13 @@ class Configuration
      */
     public function getClientId()
     {
-        return $this->clientId
+        return $this->clientId;
     }
 
     /**
      * Sets the impersonation token for impersonation purpose
      *
-     * @param string $impersonationToken Impersonation token to enable impersonation 
+     * @param string $impersonationToken Impersonation token to enable impersonation
      *
      * @return Configuration
      */
@@ -121,7 +144,7 @@ class Configuration
     }
 
     /**
-     * Gets the impersonation token from the current impersonation 
+     * Gets the impersonation token from the current impersonation
      *
      * @return string Impersonation token used currently
      */
@@ -131,9 +154,9 @@ class Configuration
     }
 
     /**
-     * Returns true if currently impersonating, false otherwise 
+     * Returns true if currently impersonating, false otherwise
      *
-     * @return bool True if impersonating, false otherwise 
+     * @return bool True if impersonating, false otherwise
      */
     public function isImpersonating()
     {
@@ -147,7 +170,7 @@ class Configuration
      */
     public function getAccessToken()
     {
-        if(isImpersonating()) {
+        if($this->isImpersonating()) {
           return $this->impersonationToken;
         }
         return $this->accessToken;
@@ -257,6 +280,7 @@ class Configuration
     public function __construct()
     {
         $this->tempFolderPath = sys_get_temp_dir();
+        $this->authUrl = 'https://auth.ordercloud.io/oauth/token';
     }
 
     /**

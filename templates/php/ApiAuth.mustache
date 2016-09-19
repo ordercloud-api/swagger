@@ -32,46 +32,41 @@ namespace {{invokerPackage}};
 
 class ApiAuth
 {
-  static private function _base_body_for_auth($grant_type, $client_secret = null)
-  {
-    $body = [ 
-      "client_id" => Configuration::getDefaultConfiguration()->getClientId(),
-      "grant_type" => $grant_type,
-    ];
+    static private function _base_body_for_auth($grant_type, $client_secret = null)
+    {
+        $body = [
+            "client_id" => Configuration::getDefaultConfiguration()->getClientId(),
+            "grant_type" => $grant_type,
+        ];
 
-    if(Configuration::getDefaultConfiguration()->getScopes() != NULL)
-      $body["scope"] = join('+', Configuration::getDefaultConfiguration()->getScopes());
+        if(Configuration::getDefaultConfiguration()->getScopes() != NULL)
+            $body["scope"] = join('+', Configuration::getDefaultConfiguration()->getScopes());
 
-    if($client_secret != NULL)
-      $body["client_secret"] = $client_secret;
+        if($client_secret != NULL)
+            $body["client_secret"] = $client_secret;
 
-    return body;
-  }
-  
-  static private function _request_access_token($body)
-  {
+        return $body;
+    }
+
+    static private function _request_access_token($body)
+    {
+        $curl = curl_init();
         $postData = http_build_query($body);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, Configuration::getDefaultConfiguration()->getDefaultHeaders());
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
-        // debugging for curl
-        if ($this->config->getDebug()) {
-            error_log("[DEBUG] HTTP Request body  ~BEGIN~".PHP_EOL.print_r($postData, true).PHP_EOL."~END~".PHP_EOL, 3, $this->config->getDebugFile());
-
-            curl_setopt($curl, CURLOPT_VERBOSE, 1);
-            curl_setopt($curl, CURLOPT_STDERR, fopen(ApiClient.getConfig->getDebugFile(), 'a'));
-        } else {
-            curl_setopt($curl, CURLOPT_VERBOSE, 0);
-        }
+        curl_setopt($curl, CURLOPT_URL, Configuration::getDefaultConfiguration()->getAuthUrl());
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HEADER, 1);
 
         $response = curl_exec($curl);
         $http_header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
-        $http_header = $this->httpParseHeaders(substr($response, 0, $http_header_size));
         $http_body = substr($response, $http_header_size);
         $response_info = curl_getinfo($curl);
 
         // debug HTTP response body
-        if ($this->config->getDebug()) {
-            error_log("[DEBUG] HTTP Response body ~BEGIN~".PHP_EOL.print_r($http_body, true).PHP_EOL."~END~".PHP_EOL, 3, $this->config->getDebugFile());
+        if (Configuration::getDefaultConfiguration()->getDebug()) {
+            error_log("[DEBUG] HTTP Response body ~BEGIN~".PHP_EOL.print_r($http_body, true).PHP_EOL."~END~".PHP_EOL, 3, Configuration::getDefaultConfiguration()->getDebugFile());
         }
 
         // Handle the response
@@ -94,11 +89,11 @@ class ApiAuth
             if ($responseType == '\SplFileObject' || $responseType == 'string') {
                 return array($http_body, $response_info['http_code'], $http_header);
             }
-
-            $data = json_decode($http_body);
+            $data = json_decode($http_body, true);
             if (json_last_error() > 0) { // if response is a string
                 $data = $http_body;
             }
+            Configuration::getDefaultConfiguration()->setAccessToken($data["access_token"]);
         } else {
             $data = json_decode($http_body);
             if (json_last_error() > 0) { // if response is a string
@@ -112,36 +107,33 @@ class ApiAuth
                 $data
             );
         }
-        Configuration::getDefaultConfiguration()->setAccessToken(data["access_token"]);
-  }
-
-  static public function login($username, $password, $client_secret = null)
-  {
-    $body = ApiAuth._base_body_for_auth("password", $client_secret);
-    $body["username"] = $username;
-    $body["password"] = $password;
-
-    return _request_access_token($body);
-  }
-
-  static public function authenticate($client_secret = null)
-  {
-    $body = ApiAuth._base_body_for_auth("client_credentials", $client_secret);
-
-    return _request_access_token($body);
-  }
-
-  static public function start_impersonate($impersonation_access_token)
-  {
-    if($impersonation_token == NULL) {
-      print("error");
     }
-    
-    Configuration::getDefaultConfiguration()->setImpersonationToken($impersonation_access_token);
-  }
 
-  static public function stop_impersonate()
-  {
-    Configuration::getDefaultConfiguration()->setImpersonationToken(NULL);
-  }
+    static public function login($username, $password, $client_secret = null)
+    {
+        $body = ApiAuth::_base_body_for_auth("password", $client_secret);
+        $body["username"] = $username;
+        $body["password"] = $password;
+        return ApiAuth::_request_access_token($body);
+    }
+
+    static public function authenticate($client_secret = null)
+    {
+        $body = ApiAuth::_base_body_for_auth("client_credentials", $client_secret);
+        return ApiAuth::_request_access_token($body);
+    }
+
+    static public function startImpersonate($impersonation_access_token)
+    {
+        if(empty($impersonation_access_token)) {
+            throw new \InvalidArgumentException("Must provide an non-empty impersonation access token");
+        }
+
+        Configuration::getDefaultConfiguration()->setImpersonationToken($impersonation_access_token);
+    }
+
+    static public function stopImpersonate()
+    {
+        Configuration::getDefaultConfiguration()->setImpersonationToken(NULL);
+    }
 }
