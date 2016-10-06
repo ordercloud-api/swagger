@@ -1,7 +1,7 @@
 {
   "gemName": "order_cloud",
   "moduleName": "OrderCloud",
-  "gemVersion": "0.0.2",
+  "gemVersion": "0.0.6",
   "gemLicense": "MIT",
   "gemHomepage": "https://ordercloud.io",
   "gemSummary": "A Ruby Gem for the OrderCloud.io B2B eCommerce platform",

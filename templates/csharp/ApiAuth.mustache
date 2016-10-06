@@ -1,0 +1,116 @@
+{{>partial_header}}
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Text.RegularExpressions;
+using System.IO;
+{{^supportsUWP}}
+using System.Web;
+{{/supportsUWP}}
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Flurl;
+using Flurl.Http;
+using OrderCloud.Model;
+
+namespace {{packageName}}.Client
+{
+
+  /// <summary>
+  /// API Auth is responsible for request access token and starting/stopping impersonation.
+  /// </summary>
+  public partial class ApiAuth
+  {
+    /// <summary>
+    /// Creates the base body content for OAuth2 flow.
+    /// </summary>
+    /// <param name="grantType">Grant type for OAuth2 flow.</param>
+    /// <param name="clientSecret">Client secret for OAuth2 flow (optional).</param>
+    /// <returns></returns>
+    static private Dictionary<String,String>BaseBodyForAuth(String grantType, string clientSecret = null)
+    {
+      Dictionary<String, String> body = new Dictionary<String, String>();   
+      body.Add("client_id", Configuration.Default.ClientID);
+      body.Add("grant_type", grantType);
+      body.Add("scope", String.Join("+", Configuration.Default.Scopes));
+
+      if(clientSecret != null) {
+        body.Add("client_secret", clientSecret);
+      }
+
+      return body;
+    }
+
+    /// <summary>
+    /// Call the Auth API to request an access token and sets it in the Configuration class 
+    /// </summary>
+    /// <param name="body">The OAuth2.0 variables to be sent in the request</param>
+    /// <returns>bool</returns>
+    static private async Task RequestAccessToken(Dictionary<String, String> body)
+    {
+      // http://tutorials.jenkov.com/oauth2/resource-owner-credentials-request-response.html
+      var resp = await Configuration.Default.AuthURL
+        .AppendPathSegment("OAuth/Token")
+        .AllowHttpStatus("4xx")
+        .PostUrlEncodedAsync(body)
+        .ReceiveJson();
+
+      if (((IDictionary<string, object>)resp).ContainsKey("error"))
+        throw new ApiException(resp.code, resp.error);
+
+      Configuration.Default.AccessToken = new AccessToken(resp.access_token, Convert.ToInt32(resp.expires_in), resp.token_type);
+    }
+
+    /// <summary>
+    /// Get an access token using the password OAuth2 flow.
+    /// </summary>
+    /// <param name="username">The username to use for login</param>
+    /// <param name="password">Password associated with username</param>
+    /// <param name="clientSecret">Client secret for OAuth2 flow (optional).</param>
+    /// <returns>bool</returns>
+    static public async Task Login(String username, String password, string clientSecret = null)
+    {
+      Dictionary<String, String> body = ApiAuth.BaseBodyForAuth("password", clientSecret);
+      body.Add("username", username);
+      body.Add("password", password);
+
+      await ApiAuth.RequestAccessToken(body);
+    }
+
+    /// <summary>
+    /// Get an access token using the client credentials OAuth2 flow.
+    /// </summary>
+    /// <param name="clientSecret">Client secret for OAuth2 flow (optional).</param>
+    /// <returns>bool</returns>
+    static public async Task Authenticate(string clientSecret = null)
+    {
+      await ApiAuth.RequestAccessToken(ApiAuth.BaseBodyForAuth("client_credentials", clientSecret));
+    }
+
+    /// <summary>
+    /// Starts impersonation.
+    /// </summary>
+    /// <param name="impersonationAccessToken">User tokent to be used for impersonation</param>
+    static public void StartImpersonate(AccessToken impersonationAccessToken)
+    {
+      Configuration.Default.ImpersonationToken = impersonationAccessToken;
+    }
+
+    /// <summary>
+    /// Stops impersonation.
+    /// </summary>
+    static public void StopImpersonate()
+    {
+      Configuration.Default.ImpersonationToken = null;
+    }
+
+    static public bool IsAccessTokenValid()
+    {
+      return !String.IsNullOrEmpty(Configuration.Default.AccessToken._AccessToken);
+    }
+  }
+}

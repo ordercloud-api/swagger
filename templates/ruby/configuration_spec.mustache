@@ -6,8 +6,8 @@ require 'spec_helper'
 
 describe {{moduleName}}::Configuration do
   let(:config) { {{moduleName}}::Configuration.default }
-  let(:impersonation_token) { 'sI3PGLztu7HXfLoHobb9' }
-  let(:access_token) { 'HteOBUPWe7ccTSpQKLVC' }
+  let(:impersonation_token) { OrderCloud::AccessToken.new({:access_token => 'sI3PGLztu7HXfLoHobb9', :expires_in => 1000, :token_type => 'Bearer' }) }
+  let(:access_token) { OrderCloud::AccessToken.new({:access_token => 'HteOBUPWe7ccTSpQKLVC', :expires_in => 1000, :token_type => 'Bearer' }) }
 
   before(:each) do
     {{moduleName}}::Configuration.reset

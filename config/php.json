@@ -1,5 +1,9 @@
 {
+  "artifactVersion": "0.0.1",
   "invokerPackage": "OrderCloud",
-  "gitRepoId": "ordercloud-php-sdk",
-  "gitUserId": "ordercloud-api"
+  "apiPackage": "OrderCloud\\Api",
+  "modelPackage": "OrderCloud\\Model",
+  "packagePath": ".",
+  "gitUserId": "ordercloud-api",
+  "gitRepoId": "php-sdk"
 }

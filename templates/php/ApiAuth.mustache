@@ -52,10 +52,12 @@ class ApiAuth
     {
         $curl = curl_init();
         $postData = http_build_query($body);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, Configuration::getDefaultConfiguration()->getDefaultHeaders());
+        $url = Configuration::getDefaultConfiguration()->getAuthUrl();
+        $http_header = Configuration::getDefaultConfiguration()->getDefaultHeaders();
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $http_header);
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
-        curl_setopt($curl, CURLOPT_URL, Configuration::getDefaultConfiguration()->getAuthUrl());
+        curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HEADER, 1);
 
@@ -85,15 +87,16 @@ class ApiAuth
             $exception->setResponseObject($response_info);
             throw $exception;
         } elseif ($response_info['http_code'] >= 200 && $response_info['http_code'] <= 299) {
-            // return raw body if response is a file
-            if ($responseType == '\SplFileObject' || $responseType == 'string') {
-                return array($http_body, $response_info['http_code'], $http_header);
-            }
             $data = json_decode($http_body, true);
             if (json_last_error() > 0) { // if response is a string
                 $data = $http_body;
             }
-            Configuration::getDefaultConfiguration()->setAccessToken($data["access_token"]);
+            $access_token = new Model\AccessToken([
+              "access_token" => $data["access_token"],
+              "expires_in" => $data["expires_in"],
+              "token_type" => $data["token_type"]
+            ]);
+            Configuration::getDefaultConfiguration()->setAccessToken($access_token);
         } else {
             $data = json_decode($http_body);
             if (json_last_error() > 0) { // if response is a string

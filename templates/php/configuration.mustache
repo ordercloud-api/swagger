@@ -59,7 +59,7 @@ class Configuration
      *
      * @var string
      */
-    protected $impersonationToken = '';
+    protected $impersonationToken = null;
 
     /**
      * Sets the auth url for OAuth
@@ -133,7 +133,7 @@ class Configuration
     /**
      * Sets the impersonation token for impersonation purpose
      *
-     * @param string $impersonationToken Impersonation token to enable impersonation
+     * @param OrderCloud\Model\AccessToken $impersonationToken Impersonation token to enable impersonation
      *
      * @return Configuration
      */
@@ -146,7 +146,7 @@ class Configuration
     /**
      * Gets the impersonation token from the current impersonation
      *
-     * @return string Impersonation token used currently
+     * @return OrderCloud\Model\AccessToken Impersonation token used currently
      */
     public function getImpersonationToken()
     {
@@ -166,7 +166,7 @@ class Configuration
     /**
      * Gets the access token for OAuth
      *
-     * @return string Access token for OAuth
+     * @return OrderCloud\Model\AccessToken Access token for OAuth
      */
     public function getAccessToken()
     {
@@ -338,7 +338,7 @@ class Configuration
     /**
      * Sets the access token for OAuth
      *
-     * @param string $accessToken Token for OAuth
+     * @param OrderCloud\Model\AccessToken $accessToken Token for OAuth
      *
      * @return Configuration
      */

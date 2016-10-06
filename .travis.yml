@@ -1,0 +1,18 @@
+language: java
+jdk:
+  - oraclejdk7
+  - oraclejdk8
+
+before_install:
+  - git clone -q https://github.com/swagger-api/swagger-codegen ../swagger-codegen
+  - cd ../swagger-codegen
+  - mvn -q clean package -DskipTests=true
+  - ls
+
+build_script:
+  - ls 
+deploy_script:
+  - ls
+
+notifications:
+   slack: four51:7JMOT6XhPXuBi1XWcxdqy4MV

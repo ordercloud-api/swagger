@@ -19,9 +19,10 @@ install:
 
 build_script:
   - cd C:/projects/swagger-codegen
-  - mvn -q clean package
+  - mvn -q clean package -DskipTests=true
 
 deploy_script:
+
 
 cache:
   - C:\maven\

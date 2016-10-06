@@ -59,10 +59,10 @@ user_instance = {{{moduleName}}}::UserApi.new
 impersonation_token = user_instance.get_access_token(buyer_id, user_id, { :claims => ['YOUR_CLAIM'] })
 
 {{{moduleName}}}::ApiAuth::start_impersonate(impersonation_token)
-puts 'Impersonation status: #{{{{moduleName}}}::Configuration.default.impersonation}'
+puts 'Impersonation status: #{ {{{moduleName}}}::Configuration.default.impersonating?}'
 
 {{{moduleName}}}::ApiAuth::stop_impersonate
-puts 'Impersonation status: #{{{{moduleName}}}::Configuration.default.impersonation}'
+puts 'Impersonation status: #{ {{{moduleName}}}::Configuration.default.impersonating?}'
 ```
 
 ## Example

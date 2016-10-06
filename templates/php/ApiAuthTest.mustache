@@ -19,11 +19,13 @@
 
 namespace {{invokerPackage}};
 
-use \{{invokerPackage}}\configuration;
-use \{{invokerPackage}}\apiclient;
-use \{{invokerPackage}}\apiexception;
-use \{{invokerPackage}}\objectserializer;
-use \{{invokerPackage}}\apiauth;
+use \{{invokerPackage}}\Configuration;
+use \{{invokerPackage}}\ApiClient;
+use \{{invokerPackage}}\ApiException;
+use \{{invokerPackage}}\ObjectSerializer;
+use \{{invokerPackage}}\ApiAuth;
+use \{{invokerPackage}}\Model;
+
 /**
  * ApiAuthTest class doc comment
  *
@@ -70,7 +72,11 @@ class ApiAuthTest extends \PHPUnit_Framework_TestCase
         ApiAuthTest::$scopes = ["FullAccess"];
         ApiAuthTest::$badAuthUrl = "thisshouldnotwork";
 
-        ApiAuthTest::$impersonationToken = "4QAtuGBvK8bj22XdT0H5";
+        ApiAuthTest::$impersonationToken = new Model\AccessToken([
+          "access_token" => "4QAtuGBvK8bj22XdT0H5",
+          "expires_in" => "1000",
+          "token_type" => "Bearer"
+        ]);
     }
 
     /**
@@ -106,7 +112,7 @@ class ApiAuthTest extends \PHPUnit_Framework_TestCase
 
         ApiAuth::login(ApiAuthTest::$validUsername, ApiAuthTest::$validPassword);
 
-        $this->assertNotEmpty(Configuration::getDefaultConfiguration()->getAccessToken());
+        $this->assertNotNull(Configuration::getDefaultConfiguration()->getAccessToken());
     }
 
     /**
@@ -148,7 +154,7 @@ class ApiAuthTest extends \PHPUnit_Framework_TestCase
         Configuration::getDefaultConfiguration()->setScopes(ApiAuthTest::$scopes);
 
         ApiAuth::authenticate(ApiAuthTest::$validClientSecret);
-        $this->assertNotEmpty(Configuration::getDefaultConfiguration()->getAccessToken());
+        $this->assertNotNull(Configuration::getDefaultConfiguration()->getAccessToken());
     }
 
     /**
