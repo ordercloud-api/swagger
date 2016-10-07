@@ -285,11 +285,11 @@ class Auth(object):
         self.tokenurl = "{{{tokenUrl}}}"
         {{/authMethods}}
 
-    def __body_to_string(self, body)
+    def __body_to_string(self, body):
       # As found on http://codereview.stackexchange.com/questions/7953/flattening-a-dictionary-into-a-string
       return '&'.join("{!s}={!r}".format(key,val) for (key,val) in body.items()) 
 
-    def __base_body_for_auth(self, client_id, grant_type, scopes, client_secret = None)
+    def __base_body_for_auth(self, client_id, grant_type, scopes, client_secret = None):
       body = {
         "client_id" : client_id,
         "grant_type" : grant_type,
@@ -313,8 +313,8 @@ class Auth(object):
         if 'error' in data:
             raise ValueError(data['error'])
 
-        return data['access_token']      
-    
+        return data['access_token']
+
     #Supports the most common OAuth workflow, where you supply the user and pass and its gets and stores
     #the access token. Optionally supply a client secret for extra security
     def login(self, username, password, client_secret = None):

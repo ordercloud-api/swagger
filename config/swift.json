@@ -1,0 +1,9 @@
+{
+  "projectName": "OrderCloud",
+  "unwrapRequired": "true",
+  "podSource": "",
+  "podAuthors": "Ben Le Cam <blecam@ordercloud.io>",
+  "podSocialMediaURL": "http://twitter.com/OrderCloudIO",
+
+  "swiftUseApiNamespace": "OrderCloud"
+}
