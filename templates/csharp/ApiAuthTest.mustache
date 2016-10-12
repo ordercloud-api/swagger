@@ -80,12 +80,26 @@ namespace {{packageName}}.Test
       [Test]
       public void ItReturnsTheProperTokens()
       {
-        AccessToken impersonationToken = new AccessToken("randomtoken", 1500, "Bearer");
+        var impersonationToken = new AccessToken("random_token", 1000, "Bearer");
         ApiAuth.StartImpersonate(impersonationToken);
         Assert.AreEqual(Configuration.Default.AccessToken, impersonationToken);
 
         ApiAuth.StopImpersonate();
         Assert.AreNotEqual(Configuration.Default.AccessToken, impersonationToken);
+      }
+
+      /// <summary>
+      /// Test that the auth fails properly 
+      /// </summary>
+      [Test]
+      public async Task ItFailsProperlyWithWrongAuthParams() 
+      {
+          Assert.IsNull(Configuration.Default.AccessToken);
+
+          Configuration.Default.ClientID = "random"; 
+          Configuration.Default.Scopes = new String[] { "FullAccess" };
+
+          Assert.ThrowsAsync<ApiException>( async () => await ApiAuth.Authenticate());
       }
   }
 }

@@ -60,7 +60,7 @@ namespace {{packageName}}.Client
         .ReceiveJson();
 
       if (((IDictionary<string, object>)resp).ContainsKey("error"))
-        throw new ApiException(resp.code, resp.error);
+        throw new ApiException(400, resp.error);
 
       Configuration.Default.AccessToken = new AccessToken(resp.access_token, Convert.ToInt32(resp.expires_in), resp.token_type);
     }
