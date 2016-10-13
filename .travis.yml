@@ -1,18 +1,18 @@
 language: java
 jdk:
-  - oraclejdk7
-  - oraclejdk8
-
+- oraclejdk7
+- oraclejdk8
 before_install:
-  - git clone -q https://github.com/swagger-api/swagger-codegen ../swagger-codegen
-  - cd ../swagger-codegen
-  - mvn -q clean package -DskipTests=true
-  - ls
-
+- git clone -q https://github.com/swagger-api/swagger-codegen ../swagger-codegen
+- cd ../swagger-codegen
+- mvn -q clean package -DskipTests=true
+- ls
 build_script:
-  - ls 
+- ls
 deploy_script:
-  - ls
-
+- ls
 notifications:
-   slack: four51:7JMOT6XhPXuBi1XWcxdqy4MV
+  slack: four51:7JMOT6XhPXuBi1XWcxdqy4MV
+deploy:
+  password:
+    secure: eCp21vDrnDqGe2bBo2lEuoqlRFRfEjdBjKeUall2Og+JvxwgwUdWk7yjxD/ugwHhj8auv6di4dt5udcDaQfNQEtJqS6OmTM7tfS+HaxRZMYIUH3Mpvu3X3G5bHkX40Pd1ozuV1mbWGOv43gonndOSW8juuuPaZv7UG8nrGwFmvqNihHGS7OpbOBwzzHbq72Pd/es8h8QOeKKUF5Tv+jxA4r+VTEtP6RSvTxpQqcQUH+72AnOTzSCtb0RvsemuITjiuXRnYLqxgCuw8gpd/Jw1HYwjErQmekfkoAYKDMwQxgTZvL1brc0tEEGDftRK51svgb7+KkhpRgG2vC34ppaJtiqb1BoNkW6/AtBEi5e3KYI1vl/qh547EJWcCAFtxpgyJZLZvAqqmQCRdHX3qOzraeGoXsPmwtzL2VlKFDAxTvOkr+jVdyQUfS0ArLrAQVPg8LSNkPBoOeoYE6IcvR7HL8L0IIMyPcTd8kt6iqwJXWTjSXedOcFzKUHOwEW1vkK9KrBRRzfqVzbTYoPDdIXOYmHFFZNr/Y/Q7ZE9cwc+hn+GvXNsCTuy6Yh0T1KwQk5Z5GFxlvpRc8GW+SJouZ1mpFOtJxr+Fm5c7UBf+sD2dNTgVPFxDOtlvP4Zm9v3maE7aVmi7Q8fRdcCa3Pbq4DNicdW6ceKLb4/s69TjXyc8o=
