@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using RestSharp;
 using {{packageName}}.Client;
 {{#hasImport}}using {{packageName}}.Model;
@@ -421,7 +422,7 @@ namespace {{packageName}}.Api
             // oauth required
             if (ApiAuth.IsAccessTokenValid())
             {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken._AccessToken;
             }
             {{/isOAuth}}
             {{/authMethods}}

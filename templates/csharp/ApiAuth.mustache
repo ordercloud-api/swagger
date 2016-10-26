@@ -110,6 +110,8 @@ namespace {{packageName}}.Client
 
     static public bool IsAccessTokenValid()
     {
+      if(Configuration.Default.AccessToken == null)
+        return false;
       return !String.IsNullOrEmpty(Configuration.Default.AccessToken._AccessToken);
     }
   }
