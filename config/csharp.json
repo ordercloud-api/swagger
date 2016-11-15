@@ -1,6 +1,6 @@
 {
   "packageName": "OrderCloud",
-  "packageVersion": "0.0.6",
+  "packageVersion": "0.0.7",
   "appDescription": "This package is an SDK for OrderCloud's API written in C#. All of the methods for the most part are a 1:1 reflection of the API. This guide will cover how to install and get started with OrderCloud C# package.",
   "nugetKey": "ssovqFI6SXgMb7ueqRcm/MOz0BP7LBTRhD/fbi8q+FdTXaQ3IJq3IZNl4vGSV/6Mt3yqgm7Ift/nmQVu7l3kkjo65vDoU99X/mzGQgJSCIZf7iJzHSK8+HoOcNzc/5NEUywcvzutE64weEH+dAoNHyHI79KCX7PdmOpvDg+wk1tQIVFGh4+vdOgN28DAAAEjhuzScW1e8rbBLnsutZ3AS4sXveM8RTOq6d3US6wEpeWihtMigck898tRpiQl+9ZiNE91cM5c41FNvJy9SEwvVbpM3aGgfMJjQI2i1pehLaEvvr1LQd+XxwWAD5oagVL1kDz5vc/BbGz2EPkYIx5Xswl7LMXlI0q5iBAeMmwzzJR6CgW3c0QEYkgDNn5URRD3LS5NDUy1wMhcSVV5siQv9/+gwCl0G3NWlHPBF2cdbkEmeFa2wOzTY6JNc69kr1F2vI4YHFJZGcUpTPo2QgIqEFQEvk+omuk+h+mMGGLZQ3UWrj3RKgIJJ+GQyu7j0Ckb7P/JQ5pB305TIJ1C+SHygyTNKFUZPGSnmwa/VhJemBbAYqogIeZJ2vXIH6lqgTKk1ILYavJXVxd+xaxpFpnM1p7ViB97E6XEmZ/RhquLU/n1kyc0QJye7y/4s8UoF65oDLCHc43MnrEos+PHW1naDbfm9bLk5/VMFH/tLnWfumU="
 }
