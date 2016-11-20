@@ -19,7 +19,7 @@ $languages = @(
 git config --global github.token $GitHub
 
 foreach($language in $languages) {
-    cd "C:\projects\OrderCloud-$language-SDK"
+    cd "$env:APPVEYOR_BUILD_FOLDER\output\OrderCloud-$language-SDK"
     git status
     git commit -a -m "Commit for $env:APPVEYOR_BUILD_VERSION"
     git push
