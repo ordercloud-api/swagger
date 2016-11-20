@@ -14,15 +14,13 @@ install:
   - cmd: SET PATH=C:\maven\apache-maven-3.2.5\bin;%JAVA_HOME%\bin;%PATH%
   - cmd: SET MAVEN_OPTS=-XX:MaxPermSize=2g -Xmx4g
   - cmd: SET JAVA_OPTS=-XX:MaxPermSize=2g -Xmx4g
-  - git clone -q https://github.com/swagger-api/swagger-codegen C:/projects/swagger-codegen
-  - ps: mkdir output
 
 build_script:
+  - ps: scripts/CloneSDKRepos.ps1 -Environment "prod"
   - cd C:/projects/swagger-codegen
   - mvn -q clean package -DskipTests=true
-
-deploy_script:
-
+  - cd C:/projects/swagger
+  - ps: scripts/GenerateSDKs.ps1 -Environment "prod"
 
 cache:
   - C:\maven\
