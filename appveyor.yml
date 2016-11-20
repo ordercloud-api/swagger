@@ -22,3 +22,19 @@ build_script:
   - mvn clean package -q -DskipTests=true
   - cd C:/projects/swagger
   - ps: scripts/GenerateSDKs.ps1 -Environment "prod"
+
+artifacts:
+  - path: output/OrderCloud-CSharp-SDK/**/*
+    name: OrderCloud-CSharp-SDK
+  - path: output/OrderCloud-PHP-SDK/**/*
+    name: OrderCloud-PHP-SDK
+  - path: output/OrderCloud-Ruby-SDK/**/*
+    name: OrderCloud-Ruby-SDK
+  - path: output/OrderCloud-Python-SDK/**/*
+    name: OrderCloud-Python-SDK/**/*
+  - path: output/OrderCloud-JavaScript-SDK/**/*
+    name: OrderCloud-JavaScript-SDK/**/*
+  - path: output/OrderCloud-Swift-SDK/**/*
+    name: OrderCloud-Swift-SDK/**/*
+  - path: output/OrderCloud-Java-SDK/**/*
+    name: OrderCloud-Java-SDK/**/*
