@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory=$true)]
-    [string]$Envrionment
+    [string]$Environment
 )
 
 if ($Envrionment -eq "prod") {
