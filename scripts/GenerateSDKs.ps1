@@ -3,10 +3,10 @@ param(
     [string]$Environment
 )
 
-if ($Envrionment -eq "prod") {
+if ($Environment -eq "prod") {
     $swaggerUrl = "https://api.ordercloud.io/v1"
 }
-elseif ($Envrionment -eq "qa") {
+elseif ($Environment -eq "qa") {
     $swaggerUrl = "https://qaapi.ordercloud.io/v1"
 }
 
@@ -20,5 +20,5 @@ $languages = @(
 
 foreach ($language in $languages) {
     $lowercaseLanguage = $language.ToLower()
-    java -jar ../swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate -i $swaggerUrl/swagger -l $lowercaseLanguage -o "./output/OrderCloud-$language-SDK" -t templates/$lowercaseLanguage
+    java -jar ../swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate -i "$swaggerUrl/swagger" -l $lowercaseLanguage -o "./output/OrderCloud-$language-SDK" -t templates/$lowercaseLanguage
 }

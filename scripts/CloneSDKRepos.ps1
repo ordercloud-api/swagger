@@ -3,10 +3,10 @@ param(
 	[string]$Environment
 )
 
-if ($Envrionment -eq "prod") {
+if ($Environment -eq "prod") {
 	$branch = "master"
 }
-elseif ($Envrionment -eq "qa") {
+elseif ($Environment -eq "qa") {
 	$branch = "dev"
 }
 
@@ -25,5 +25,5 @@ $languages = @(
 git clone -q https://github.com/swagger-api/swagger-codegen C:/projects/swagger-codegen
 
 foreach($language in $languages) {
-    git clone -q --branch="master" $gitUrl/OrderCloud-$language-SDK.git $output\OrderCloud-$language-SDK
+    git clone -q --branch=$branch $gitUrl/OrderCloud-$language-SDK.git $output\OrderCloud-$language-SDK
 }
