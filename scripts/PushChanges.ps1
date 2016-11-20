@@ -17,7 +17,7 @@ $languages = @(
 )
 
 git config --global github.token $GitHub
-git config --global user.name "AppVeyor Automation"
+git config --global user.username "AppVeyorAutomation"
 git config --global user.email "appveyor@four51.com"
 
 foreach($language in $languages) {
