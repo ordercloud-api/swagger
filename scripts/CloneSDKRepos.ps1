@@ -6,7 +6,7 @@ param(
 if ($Envrionment -eq "prod") {
 	$branch = "master"
 }
-else if ($Envrionment -eq "qa") {
+elseif ($Envrionment -eq "qa") {
 	$branch = "dev"
 }
 

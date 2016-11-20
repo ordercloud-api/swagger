@@ -6,7 +6,7 @@ param(
 if ($Envrionment -eq "prod") {
     $swaggerUrl = "https://api.ordercloud.io/v1"
 }
-else if ($Envrionment -eq "qa") {
+elseif ($Envrionment -eq "qa") {
     $swaggerUrl = "https://qaapi.ordercloud.io/v1"
 }
 
