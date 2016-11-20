@@ -19,10 +19,6 @@ install:
 build_script:
   - ps: scripts/CloneSDKRepos.ps1 -Environment "prod"
   - cd C:/projects/swagger-codegen
-  - mvn -q clean package -DskipTests=true
+  - mvn clean package -q -DskipTests=true
   - cd C:/projects/swagger
   - ps: scripts/GenerateSDKs.ps1 -Environment "prod"
-
-cache:
-  - C:\maven\
-  - C:\Users\appveyor\.m2

@@ -19,5 +19,6 @@ $languages = @(
 )
 
 foreach ($language in $languages) {
-    java -jar ../swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate -i $swaggerUrl/swagger -l $language.ToLower() -o "./output/OrderCloud-$language-SDK" -t templates/$language.ToLower()
+    $lowercaseLanguage = $language.ToLower()
+    java -jar ../swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate -i $swaggerUrl/swagger -l $lowercaseLanguage -o "./output/OrderCloud-$language-SDK" -t templates/$lowercaseLanguage
 }
