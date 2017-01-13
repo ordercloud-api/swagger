@@ -36,7 +36,7 @@ namespace {{packageName}}.Client
       Dictionary<String, String> body = new Dictionary<String, String>();   
       body.Add("client_id", Configuration.Default.ClientID);
       body.Add("grant_type", grantType);
-      body.Add("scope", String.Join("+", Configuration.Default.Scopes));
+      body.Add("scope", String.Join(" ", Configuration.Default.Scopes));
 
       if(clientSecret != null) {
         body.Add("client_secret", clientSecret);

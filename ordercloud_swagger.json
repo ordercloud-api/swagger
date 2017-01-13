@@ -344,9 +344,6 @@
         "Description": {
           "type": "string"
         },
-        "xp": {
-          "type": "object"
-        },
         "ListOrder": {
           "type": "integer"
         },
@@ -358,6 +355,9 @@
         },
         "ChildCount": {
           "type": "integer"
+        },
+        "xp": {
+          "type": "object"
         }
       }
     },
@@ -1054,6 +1054,9 @@
         "ShipFromAddressID": {
           "type": "string"
         },
+        "Product": {
+          "$ref": "#/definitions/LineItemProduct"
+        },
         "ShippingAddress": {
           "$ref": "#/definitions/Address"
         },
@@ -1065,6 +1068,38 @@
             "$ref": "#/definitions/LineItemSpec"
           },
           "type": "array"
+        },
+        "xp": {
+          "type": "object"
+        }
+      }
+    },
+    "LineItemProduct": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "QuantityMultiplier": {
+          "type": "integer"
+        },
+        "ShipWeight": {
+          "type": "number"
+        },
+        "ShipHeight": {
+          "type": "number"
+        },
+        "ShipWidth": {
+          "type": "number"
+        },
+        "ShipLength": {
+          "type": "number"
         },
         "xp": {
           "type": "object"
@@ -1290,6 +1325,35 @@
         }
       }
     },
+    "SpendingAccount": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Balance": {
+          "type": "number"
+        },
+        "AllowAsPaymentMethod": {
+          "type": "boolean"
+        },
+        "RedemptionCode": {
+          "type": "string"
+        },
+        "StartDate": {
+          "type": "string"
+        },
+        "EndDate": {
+          "type": "string"
+        },
+        "xp": {
+          "type": "object"
+        }
+      }
+    },
     "OrderApproval": {
       "type": "object",
       "properties": {
@@ -1396,35 +1460,6 @@
         },
         "Password": {
           "type": "string"
-        }
-      }
-    },
-    "SpendingAccount": {
-      "type": "object",
-      "properties": {
-        "ID": {
-          "type": "string"
-        },
-        "Name": {
-          "type": "string"
-        },
-        "Balance": {
-          "type": "number"
-        },
-        "AllowAsPaymentMethod": {
-          "type": "boolean"
-        },
-        "RedemptionCode": {
-          "type": "string"
-        },
-        "StartDate": {
-          "type": "string"
-        },
-        "EndDate": {
-          "type": "string"
-        },
-        "xp": {
-          "type": "object"
         }
       }
     },
@@ -2124,6 +2159,20 @@
         }
       }
     },
+    "ListSpendingAccount": {
+      "type": "object",
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SpendingAccount"
+          }
+        },
+        "Meta": {
+          "$ref": "#/definitions/Meta"
+        }
+      }
+    },
     "ListOrderApproval": {
       "type": "object",
       "properties": {
@@ -2173,20 +2222,6 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Shipment"
-          }
-        },
-        "Meta": {
-          "$ref": "#/definitions/Meta"
-        }
-      }
-    },
-    "ListSpendingAccount": {
-      "type": "object",
-      "properties": {
-        "Items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SpendingAccount"
           }
         },
         "Meta": {
@@ -3519,10 +3554,7 @@
       "post": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "SaveUserAssignment",
@@ -3554,10 +3586,7 @@
       "delete": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "DeleteUserAssignment",
@@ -6965,16 +6994,16 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
-            "in": "query",
-            "description": "ID of the buyer.",
+            "name": "securityProfileID",
+            "in": "path",
+            "description": "ID of the security profile.",
             "required": false,
             "type": "string"
           },
           {
-            "name": "securityProfileID",
-            "in": "path",
-            "description": "ID of the security profile.",
+            "name": "buyerID",
+            "in": "query",
+            "description": "ID of the buyer.",
             "required": false,
             "type": "string"
           },
@@ -7743,10 +7772,7 @@
       "delete": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "Delete",
@@ -7829,10 +7855,7 @@
       "post": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "SaveProductAssignment",
@@ -7864,10 +7887,7 @@
       "delete": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "DeleteProductAssignment",
@@ -8153,10 +8173,7 @@
       "delete": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "DeleteOption",
@@ -8539,10 +8556,7 @@
       "post": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "SaveUserAssignment",
@@ -8581,10 +8595,7 @@
       "delete": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "DeleteUserAssignment",
@@ -8772,10 +8783,7 @@
       "delete": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "Delete",
@@ -10303,6 +10311,140 @@
         ]
       }
     },
+    "/me/spendingAccounts": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Only available to Buyer Users.",
+            "schema": {
+              "$ref": "#/definitions/ListSpendingAccount"
+            }
+          }
+        },
+        "operationId": "ListSpendingAccounts",
+        "tags": [
+          "Me"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Word or phrase to search for.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "searchOn",
+            "in": "query",
+            "description": "Comma-delimited list of fields to search on.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Comma-delimited list of fields to sort by.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to return. Default: 1",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of results to return per page. Default: 20, max: 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
+            "required": false,
+            "type": "object"
+          }
+        ],
+        "security": [
+          {
+            "oauth2": []
+          }
+        ]
+      }
+    },
+    "/me/spendingaccounts/{spendingAccountID}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Only available to Buyer Users.",
+            "schema": {
+              "$ref": "#/definitions/SpendingAccount"
+            }
+          }
+        },
+        "operationId": "GetSpendingAccount",
+        "tags": [
+          "Me"
+        ],
+        "parameters": [
+          {
+            "name": "spendingAccountID",
+            "in": "path",
+            "description": "ID of the spending account.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "oauth2": []
+          }
+        ]
+      }
+    },
+    "/me/register": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/object"
+            }
+          }
+        },
+        "operationId": "CreateFromTempUser",
+        "tags": [
+          "Me"
+        ],
+        "parameters": [
+          {
+            "name": "tempUserToken",
+            "in": "query",
+            "description": "Temp user token of the me.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": []
+          }
+        ]
+      }
+    },
     "/buyers/{buyerID}/orders/{orderID}": {
       "get": {
         "responses": {
@@ -10433,10 +10575,7 @@
       "delete": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "Delete",
@@ -11715,10 +11854,7 @@
       "delete": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "Delete",
@@ -11788,10 +11924,7 @@
       "delete": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "DeletePriceBreak",
@@ -13455,10 +13588,7 @@
       "post": {
         "responses": {
           "204": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": ""
           }
         },
         "operationId": "SaveAssignment",
@@ -13572,10 +13702,7 @@
       "delete": {
         "responses": {
           "204": {
-            "description": "As price schedules aren't assigned to a party without their accompanying product, you don't use Delete Assignment to delete a price schedule. If you need to remove a price schedule assignment, update the assignment to have the price schedule ID as a null. ",
-            "schema": {
-              "$ref": "#/definitions/Task"
-            }
+            "description": "As price schedules aren't assigned to a party without their accompanying product, you don't use Delete Assignment to delete a price schedule. If you need to remove a price schedule assignment, update the assignment to have the price schedule ID as a null. "
           }
         },
         "operationId": "DeleteAssignment",
@@ -13584,16 +13711,16 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "productID",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "ID of the product.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "productID",
+            "name": "buyerID",
             "in": "path",
-            "description": "ID of the product.",
+            "description": "ID of the buyer.",
             "required": true,
             "type": "string"
           },
