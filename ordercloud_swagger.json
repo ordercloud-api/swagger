@@ -563,7 +563,7 @@
           "type": "string"
         },
         "Metadata": {
-          "type": "Dictionary<string, string>"
+          "type": "string"
         }
       }
     },
