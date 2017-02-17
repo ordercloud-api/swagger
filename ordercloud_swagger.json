@@ -423,6 +423,35 @@
         }
       }
     },
+    "Connect": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "StateHashKey": {
+          "type": "string"
+        },
+        "ClientID": {
+          "type": "string"
+        },
+        "ConnectClientID": {
+          "type": "string"
+        },
+        "ConnectClientSecret": {
+          "type": "string"
+        },
+        "AppStartUrl": {
+          "type": "string"
+        },
+        "AuthorizationEndpoint": {
+          "type": "string"
+        },
+        "TokenEndpoint": {
+          "type": "string"
+        }
+      }
+    },
     "MessageSender": {
       "type": "object",
       "properties": {
@@ -1257,6 +1286,9 @@
         "Type": {
           "type": "string"
         },
+        "FromCompanyID": {
+          "type": "string"
+        },
         "FromUserID": {
           "type": "string"
         },
@@ -1477,6 +1509,29 @@
         },
         "AllowExceed": {
           "type": "boolean"
+        }
+      }
+    },
+    "EnvironmentInfo": {
+      "type": "object",
+      "properties": {
+        "Environment": {
+          "type": "string"
+        },
+        "Version": {
+          "type": "string"
+        },
+        "Branch": {
+          "type": "string"
+        },
+        "Commit": {
+          "type": "string"
+        },
+        "CommitDate": {
+          "type": "string"
+        },
+        "BuildDate": {
+          "type": "string"
         }
       }
     },
@@ -1788,6 +1843,20 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/CostCenterAssignment"
+          }
+        },
+        "Meta": {
+          "$ref": "#/definitions/Meta"
+        }
+      }
+    },
+    "ListConnect": {
+      "type": "object",
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Connect"
           }
         },
         "Meta": {
@@ -6196,7 +6265,7 @@
             "name": "buyerID",
             "in": "query",
             "description": "ID of the buyer.",
-            "required": true,
+            "required": false,
             "type": "string"
           },
           {
@@ -6994,16 +7063,16 @@
         ],
         "parameters": [
           {
-            "name": "securityProfileID",
-            "in": "path",
-            "description": "ID of the security profile.",
+            "name": "buyerID",
+            "in": "query",
+            "description": "ID of the buyer.",
             "required": false,
             "type": "string"
           },
           {
-            "name": "buyerID",
-            "in": "query",
-            "description": "ID of the buyer.",
+            "name": "securityProfileID",
+            "in": "path",
+            "description": "ID of the security profile.",
             "required": false,
             "type": "string"
           },
@@ -10406,45 +10475,6 @@
         ]
       }
     },
-    "/me/register": {
-      "put": {
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/object"
-            }
-          }
-        },
-        "operationId": "CreateFromTempUser",
-        "tags": [
-          "Me"
-        ],
-        "parameters": [
-          {
-            "name": "tempUserToken",
-            "in": "query",
-            "description": "Temp user token of the me.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "user",
-            "in": "body",
-            "required": true,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
-          }
-        ],
-        "security": [
-          {
-            "oauth2": []
-          }
-        ]
-      }
-    },
     "/buyers/{buyerID}/orders/{orderID}": {
       "get": {
         "responses": {
@@ -13711,16 +13741,16 @@
         ],
         "parameters": [
           {
-            "name": "productID",
+            "name": "buyerID",
             "in": "path",
-            "description": "ID of the product.",
+            "description": "ID of the buyer.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "buyerID",
+            "name": "productID",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "ID of the product.",
             "required": true,
             "type": "string"
           },
