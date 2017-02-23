@@ -145,6 +145,42 @@
         },
         "Editable": {
           "type": "boolean"
+        },
+        "CompanyName": {
+          "type": "string"
+        },
+        "FirstName": {
+          "type": "string"
+        },
+        "LastName": {
+          "type": "string"
+        },
+        "Street1": {
+          "type": "string"
+        },
+        "Street2": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "State": {
+          "type": "string"
+        },
+        "Zip": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "Phone": {
+          "type": "string"
+        },
+        "AddressName": {
+          "type": "string"
+        },
+        "xp": {
+          "type": "object"
         }
       }
     },
@@ -285,27 +321,6 @@
         },
         "RuleExpression": {
           "type": "string"
-        },
-        "Scope": {
-          "type": "string"
-        },
-        "ScopeTimeUnit": {
-          "type": "string"
-        },
-        "ScopeTimeNumber": {
-          "type": "integer"
-        },
-        "ScopeStartDate": {
-          "type": "string"
-        },
-        "ExpireAfterTimeUnit": {
-          "type": "string"
-        },
-        "ExpireAfterNumber": {
-          "type": "integer"
-        },
-        "ApproveOnExpire": {
-          "type": "boolean"
         },
         "xp": {
           "type": "object"
@@ -480,6 +495,15 @@
         },
         "ConfigData": {
           "type": "object"
+        },
+        "ID": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "MessageTypes": {
+          "type": "string"
         }
       }
     },
@@ -563,7 +587,7 @@
           "type": "string"
         },
         "Metadata": {
-          "type": "string"
+          "type": "Dictionary<string, string>"
         }
       }
     },
@@ -673,6 +697,48 @@
       "properties": {
         "Amount": {
           "type": "number"
+        },
+        "ID": {
+          "type": "string"
+        },
+        "Code": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "RedemptionLimit": {
+          "type": "integer"
+        },
+        "RedemptionLimitPerUser": {
+          "type": "integer"
+        },
+        "RedemptionCount": {
+          "type": "integer"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "FinePrint": {
+          "type": "string"
+        },
+        "StartDate": {
+          "type": "string"
+        },
+        "ExpirationDate": {
+          "type": "string"
+        },
+        "EligibleExpression": {
+          "type": "string"
+        },
+        "ValueExpression": {
+          "type": "string"
+        },
+        "CanCombine": {
+          "type": "boolean"
+        },
+        "xp": {
+          "type": "object"
         }
       }
     },
@@ -730,6 +796,27 @@
         },
         "Editable": {
           "type": "boolean"
+        },
+        "Token": {
+          "type": "string"
+        },
+        "DateCreated": {
+          "type": "string"
+        },
+        "CardType": {
+          "type": "string"
+        },
+        "PartialAccountNumber": {
+          "type": "string"
+        },
+        "CardholderName": {
+          "type": "string"
+        },
+        "ExpirationDate": {
+          "type": "string"
+        },
+        "xp": {
+          "type": "object"
         }
       }
     },
@@ -955,6 +1042,33 @@
       "properties": {
         "OptionCount": {
           "type": "integer"
+        },
+        "ID": {
+          "type": "string"
+        },
+        "ListOrder": {
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "DefaultValue": {
+          "type": "string"
+        },
+        "Required": {
+          "type": "boolean"
+        },
+        "AllowOpenText": {
+          "type": "boolean"
+        },
+        "DefaultOptionID": {
+          "type": "string"
+        },
+        "DefinesVariant": {
+          "type": "boolean"
+        },
+        "xp": {
+          "type": "object"
         }
       }
     },
@@ -998,6 +1112,33 @@
             "$ref": "#/definitions/SpecOption"
           },
           "type": "array"
+        },
+        "ID": {
+          "type": "string"
+        },
+        "ListOrder": {
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "DefaultValue": {
+          "type": "string"
+        },
+        "Required": {
+          "type": "boolean"
+        },
+        "AllowOpenText": {
+          "type": "boolean"
+        },
+        "DefaultOptionID": {
+          "type": "string"
+        },
+        "DefinesVariant": {
+          "type": "boolean"
+        },
+        "xp": {
+          "type": "object"
         }
       }
     },
@@ -1160,6 +1301,63 @@
         },
         "StandardPriceSchedule": {
           "$ref": "#/definitions/PriceSchedule"
+        },
+        "ID": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "QuantityMultiplier": {
+          "type": "integer"
+        },
+        "ShipWeight": {
+          "type": "number"
+        },
+        "ShipHeight": {
+          "type": "number"
+        },
+        "ShipWidth": {
+          "type": "number"
+        },
+        "ShipLength": {
+          "type": "number"
+        },
+        "Active": {
+          "type": "boolean"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "InventoryEnabled": {
+          "type": "boolean"
+        },
+        "InventoryNotificationPoint": {
+          "type": "integer"
+        },
+        "VariantLevelInventory": {
+          "type": "boolean"
+        },
+        "SpecCount": {
+          "type": "integer"
+        },
+        "xp": {
+          "type": "object"
+        },
+        "AllowOrderExceedInventory": {
+          "type": "boolean"
+        },
+        "InventoryVisible": {
+          "type": "boolean"
+        },
+        "VariantCount": {
+          "type": "integer"
+        },
+        "ShipFromAddressID": {
+          "type": "string"
         }
       }
     },
