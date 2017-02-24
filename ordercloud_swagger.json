@@ -238,10 +238,10 @@
           "type": "object"
         },
         "AvailableRoles": {
+          "type": "array",
           "items": {
             "type": "string"
-          },
-          "type": "array"
+          }
         }
       }
     },
@@ -477,7 +477,10 @@
           "type": "string"
         },
         "MessageTypes": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -503,7 +506,10 @@
           "type": "string"
         },
         "MessageTypes": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -598,10 +604,10 @@
           "type": "integer"
         },
         "Organizations": {
+          "type": "array",
           "items": {
             "$ref": "#/definitions/UsageOrganization"
-          },
-          "type": "array"
+          }
         },
         "From": {
           "type": "string"
@@ -624,10 +630,10 @@
           "type": "integer"
         },
         "Buyers": {
+          "type": "array",
           "items": {
             "$ref": "#/definitions/UsageBuyer"
-          },
-          "type": "array"
+          }
         }
       }
     },
@@ -847,10 +853,10 @@
           "type": "string"
         },
         "Roles": {
+          "type": "array",
           "items": {
             "type": "string"
-          },
-          "type": "array"
+          }
         }
       }
     },
@@ -1001,10 +1007,10 @@
           "type": "object"
         },
         "Transactions": {
+          "type": "array",
           "items": {
             "$ref": "#/definitions/PaymentTransaction"
-          },
-          "type": "array"
+          }
         }
       }
     },
@@ -1108,10 +1114,10 @@
       "type": "object",
       "properties": {
         "Options": {
+          "type": "array",
           "items": {
             "$ref": "#/definitions/SpecOption"
-          },
-          "type": "array"
+          }
         },
         "ID": {
           "type": "string"
@@ -1234,10 +1240,10 @@
           "$ref": "#/definitions/Address"
         },
         "Specs": {
+          "type": "array",
           "items": {
             "$ref": "#/definitions/LineItemSpec"
-          },
-          "type": "array"
+          }
         },
         "xp": {
           "type": "object"
@@ -1392,10 +1398,10 @@
           "type": "string"
         },
         "PriceBreaks": {
+          "type": "array",
           "items": {
             "$ref": "#/definitions/PriceBreak"
-          },
-          "type": "array"
+          }
         },
         "xp": {
           "type": "object"
@@ -1638,10 +1644,10 @@
           "type": "number"
         },
         "Items": {
+          "type": "array",
           "items": {
             "$ref": "#/definitions/ShipmentItem"
-          },
-          "type": "array"
+          }
         },
         "xp": {
           "type": "object"
@@ -1825,7 +1831,10 @@
           "type": "string"
         },
         "Claims": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
