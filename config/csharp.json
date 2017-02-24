@@ -1,5 +1,7 @@
 {
   "packageName": "OrderCloud",
+  "packageAuthor": "Connor O'Brien",
+  "packageOwner": "Four51",
   "packageVersion": "0.0.8",
   "USE_DATETIME_OFFSET": true,
   "appDescription": "This package is an SDK for OrderCloud's API written in C#. All of the methods for the most part are a 1:1 reflection of the API. This guide will cover how to install and get started with OrderCloud C# package.",
