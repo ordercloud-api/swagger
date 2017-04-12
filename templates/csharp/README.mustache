@@ -62,7 +62,7 @@ namespace MyApp {
       Configuration.Default.ClientID = "MY_CLIENT_ID";
       Configuration.Default.Scopes = new String[] {"MY_SCOPES"};
 
-      ApiAuth.Login('MY_USERNAME', 'MY_PASSWORD');
+      AuthApi.Login('MY_USERNAME', 'MY_PASSWORD');
     }
   }
 }
@@ -91,14 +91,14 @@ namespace MyApp {
       try
       {
         AccessToken impersonationToken = userApiInstance.GetAccessToken("MY_BUYER_ID", "MY_USER_ID", new ImpersonateTokenRequest("MY_CLIENT_ID", "MY_CLAIMS");
-        ApiAuth.startImpersonate(impersonationToken);
+        AuthApi.startImpersonate(impersonationToken);
       }
       catch (Exception e)
       {
         Debug.Print("Exception when attempting to impersonate:" + e.Message);
       }
 
-      ApiAuth.stopImpersonate();
+      AuthApi.stopImpersonate();
     }
   }
 }
@@ -128,7 +128,7 @@ namespace OrderCloudConsole
       Configuration.Default.ClientID = "MY_CLIENT_ID";
       Configuration.Default.Scopes = new String[] { "MY_SCOPES" };
 
-      await ApiAuth.Login("MY_USERNAME", "MY_PASSWORD");
+      await AuthApi.Login("MY_USERNAME", "MY_PASSWORD");
 
       var productApiInstance = new ProductApi();
       try

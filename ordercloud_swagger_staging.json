@@ -42,6 +42,7 @@
         "ApprovalRuleAdmin": "",
         "ApprovalRuleReader": "",
         "BuyerAdmin": "",
+        "BuyerImpersonation": "",
         "BuyerReader": "",
         "BuyerUserAdmin": "",
         "BuyerUserReader": "",
@@ -53,10 +54,6 @@
         "CostCenterReader": "",
         "CreditCardAdmin": "",
         "CreditCardReader": "",
-        "DevCenter": "",
-        "DevCenterImpersonate": "",
-        "DevCenterMessageConfigAdmin": "",
-        "DevCenterPasswordReset": "",
         "FullAccess": "",
         "GrantForAnyRole": "",
         "InventoryAdmin": "",
@@ -70,7 +67,7 @@
         "OverrideShipping": "",
         "OverrideTax": "",
         "OverrideUnitPrice": "",
-        "PermissionAdmin": "",
+        "PasswordReset": "",
         "PriceScheduleAdmin": "",
         "PriceScheduleReader": "",
         "ProductAdmin": "",
@@ -78,8 +75,18 @@
         "ProductReader": "",
         "PromotionAdmin": "",
         "PromotionReader": "",
+        "SetSecurityProfile": "",
+        "ShipmentAdmin": "",
+        "ShipmentReader": "",
+        "Shopper": "",
         "SpendingAccountAdmin": "",
         "SpendingAccountReader": "",
+        "SupplierAdmin": "",
+        "SupplierReader": "",
+        "SupplierUserAdmin": "",
+        "SupplierUserGroupAdmin": "",
+        "SupplierUserGroupReader": "",
+        "SupplierUserReader": "",
         "UnsubmittedOrderReader": "",
         "UserGroupAdmin": "",
         "UserGroupReader": ""
@@ -213,9 +220,6 @@
         "Username": {
           "type": "string"
         },
-        "Password": {
-          "type": "string"
-        },
         "FirstName": {
           "type": "string"
         },
@@ -285,6 +289,9 @@
         "Description": {
           "type": "string"
         },
+        "Active": {
+          "type": "boolean"
+        },
         "CategoryCount": {
           "type": "integer"
         },
@@ -300,6 +307,23 @@
           "type": "string"
         },
         "BuyerID": {
+          "type": "string"
+        },
+        "ViewAllCategories": {
+          "type": "boolean"
+        },
+        "ViewAllProducts": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductCatalogAssignment": {
+      "type": "object",
+      "properties": {
+        "CatalogID": {
+          "type": "string"
+        },
+        "ProductID": {
           "type": "string"
         }
       }
@@ -390,6 +414,12 @@
         },
         "UserGroupID": {
           "type": "string"
+        },
+        "Visible": {
+          "type": "boolean"
+        },
+        "ViewAllProducts": {
+          "type": "boolean"
         }
       }
     },
@@ -536,6 +566,38 @@
         },
         "Metadata": {
           "type": "Dictionary<string, string>"
+        }
+      }
+    },
+    "ImpersonationConfig": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "ImpersonationBuyerID": {
+          "type": "string"
+        },
+        "ImpersonationGroupID": {
+          "type": "string"
+        },
+        "ImpersonationUserID": {
+          "type": "string"
+        },
+        "BuyerID": {
+          "type": "string"
+        },
+        "GroupID": {
+          "type": "string"
+        },
+        "UserID": {
+          "type": "string"
+        },
+        "SecurityProfileID": {
+          "type": "string"
+        },
+        "ClientID": {
+          "type": "string"
         }
       }
     },
@@ -728,19 +790,19 @@
         }
       }
     },
-    "SecurityProfile": {
+    "DevTokenRequest": {
       "type": "object",
       "properties": {
-        "ID": {
+        "ClientID": {
           "type": "string"
         },
-        "IsDevProfile": {
-          "type": "boolean"
-        },
-        "Name": {
+        "BuyerID": {
           "type": "string"
         },
-        "Roles": {
+        "BuyerUsername": {
+          "type": "string"
+        },
+        "Claims": {
           "type": "array",
           "items": {
             "type": "string"
@@ -759,6 +821,9 @@
         },
         "OwnerDevID": {
           "type": "integer"
+        },
+        "AutoForwardingUserID": {
+          "type": "string"
         }
       }
     },
@@ -773,6 +838,23 @@
         }
       }
     },
+    "SecurityProfile": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "SecurityProfileAssignment": {
       "type": "object",
       "properties": {
@@ -780,6 +862,9 @@
           "type": "string"
         },
         "BuyerID": {
+          "type": "string"
+        },
+        "SupplierID": {
           "type": "string"
         },
         "UserID": {
@@ -813,6 +898,9 @@
         },
         "Amount": {
           "type": "number"
+        },
+        "Accepted": {
+          "type": "boolean"
         },
         "xp": {
           "type": "object"
@@ -1002,6 +1090,54 @@
         }
       }
     },
+    "Supplier": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "boolean"
+        },
+        "xp": {
+          "type": "object"
+        }
+      }
+    },
+    "AccessToken": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string"
+        },
+        "expires_in": {
+          "type": "integer"
+        },
+        "token_type": {
+          "type": "string"
+        },
+        "refresh_token": {
+          "type": "string"
+        }
+      }
+    },
+    "ImpersonateTokenRequest": {
+      "type": "object",
+      "properties": {
+        "ClientID": {
+          "type": "string"
+        },
+        "Roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "LineItem": {
       "type": "object",
       "properties": {
@@ -1113,10 +1249,7 @@
     "BuyerProduct": {
       "type": "object",
       "properties": {
-        "ReplenishmentPriceSchedule": {
-          "$ref": "#/definitions/PriceSchedule"
-        },
-        "StandardPriceSchedule": {
+        "PriceSchedule": {
           "$ref": "#/definitions/PriceSchedule"
         },
         "ID": {
@@ -1146,34 +1279,22 @@
         "Active": {
           "type": "boolean"
         },
-        "Type": {
-          "type": "string"
-        },
-        "InventoryEnabled": {
-          "type": "boolean"
-        },
-        "InventoryNotificationPoint": {
-          "type": "integer"
-        },
-        "VariantLevelInventory": {
-          "type": "boolean"
-        },
         "SpecCount": {
           "type": "integer"
         },
         "xp": {
           "type": "object"
         },
-        "AllowOrderExceedInventory": {
-          "type": "boolean"
-        },
-        "InventoryVisible": {
-          "type": "boolean"
-        },
         "VariantCount": {
           "type": "integer"
         },
         "ShipFromAddressID": {
+          "type": "string"
+        },
+        "Inventory": {
+          "$ref": "#/definitions/Inventory"
+        },
+        "AutoForwardSupplierID": {
           "type": "string"
         }
       }
@@ -1205,9 +1326,6 @@
         "RestrictedQuantity": {
           "type": "boolean"
         },
-        "OrderType": {
-          "type": "string"
-        },
         "PriceBreaks": {
           "type": "array",
           "items": {
@@ -1230,7 +1348,30 @@
         }
       }
     },
-    "Product": {
+    "Inventory": {
+      "type": "object",
+      "properties": {
+        "Enabled": {
+          "type": "boolean"
+        },
+        "NotificationPoint": {
+          "type": "integer"
+        },
+        "VariantLevelTracking": {
+          "type": "boolean"
+        },
+        "OrderCanExceed": {
+          "type": "boolean"
+        },
+        "QuantityAvailable": {
+          "type": "integer"
+        },
+        "LastUpdated": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductBase": {
       "type": "object",
       "properties": {
         "ID": {
@@ -1260,16 +1401,57 @@
         "Active": {
           "type": "boolean"
         },
-        "Type": {
-          "type": "string"
-        },
-        "InventoryEnabled": {
-          "type": "boolean"
-        },
-        "InventoryNotificationPoint": {
+        "SpecCount": {
           "type": "integer"
         },
-        "VariantLevelInventory": {
+        "xp": {
+          "type": "object"
+        },
+        "VariantCount": {
+          "type": "integer"
+        },
+        "ShipFromAddressID": {
+          "type": "string"
+        },
+        "Inventory": {
+          "$ref": "#/definitions/Inventory"
+        },
+        "AutoForwardSupplierID": {
+          "type": "string"
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "DefaultPriceScheduleID": {
+          "type": "string"
+        },
+        "ID": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "QuantityMultiplier": {
+          "type": "integer"
+        },
+        "ShipWeight": {
+          "type": "number"
+        },
+        "ShipHeight": {
+          "type": "number"
+        },
+        "ShipWidth": {
+          "type": "number"
+        },
+        "ShipLength": {
+          "type": "number"
+        },
+        "Active": {
           "type": "boolean"
         },
         "SpecCount": {
@@ -1278,16 +1460,16 @@
         "xp": {
           "type": "object"
         },
-        "AllowOrderExceedInventory": {
-          "type": "boolean"
-        },
-        "InventoryVisible": {
-          "type": "boolean"
-        },
         "VariantCount": {
           "type": "integer"
         },
         "ShipFromAddressID": {
+          "type": "string"
+        },
+        "Inventory": {
+          "$ref": "#/definitions/Inventory"
+        },
+        "AutoForwardSupplierID": {
           "type": "string"
         }
       }
@@ -1298,19 +1480,13 @@
         "ID": {
           "type": "string"
         },
-        "Type": {
-          "type": "string"
+        "FromUser": {
+          "$ref": "#/definitions/User"
         },
         "FromCompanyID": {
           "type": "string"
         },
         "FromUserID": {
-          "type": "string"
-        },
-        "FromUserFirstName": {
-          "type": "string"
-        },
-        "FromUserLastName": {
           "type": "string"
         },
         "BillingAddressID": {
@@ -1401,39 +1577,7 @@
         }
       }
     },
-    "OrderApproval": {
-      "type": "object",
-      "properties": {
-        "ApprovalRuleID": {
-          "type": "string"
-        },
-        "ApprovingGroupID": {
-          "type": "string"
-        },
-        "Status": {
-          "type": "string"
-        },
-        "DateCreated": {
-          "type": "string"
-        },
-        "DateCompleted": {
-          "type": "string"
-        },
-        "ApproverID": {
-          "type": "string"
-        },
-        "ApproverUserName": {
-          "type": "string"
-        },
-        "ApproverEmail": {
-          "type": "string"
-        },
-        "Comments": {
-          "type": "string"
-        }
-      }
-    },
-    "Shipment": {
+    "BuyerShipment": {
       "type": "object",
       "properties": {
         "ID": {
@@ -1454,28 +1598,112 @@
         "Cost": {
           "type": "number"
         },
-        "Items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ShipmentItem"
-          }
-        },
         "xp": {
           "type": "object"
+        },
+        "Account": {
+          "type": "string"
+        },
+        "FromAddressID": {
+          "type": "string"
+        },
+        "ToAddressID": {
+          "type": "string"
+        },
+        "FromAddress": {
+          "$ref": "#/definitions/Address"
+        },
+        "ToAddress": {
+          "$ref": "#/definitions/Address"
         }
       }
     },
-    "ShipmentItem": {
+    "Shipment": {
       "type": "object",
       "properties": {
-        "OrderID": {
+        "BuyerID": {
           "type": "string"
         },
-        "LineItemID": {
+        "ID": {
           "type": "string"
         },
-        "QuantityShipped": {
-          "type": "integer"
+        "Shipper": {
+          "type": "string"
+        },
+        "DateShipped": {
+          "type": "string"
+        },
+        "DateDelivered": {
+          "type": "string"
+        },
+        "TrackingNumber": {
+          "type": "string"
+        },
+        "Cost": {
+          "type": "number"
+        },
+        "xp": {
+          "type": "object"
+        },
+        "Account": {
+          "type": "string"
+        },
+        "FromAddressID": {
+          "type": "string"
+        },
+        "ToAddressID": {
+          "type": "string"
+        },
+        "FromAddress": {
+          "$ref": "#/definitions/Address"
+        },
+        "ToAddress": {
+          "$ref": "#/definitions/Address"
+        }
+      }
+    },
+    "TokenPasswordReset": {
+      "type": "object",
+      "properties": {
+        "NewPassword": {
+          "type": "string"
+        }
+      }
+    },
+    "OrderApproval": {
+      "type": "object",
+      "properties": {
+        "ApprovalRuleID": {
+          "type": "string"
+        },
+        "ApprovingGroupID": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        },
+        "DateCreated": {
+          "type": "string"
+        },
+        "DateCompleted": {
+          "type": "string"
+        },
+        "Approver": {
+          "$ref": "#/definitions/User"
+        },
+        "Comments": {
+          "type": "string"
+        }
+      }
+    },
+    "OrderApprovalInfo": {
+      "type": "object",
+      "properties": {
+        "Comments": {
+          "type": "string"
+        },
+        "AllowResubmit": {
+          "type": "boolean"
         }
       }
     },
@@ -1507,6 +1735,41 @@
         },
         "Password": {
           "type": "string"
+        }
+      }
+    },
+    "ShipmentItem": {
+      "type": "object",
+      "properties": {
+        "OrderID": {
+          "type": "string"
+        },
+        "LineItemID": {
+          "type": "string"
+        },
+        "QuantityShipped": {
+          "type": "integer"
+        },
+        "UnitPrice": {
+          "type": "number"
+        },
+        "CostCenter": {
+          "type": "string"
+        },
+        "DateNeeded": {
+          "type": "string"
+        },
+        "Product": {
+          "$ref": "#/definitions/LineItemProduct"
+        },
+        "Specs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineItemSpec"
+          }
+        },
+        "xp": {
+          "type": "object"
         }
       }
     },
@@ -1555,36 +1818,10 @@
         }
       }
     },
-    "Inventory": {
-      "type": "object",
-      "properties": {
-        "ID": {
-          "type": "string"
-        },
-        "Name": {
-          "type": "string"
-        },
-        "Available": {
-          "type": "integer"
-        },
-        "Reserved": {
-          "type": "integer"
-        },
-        "LastUpdated": {
-          "type": "string"
-        }
-      }
-    },
     "ProductAssignment": {
       "type": "object",
       "properties": {
         "ProductID": {
-          "type": "string"
-        },
-        "PriceScheduleID": {
-          "type": "string"
-        },
-        "StandardPriceScheduleID": {
           "type": "string"
         },
         "BuyerID": {
@@ -1595,37 +1832,9 @@
         },
         "UserGroupID": {
           "type": "string"
-        }
-      }
-    },
-    "AccessToken": {
-      "type": "object",
-      "properties": {
-        "access_token": {
-          "type": "string"
         },
-        "expires_in": {
-          "type": "integer"
-        },
-        "token_type": {
+        "PriceScheduleID": {
           "type": "string"
-        },
-        "refresh_token": {
-          "type": "string"
-        }
-      }
-    },
-    "ImpersonateTokenRequest": {
-      "type": "object",
-      "properties": {
-        "ClientID": {
-          "type": "string"
-        },
-        "Claims": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       }
     },
@@ -1743,6 +1952,20 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/CatalogAssignment"
+          }
+        },
+        "Meta": {
+          "$ref": "#/definitions/Meta"
+        }
+      }
+    },
+    "ListProductCatalogAssignment": {
+      "type": "object",
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductCatalogAssignment"
           }
         },
         "Meta": {
@@ -1883,6 +2106,20 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MessageCCListenerAssignment"
+          }
+        },
+        "Meta": {
+          "$ref": "#/definitions/Meta"
+        }
+      }
+    },
+    "ListImpersonationConfig": {
+      "type": "object",
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ImpersonationConfig"
           }
         },
         "Meta": {
@@ -2058,6 +2295,20 @@
         }
       }
     },
+    "ListSupplier": {
+      "type": "object",
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Supplier"
+          }
+        },
+        "Meta": {
+          "$ref": "#/definitions/Meta"
+        }
+      }
+    },
     "ListLineItem": {
       "type": "object",
       "properties": {
@@ -2156,6 +2407,20 @@
         }
       }
     },
+    "ListBuyerShipment": {
+      "type": "object",
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BuyerShipment"
+          }
+        },
+        "Meta": {
+          "$ref": "#/definitions/Meta"
+        }
+      }
+    },
     "ListOrderApproval": {
       "type": "object",
       "properties": {
@@ -2212,6 +2477,20 @@
         }
       }
     },
+    "ListShipmentItem": {
+      "type": "object",
+      "properties": {
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ShipmentItem"
+          }
+        },
+        "Meta": {
+          "$ref": "#/definitions/Meta"
+        }
+      }
+    },
     "ListSpendingAccountAssignment": {
       "type": "object",
       "properties": {
@@ -2247,20 +2526,6 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Variant"
-          }
-        },
-        "Meta": {
-          "$ref": "#/definitions/Meta"
-        }
-      }
-    },
-    "ListInventory": {
-      "type": "object",
-      "properties": {
-        "Items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Inventory"
           }
         },
         "Meta": {
@@ -2346,7 +2611,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -2803,7 +3071,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -3222,7 +3493,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -3291,7 +3565,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -3657,7 +3934,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -3967,6 +4247,128 @@
         ]
       }
     },
+    "/catalogs/productassignments": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ListProductCatalogAssignment"
+            }
+          }
+        },
+        "operationId": "ListProductAssignments",
+        "tags": [
+          "Catalog"
+        ],
+        "parameters": [
+          {
+            "name": "catalogID",
+            "in": "query",
+            "description": "ID of the catalog.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "productID",
+            "in": "query",
+            "description": "ID of the product.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to return. Default: 1",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of results to return per page. Default: 20, max: 100.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "CatalogAdmin",
+              "CatalogReader"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "operationId": "SaveProductAssignment",
+        "tags": [
+          "Catalog"
+        ],
+        "parameters": [
+          {
+            "name": "productAssignment",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProductCatalogAssignment"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "CatalogAdmin"
+            ]
+          }
+        ]
+      }
+    },
+    "/catalogs/{catalogID}/productassignments/{productID}": {
+      "delete": {
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "operationId": "DeleteProductAssignment",
+        "tags": [
+          "Catalog"
+        ],
+        "parameters": [
+          {
+            "name": "catalogID",
+            "in": "path",
+            "description": "ID of the catalog.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productID",
+            "in": "path",
+            "description": "ID of the product.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "CatalogAdmin"
+            ]
+          }
+        ]
+      }
+    },
     "/buyers/{buyerID}/approvalrules": {
       "get": {
         "responses": {
@@ -4029,7 +4431,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -4308,7 +4713,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -4566,7 +4974,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -5173,7 +5584,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -5616,7 +6030,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -5873,7 +6290,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -5911,6 +6331,251 @@
             "oauth2": [
               "FullAccess",
               "MessageConfigAssignmentAdmin"
+            ]
+          }
+        ]
+      }
+    },
+    "/impersonationconfig": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ListImpersonationConfig"
+            }
+          }
+        },
+        "operationId": "List",
+        "tags": [
+          "ImpersonationConfig"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Word or phrase to search for.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "searchOn",
+            "in": "query",
+            "description": "Comma-delimited list of fields to search on.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Comma-delimited list of fields to sort by.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to return. Default: 1",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of results to return per page. Default: 20, max: 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
+            "required": false,
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "SetSecurityProfile"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ImpersonationConfig"
+            }
+          }
+        },
+        "operationId": "Create",
+        "tags": [
+          "ImpersonationConfig"
+        ],
+        "parameters": [
+          {
+            "name": "impersonationConfig",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ImpersonationConfig"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "SetSecurityProfile"
+            ]
+          }
+        ]
+      }
+    },
+    "/impersonationconfig/{impersonationConfigID}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ImpersonationConfig"
+            }
+          }
+        },
+        "operationId": "Get",
+        "tags": [
+          "ImpersonationConfig"
+        ],
+        "parameters": [
+          {
+            "name": "impersonationConfigID",
+            "in": "path",
+            "description": "ID of the impersonation config.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "SetSecurityProfile"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "operationId": "Delete",
+        "tags": [
+          "ImpersonationConfig"
+        ],
+        "parameters": [
+          {
+            "name": "impersonationConfigID",
+            "in": "path",
+            "description": "ID of the impersonation config.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "SetSecurityProfile"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ImpersonationConfig"
+            }
+          }
+        },
+        "operationId": "Update",
+        "tags": [
+          "ImpersonationConfig"
+        ],
+        "parameters": [
+          {
+            "name": "impersonationConfigID",
+            "in": "path",
+            "description": "ID of the impersonation config.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "impersonationConfig",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ImpersonationConfig"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "SetSecurityProfile"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ImpersonationConfig"
+            }
+          }
+        },
+        "operationId": "Patch",
+        "tags": [
+          "ImpersonationConfig"
+        ],
+        "parameters": [
+          {
+            "name": "impersonationConfigID",
+            "in": "path",
+            "description": "ID of the impersonation config.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "impersonationConfig",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ImpersonationConfig"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "SetSecurityProfile"
             ]
           }
         ]
@@ -5971,7 +6636,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -6379,7 +7047,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -6822,12 +7493,18 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "SetSecurityProfile"
+            ]
           }
         ]
       }
@@ -6857,7 +7534,10 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "SetSecurityProfile"
+            ]
           }
         ]
       }
@@ -6885,6 +7565,13 @@
             "type": "string"
           },
           {
+            "name": "supplierID",
+            "in": "query",
+            "description": "ID of the supplier.",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "securityProfileID",
             "in": "query",
             "description": "ID of the security profile.",
@@ -6902,6 +7589,13 @@
             "name": "userGroupID",
             "in": "query",
             "description": "ID of the user group.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "commerceRole",
+            "in": "query",
+            "description": "Commerce role of the security profile.",
             "required": false,
             "type": "string"
           },
@@ -6931,7 +7625,7 @@
           {
             "oauth2": [
               "FullAccess",
-              "CostCenterReader"
+              "SetSecurityProfile"
             ]
           }
         ]
@@ -6959,7 +7653,10 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "SetSecurityProfile"
+            ]
           }
         ]
       }
@@ -6977,16 +7674,16 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
-            "in": "query",
-            "description": "ID of the buyer.",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "securityProfileID",
             "in": "path",
             "description": "ID of the security profile.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "buyerID",
+            "in": "query",
+            "description": "ID of the buyer.",
             "required": false,
             "type": "string"
           },
@@ -7007,12 +7704,15 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "SetSecurityProfile"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/payments/{paymentID}": {
+    "/orders/{direction}/{orderID}/payments/{paymentID}": {
       "get": {
         "responses": {
           "200": {
@@ -7028,9 +7728,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the payment. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -7051,58 +7751,12 @@
         ],
         "security": [
           {
-            "oauth2": []
-          }
-        ]
-      },
-      "put": {
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Payment"
-            }
-          }
-        },
-        "operationId": "Update",
-        "tags": [
-          "Payment"
-        ],
-        "parameters": [
-          {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "orderID",
-            "in": "path",
-            "description": "ID of the order.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "paymentID",
-            "in": "path",
-            "description": "ID of the payment.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "payment",
-            "in": "body",
-            "required": true,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Payment"
-            }
-          }
-        ],
-        "security": [
-          {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper",
+              "OrderReader"
+            ]
           }
         ]
       },
@@ -7121,9 +7775,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the payment. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -7153,7 +7807,10 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin"
+            ]
           }
         ]
       },
@@ -7169,9 +7826,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the payment. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -7192,12 +7849,16 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/payments": {
+    "/orders/{direction}/{orderID}/payments": {
       "get": {
         "responses": {
           "200": {
@@ -7213,9 +7874,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the payment. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -7266,12 +7927,20 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper",
+              "OrderReader"
+            ]
           }
         ]
       },
@@ -7290,9 +7959,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the payment. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -7315,12 +7984,16 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/payments/{paymentID}/transactions": {
+    "/orders/{direction}/{orderID}/payments/{paymentID}/transactions": {
       "post": {
         "responses": {
           "201": {
@@ -7336,9 +8009,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the payment. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -7368,128 +8041,15 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/payments/{paymentID}/transactions/{transactionID}": {
-      "put": {
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Payment"
-            }
-          }
-        },
-        "operationId": "UpdateTransaction",
-        "tags": [
-          "Payment"
-        ],
-        "parameters": [
-          {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "orderID",
-            "in": "path",
-            "description": "ID of the order.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "paymentID",
-            "in": "path",
-            "description": "ID of the payment.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "transactionID",
-            "in": "path",
-            "description": "ID of the transaction.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "transaction",
-            "in": "body",
-            "required": true,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/PaymentTransaction"
-            }
-          }
-        ],
-        "security": [
-          {
-            "oauth2": []
-          }
-        ]
-      },
-      "patch": {
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Payment"
-            }
-          }
-        },
-        "operationId": "PatchTransaction",
-        "tags": [
-          "Payment"
-        ],
-        "parameters": [
-          {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "orderID",
-            "in": "path",
-            "description": "ID of the order.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "paymentID",
-            "in": "path",
-            "description": "ID of the payment.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "transactionID",
-            "in": "path",
-            "description": "ID of the transaction.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "partialTransaction",
-            "in": "body",
-            "required": true,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/PaymentTransaction"
-            }
-          }
-        ],
-        "security": [
-          {
-            "oauth2": []
-          }
-        ]
-      },
+    "/orders/{direction}/{orderID}/payments/{paymentID}/transactions/{transactionID}": {
       "delete": {
         "responses": {
           "204": {
@@ -7502,9 +8062,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the payment. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -7532,7 +8092,10 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin"
+            ]
           }
         ]
       }
@@ -7592,7 +8155,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -7797,16 +8363,23 @@
         ],
         "parameters": [
           {
-            "name": "specID",
+            "name": "search",
             "in": "query",
-            "description": "ID of the spec.",
+            "description": "Word or phrase to search for.",
             "required": false,
             "type": "string"
           },
           {
-            "name": "productID",
+            "name": "searchOn",
             "in": "query",
-            "description": "ID of the product.",
+            "description": "Comma-delimited list of fields to search on.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Comma-delimited list of fields to sort by.",
             "required": false,
             "type": "string"
           },
@@ -7823,6 +8396,16 @@
             "description": "Number of results to return per page. Default: 20, max: 100.",
             "required": false,
             "type": "integer"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
+            "required": false,
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -8005,7 +8588,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -8251,7 +8837,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -8618,7 +9207,7 @@
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/lineitems/{lineItemID}": {
+    "/orders/{direction}/{orderID}/lineitems/{lineItemID}": {
       "get": {
         "responses": {
           "200": {
@@ -8634,9 +9223,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the line item. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -8657,7 +9246,12 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper",
+              "OrderReader"
+            ]
           }
         ]
       },
@@ -8676,9 +9270,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the line item. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -8708,7 +9302,11 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       },
@@ -8727,9 +9325,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the line item. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -8759,7 +9357,11 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       },
@@ -8775,9 +9377,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the line item. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -8798,12 +9400,16 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/lineitems": {
+    "/orders/{direction}/{orderID}/lineitems": {
       "get": {
         "responses": {
           "200": {
@@ -8819,9 +9425,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the line item. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -8872,12 +9478,20 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper",
+              "OrderReader"
+            ]
           }
         ]
       },
@@ -8896,9 +9510,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the line item. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -8921,12 +9535,16 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/lineitems/{lineItemID}/shipto": {
+    "/orders/{direction}/{orderID}/lineitems/{lineItemID}/shipto": {
       "put": {
         "responses": {
           "200": {
@@ -8942,9 +9560,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the line item. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -8974,7 +9592,11 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       },
@@ -8993,9 +9615,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the line item. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -9025,7 +9647,11 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
@@ -9173,12 +9799,18 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
       }
@@ -9238,7 +9870,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -9303,12 +9938,19 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "MeAddressAdmin",
+              "Shopper"
+            ]
           }
         ]
       },
@@ -9371,7 +10013,11 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "MeAddressAdmin",
+              "Shopper"
+            ]
           }
         ]
       },
@@ -9569,12 +10215,19 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "MeCreditCardAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
@@ -9604,7 +10257,11 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "MeCreditCardAdmin",
+              "Shopper"
+            ]
           }
         ]
       },
@@ -9783,12 +10440,18 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
       }
@@ -9809,6 +10472,13 @@
         ],
         "parameters": [
           {
+            "name": "catalogID",
+            "in": "query",
+            "description": "ID of the catalog.",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "categoryID",
             "in": "query",
             "description": "ID of the category.",
@@ -9816,9 +10486,9 @@
             "type": "string"
           },
           {
-            "name": "catalogID",
+            "name": "depth",
             "in": "query",
-            "description": "ID of the catalog.",
+            "description": "Depth of the product.",
             "required": false,
             "type": "string"
           },
@@ -9862,17 +10532,23 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/me/products/{productID}": {
+    "/me/catalogs/{catalogID}/products/{productID}": {
       "get": {
         "responses": {
           "200": {
@@ -9888,6 +10564,13 @@
         ],
         "parameters": [
           {
+            "name": "catalogID",
+            "in": "path",
+            "description": "ID of the catalog.",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "productID",
             "in": "path",
             "description": "ID of the product.",
@@ -9897,12 +10580,15 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/me/products/{productID}/specs": {
+    "/me/catalogs/{catalogID}/products/{productID}/specs": {
       "get": {
         "responses": {
           "200": {
@@ -9917,6 +10603,13 @@
           "Me"
         ],
         "parameters": [
+          {
+            "name": "catalogID",
+            "in": "path",
+            "description": "ID of the catalog.",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "productID",
             "in": "path",
@@ -9964,17 +10657,23 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/me/products/{productID}/specs/{specID}": {
+    "/me/catalogs/{catalogID}/products/{productID}/specs/{specID}": {
       "get": {
         "responses": {
           "200": {
@@ -9989,6 +10688,13 @@
           "Me"
         ],
         "parameters": [
+          {
+            "name": "catalogID",
+            "in": "path",
+            "description": "ID of the catalog.",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "productID",
             "in": "path",
@@ -10006,22 +10712,25 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/me/orders/outgoing": {
+    "/me/orders": {
       "get": {
         "responses": {
           "200": {
-            "description": "Only available to Buyer Users.",
+            "description": "List orders created by this user.",
             "schema": {
               "$ref": "#/definitions/ListOrder"
             }
           }
         },
-        "operationId": "ListOutgoingOrders",
+        "operationId": "ListOrders",
         "tags": [
           "Me"
         ],
@@ -10080,121 +10789,131 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
-      }
-    },
-    "/me/orders/incoming": {
-      "get": {
+      },
+      "put": {
         "responses": {
-          "200": {
-            "description": "Only available to Buyer Users.",
-            "schema": {
-              "$ref": "#/definitions/ListOrder"
-            }
+          "204": {
+            "description": ""
           }
         },
-        "operationId": "ListIncomingOrders",
+        "operationId": "TransferAnonUserOrder",
         "tags": [
           "Me"
         ],
         "parameters": [
           {
-            "name": "from",
+            "name": "anonUserToken",
             "in": "query",
-            "description": "Lower bound of date range that the order was created (if outgoing) or submitted (if incoming).",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "to",
-            "in": "query",
-            "description": "Upper bound of date range that the order was created (if outgoing) or submitted (if incoming).",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "search",
-            "in": "query",
-            "description": "Word or phrase to search for.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "searchOn",
-            "in": "query",
-            "description": "Comma-delimited list of fields to search on.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "sortBy",
-            "in": "query",
-            "description": "Comma-delimited list of fields to sort by.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page of results to return. Default: 1",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "Number of results to return per page. Default: 20, max: 100.",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "filters",
-            "in": "query",
-            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
-            "required": false,
-            "type": "object"
-          }
-        ],
-        "security": [
-          {
-            "oauth2": []
-          }
-        ]
-      }
-    },
-    "/me/orders/{orderID}": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "Only available to Buyer Users.",
-            "schema": {
-              "$ref": "#/definitions/Order"
-            }
-          }
-        },
-        "operationId": "GetOrder",
-        "tags": [
-          "Me"
-        ],
-        "parameters": [
-          {
-            "name": "orderID",
-            "in": "path",
-            "description": "ID of the order.",
+            "description": "Anon user token of the me.",
             "required": true,
             "type": "string"
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
+          }
+        ]
+      }
+    },
+    "/me/orders/approvable": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "List orders awaiting approval that can be approved by this user.",
+            "schema": {
+              "$ref": "#/definitions/ListOrder"
+            }
+          }
+        },
+        "operationId": "ListApprovableOrders",
+        "tags": [
+          "Me"
+        ],
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "description": "Lower bound of date range that the order was created (if outgoing) or submitted (if incoming).",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Upper bound of date range that the order was created (if outgoing) or submitted (if incoming).",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Word or phrase to search for.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "searchOn",
+            "in": "query",
+            "description": "Comma-delimited list of fields to search on.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Comma-delimited list of fields to sort by.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to return. Default: 1",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of results to return per page. Default: 20, max: 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
+            "required": false,
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
       }
@@ -10254,12 +10973,18 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
       }
@@ -10289,7 +11014,10 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
       }
@@ -10349,12 +11077,18 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
       }
@@ -10384,37 +11118,111 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}": {
+    "/me/shipments": {
       "get": {
         "responses": {
           "200": {
-            "description": "",
+            "description": "Only available to Buyer Users.",
             "schema": {
-              "$ref": "#/definitions/Order"
+              "$ref": "#/definitions/ListBuyerShipment"
             }
           }
         },
-        "operationId": "Get",
+        "operationId": "ListShipments",
         "tags": [
-          "Order"
+          "Me"
         ],
         "parameters": [
           {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
+            "name": "orderID",
+            "in": "query",
+            "description": "ID of the order.",
+            "required": false,
             "type": "string"
           },
           {
-            "name": "orderID",
+            "name": "search",
+            "in": "query",
+            "description": "Word or phrase to search for.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "searchOn",
+            "in": "query",
+            "description": "Comma-delimited list of fields to search on.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Comma-delimited list of fields to sort by.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to return. Default: 1",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of results to return per page. Default: 20, max: 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
+            "required": false,
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
+          }
+        ]
+      }
+    },
+    "/me/shipments/{shipmentID}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Only available to Buyer Users.",
+            "schema": {
+              "$ref": "#/definitions/BuyerShipment"
+            }
+          }
+        },
+        "operationId": "GetShipment",
+        "tags": [
+          "Me"
+        ],
+        "parameters": [
+          {
+            "name": "shipmentID",
             "in": "path",
-            "description": "ID of the order.",
+            "description": "ID of the shipment.",
             "required": true,
             "type": "string"
           }
@@ -10423,133 +11231,87 @@
           {
             "oauth2": [
               "FullAccess",
-              "OrderReader"
+              "Shopper"
             ]
           }
         ]
-      },
+      }
+    },
+    "/me/register": {
       "put": {
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/Order"
+              "$ref": "#/definitions/object"
             }
           }
         },
-        "operationId": "Update",
+        "operationId": "Register",
         "tags": [
-          "Order"
+          "Me"
         ],
         "parameters": [
           {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
+            "name": "anonUserToken",
+            "in": "query",
+            "description": "Anon user token of the me.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "orderID",
-            "in": "path",
-            "description": "ID of the order.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "order",
+            "name": "user",
             "in": "body",
             "required": true,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/Order"
+              "$ref": "#/definitions/User"
             }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "Shopper"
+            ]
           }
         ]
-      },
-      "patch": {
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Order"
-            }
-          }
-        },
-        "operationId": "Patch",
-        "tags": [
-          "Order"
-        ],
-        "parameters": [
-          {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "orderID",
-            "in": "path",
-            "description": "ID of the order.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "partialOrder",
-            "in": "body",
-            "required": true,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Order"
-            }
-          }
-        ],
-        "security": [
-          {
-            "oauth2": []
-          }
-        ]
-      },
-      "delete": {
+      }
+    },
+    "/me/password": {
+      "post": {
         "responses": {
           "204": {
             "description": ""
           }
         },
-        "operationId": "Delete",
+        "operationId": "ResetPasswordByToken",
         "tags": [
-          "Order"
+          "Me"
         ],
         "parameters": [
           {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
+            "name": "reset",
+            "in": "body",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "orderID",
-            "in": "path",
-            "description": "ID of the order.",
-            "required": true,
-            "type": "string"
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TokenPasswordReset"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "PasswordReset"
+            ]
           }
         ]
       }
     },
-    "/orders/outgoing": {
+    "/orders/{direction}": {
       "get": {
         "responses": {
           "200": {
@@ -10559,15 +11321,29 @@
             }
           }
         },
-        "operationId": "ListOutgoing",
+        "operationId": "List",
         "tags": [
           "Order"
         ],
         "parameters": [
           {
+            "name": "direction",
+            "in": "path",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "buyerID",
             "in": "query",
             "description": "ID of the buyer.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "supplierID",
+            "in": "query",
+            "description": "ID of the supplier.",
             "required": false,
             "type": "string"
           },
@@ -10625,273 +11401,22 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
-          }
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "FullAccess",
-              "OrderReader"
-            ]
-          }
-        ]
-      }
-    },
-    "/orders/incoming": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ListOrder"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
             }
           }
-        },
-        "operationId": "ListIncoming",
-        "tags": [
-          "Order"
-        ],
-        "parameters": [
-          {
-            "name": "buyerID",
-            "in": "query",
-            "description": "ID of the buyer.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "from",
-            "in": "query",
-            "description": "Lower bound of date range that the order was submitted.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "to",
-            "in": "query",
-            "description": "Upper bound of date range that the order was submitted.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "search",
-            "in": "query",
-            "description": "Word or phrase to search for.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "searchOn",
-            "in": "query",
-            "description": "Comma-delimited list of fields to search on.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "sortBy",
-            "in": "query",
-            "description": "Comma-delimited list of fields to sort by.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page of results to return. Default: 1",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "Number of results to return per page. Default: 20, max: 100.",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "filters",
-            "in": "query",
-            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
-            "required": false,
-            "type": "object"
-          }
         ],
         "security": [
           {
             "oauth2": [
               "FullAccess",
+              "OrderAdmin",
               "OrderReader"
             ]
           }
         ]
-      }
-    },
-    "/buyers/{buyerID}/orders/{orderID}/approvals": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "Returns all Approvals associated with the Order.",
-            "schema": {
-              "$ref": "#/definitions/ListOrderApproval"
-            }
-          }
-        },
-        "operationId": "ListApprovals",
-        "tags": [
-          "Order"
-        ],
-        "parameters": [
-          {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "orderID",
-            "in": "path",
-            "description": "ID of the order.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "search",
-            "in": "query",
-            "description": "Word or phrase to search for.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "searchOn",
-            "in": "query",
-            "description": "Comma-delimited list of fields to search on.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "sortBy",
-            "in": "query",
-            "description": "Comma-delimited list of fields to sort by.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page of results to return. Default: 1",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "Number of results to return per page. Default: 20, max: 100.",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "filters",
-            "in": "query",
-            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
-            "required": false,
-            "type": "object"
-          }
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "FullAccess",
-              "OrderReader"
-            ]
-          }
-        ]
-      }
-    },
-    "/buyers/{buyerID}/orders/{orderID}/eligibleapprovers": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "Returns all Users who can approve or decline this order (but have not done so).",
-            "schema": {
-              "$ref": "#/definitions/ListUser"
-            }
-          }
-        },
-        "operationId": "ListEligibleApprovers",
-        "tags": [
-          "Order"
-        ],
-        "parameters": [
-          {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "orderID",
-            "in": "path",
-            "description": "ID of the order.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "search",
-            "in": "query",
-            "description": "Word or phrase to search for.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "searchOn",
-            "in": "query",
-            "description": "Comma-delimited list of fields to search on.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "sortBy",
-            "in": "query",
-            "description": "Comma-delimited list of fields to sort by.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page of results to return. Default: 1",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "Number of results to return per page. Default: 20, max: 100.",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "filters",
-            "in": "query",
-            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
-            "required": false,
-            "type": "object"
-          }
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "FullAccess",
-              "OrderReader"
-            ]
-          }
-        ]
-      }
-    },
-    "/buyers/{buyerID}/orders": {
+      },
       "post": {
         "responses": {
           "201": {
@@ -10907,9 +11432,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -10925,44 +11450,364 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
-      },
-      "put": {
+      }
+    },
+    "/orders/{direction}/{orderID}": {
+      "get": {
         "responses": {
-          "204": {
-            "description": ""
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
           }
         },
-        "operationId": "TransferTempUserOrder",
+        "operationId": "Get",
         "tags": [
           "Order"
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "tempUserToken",
-            "in": "query",
-            "description": "Temp user token of the order.",
+            "name": "orderID",
+            "in": "path",
+            "description": "ID of the order.",
             "required": true,
             "type": "string"
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper",
+              "OrderReader"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        },
+        "operationId": "Update",
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "direction",
+            "in": "path",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "orderID",
+            "in": "path",
+            "description": "ID of the order.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        },
+        "operationId": "Patch",
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "direction",
+            "in": "path",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "orderID",
+            "in": "path",
+            "description": "ID of the order.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "partialOrder",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "operationId": "Delete",
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "direction",
+            "in": "path",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "orderID",
+            "in": "path",
+            "description": "ID of the order.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/submit": {
+    "/orders/{direction}/{orderID}/approvals": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns all Approvals associated with the Order.",
+            "schema": {
+              "$ref": "#/definitions/ListOrderApproval"
+            }
+          }
+        },
+        "operationId": "ListApprovals",
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "direction",
+            "in": "path",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "orderID",
+            "in": "path",
+            "description": "ID of the order.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Word or phrase to search for.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "searchOn",
+            "in": "query",
+            "description": "Comma-delimited list of fields to search on.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Comma-delimited list of fields to sort by.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to return. Default: 1",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of results to return per page. Default: 20, max: 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
+            "required": false,
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper",
+              "OrderReader"
+            ]
+          }
+        ]
+      }
+    },
+    "/orders/{direction}/{orderID}/eligibleapprovers": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns all Users who can approve or decline this order (but have not done so).",
+            "schema": {
+              "$ref": "#/definitions/ListUser"
+            }
+          }
+        },
+        "operationId": "ListEligibleApprovers",
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "direction",
+            "in": "path",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "orderID",
+            "in": "path",
+            "description": "ID of the order.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Word or phrase to search for.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "searchOn",
+            "in": "query",
+            "description": "Comma-delimited list of fields to search on.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Comma-delimited list of fields to sort by.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to return. Default: 1",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of results to return per page. Default: 20, max: 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
+            "required": false,
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper",
+              "OrderReader"
+            ]
+          }
+        ]
+      }
+    },
+    "/orders/{direction}/{orderID}/submit": {
       "post": {
         "responses": {
           "201": {
@@ -10978,9 +11823,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -10994,12 +11839,16 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/approve": {
+    "/orders/{direction}/{orderID}/approve": {
       "post": {
         "responses": {
           "201": {
@@ -11015,9 +11864,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -11029,21 +11878,27 @@
             "type": "string"
           },
           {
-            "name": "comments",
-            "in": "query",
-            "description": "Comments to be saved with the order approval.",
-            "required": false,
-            "type": "string"
+            "name": "info",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/OrderApprovalInfo"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/decline": {
+    "/orders/{direction}/{orderID}/decline": {
       "post": {
         "responses": {
           "201": {
@@ -11059,9 +11914,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -11073,21 +11928,27 @@
             "type": "string"
           },
           {
-            "name": "comments",
-            "in": "query",
-            "description": "Comments to be saved with the order denial.",
-            "required": false,
-            "type": "string"
+            "name": "info",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/OrderApprovalInfo"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/cancel": {
+    "/orders/{direction}/{orderID}/cancel": {
       "post": {
         "responses": {
           "201": {
@@ -11103,9 +11964,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -11119,12 +11980,16 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/ship": {
+    "/orders/{direction}/{orderID}/ship": {
       "post": {
         "responses": {
           "201": {
@@ -11140,9 +12005,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -11159,18 +12024,22 @@
             "required": true,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/Shipment"
+              "$ref": "#/definitions/BuyerShipment"
             }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "ShipmentAdmin"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/shipto": {
+    "/orders/{direction}/{orderID}/shipto": {
       "put": {
         "responses": {
           "200": {
@@ -11186,9 +12055,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -11211,7 +12080,11 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       },
@@ -11230,9 +12103,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -11255,12 +12128,16 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/billto": {
+    "/orders/{direction}/{orderID}/billto": {
       "put": {
         "responses": {
           "200": {
@@ -11276,9 +12153,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -11301,7 +12178,11 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       },
@@ -11320,9 +12201,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -11345,12 +12226,16 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/promotions/{promoCode}": {
+    "/orders/{direction}/{orderID}/promotions/{promoCode}": {
       "post": {
         "responses": {
           "201": {
@@ -11366,9 +12251,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -11389,7 +12274,11 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       },
@@ -11408,9 +12297,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -11431,12 +12320,16 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/orders/{orderID}/promotions": {
+    "/orders/{direction}/{orderID}/promotions": {
       "get": {
         "responses": {
           "200": {
@@ -11452,9 +12345,9 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "direction",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "Direction of the order. Possible values: Incoming, Outgoing.",
             "required": true,
             "type": "string"
           },
@@ -11505,12 +12398,20 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "OrderAdmin",
+              "Shopper",
+              "OrderReader"
+            ]
           }
         ]
       }
@@ -11551,7 +12452,7 @@
             "description": ""
           }
         },
-        "operationId": "ResetPassword",
+        "operationId": "ResetPasswordByVerificationCode",
         "tags": [
           "PasswordReset"
         ],
@@ -11635,7 +12536,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -11901,7 +12805,7 @@
         ]
       }
     },
-    "/buyers/{buyerID}/shipments/{shipmentID}": {
+    "/shipments/{shipmentID}": {
       "get": {
         "responses": {
           "200": {
@@ -11917,13 +12821,6 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "shipmentID",
             "in": "path",
             "description": "ID of the shipment.",
@@ -11933,7 +12830,11 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "ShipmentAdmin",
+              "ShipmentReader"
+            ]
           }
         ]
       },
@@ -11952,13 +12853,6 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "shipmentID",
             "in": "path",
             "description": "ID of the shipment.",
@@ -11977,7 +12871,10 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "ShipmentAdmin"
+            ]
           }
         ]
       },
@@ -11996,13 +12893,6 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "shipmentID",
             "in": "path",
             "description": "ID of the shipment.",
@@ -12021,7 +12911,10 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "ShipmentAdmin"
+            ]
           }
         ]
       },
@@ -12037,13 +12930,6 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "shipmentID",
             "in": "path",
             "description": "ID of the shipment.",
@@ -12053,12 +12939,15 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "ShipmentAdmin"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/shipments": {
+    "/shipments": {
       "get": {
         "responses": {
           "200": {
@@ -12073,13 +12962,6 @@
           "Shipment"
         ],
         "parameters": [
-          {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
           {
             "name": "orderID",
             "in": "query",
@@ -12127,12 +13009,19 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "ShipmentAdmin",
+              "ShipmentReader"
+            ]
           }
         ]
       },
@@ -12151,13 +13040,6 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "shipment",
             "in": "body",
             "required": true,
@@ -12169,18 +13051,98 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "ShipmentAdmin"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/shipments/{shipmentID}/items": {
-      "post": {
+    "/shipments/{shipmentID}/items": {
+      "get": {
         "responses": {
-          "201": {
+          "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/Shipment"
+              "$ref": "#/definitions/ListShipmentItem"
+            }
+          }
+        },
+        "operationId": "ListItems",
+        "tags": [
+          "Shipment"
+        ],
+        "parameters": [
+          {
+            "name": "shipmentID",
+            "in": "path",
+            "description": "ID of the shipment.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Word or phrase to search for.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "searchOn",
+            "in": "query",
+            "description": "Comma-delimited list of fields to search on.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Comma-delimited list of fields to sort by.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page of results to return. Default: 1",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of results to return per page. Default: 20, max: 100.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
+            "required": false,
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "ShipmentAdmin",
+              "ShipmentReader"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ShipmentItem"
             }
           }
         },
@@ -12189,13 +13151,6 @@
           "Shipment"
         ],
         "parameters": [
-          {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
           {
             "name": "shipmentID",
             "in": "path",
@@ -12215,33 +13170,29 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "ShipmentAdmin"
+            ]
           }
         ]
       }
     },
-    "/buyers/{buyerID}/shipments/{shipmentID}/items/{orderID}/{lineItemID}": {
-      "delete": {
+    "/shipments/{shipmentID}/items/{orderID}/{lineItemID}": {
+      "get": {
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/Shipment"
+              "$ref": "#/definitions/ShipmentItem"
             }
           }
         },
-        "operationId": "DeleteItem",
+        "operationId": "GetItem",
         "tags": [
           "Shipment"
         ],
         "parameters": [
-          {
-            "name": "buyerID",
-            "in": "path",
-            "description": "ID of the buyer.",
-            "required": true,
-            "type": "string"
-          },
           {
             "name": "shipmentID",
             "in": "path",
@@ -12266,7 +13217,53 @@
         ],
         "security": [
           {
-            "oauth2": []
+            "oauth2": [
+              "FullAccess",
+              "ShipmentAdmin",
+              "ShipmentReader"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "operationId": "DeleteItem",
+        "tags": [
+          "Shipment"
+        ],
+        "parameters": [
+          {
+            "name": "shipmentID",
+            "in": "path",
+            "description": "ID of the shipment.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "orderID",
+            "in": "path",
+            "description": "ID of the order.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lineItemID",
+            "in": "path",
+            "description": "ID of the line item.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "oauth2": [
+              "FullAccess",
+              "ShipmentAdmin"
+            ]
           }
         ]
       }
@@ -12333,7 +13330,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -12737,6 +13737,27 @@
         ],
         "parameters": [
           {
+            "name": "catalogID",
+            "in": "query",
+            "description": "ID of the catalog.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "categoryID",
+            "in": "query",
+            "description": "ID of the category.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "supplierID",
+            "in": "query",
+            "description": "ID of the supplier.",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "search",
             "in": "query",
             "description": "Word or phrase to search for.",
@@ -12776,7 +13797,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -13067,7 +14091,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -13216,17 +14243,17 @@
         ]
       }
     },
-    "/products/{productID}/variants/inventory": {
+    "/products/{productID}/suppliers": {
       "get": {
         "responses": {
           "200": {
-            "description": "Listing the Variant Inventory will return a list of all variants under a specific product and each variant's available and reserved inventory.",
+            "description": "",
             "schema": {
-              "$ref": "#/definitions/ListInventory"
+              "$ref": "#/definitions/ListSupplier"
             }
           }
         },
-        "operationId": "ListVariantInventory",
+        "operationId": "ListSuppliers",
         "tags": [
           "Product"
         ],
@@ -13278,55 +14305,16 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
-          }
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "FullAccess",
-              "ProductAdmin",
-              "ProductReader"
-            ]
-          }
-        ]
-      }
-    },
-    "/products/{productID}/variants/inventory/{variantID}": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "Getting the Variant Inventory will return the Name, Available Inventory and Reserved Inventory for a specific product variant based on the ProductID and VariantID specified. ",
-            "schema": {
-              "$ref": "#/definitions/Inventory"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
             }
           }
-        },
-        "operationId": "GetVariantInventory",
-        "tags": [
-          "Product"
-        ],
-        "parameters": [
-          {
-            "name": "productID",
-            "in": "path",
-            "description": "ID of the product.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "variantID",
-            "in": "path",
-            "description": "ID of the variant.",
-            "required": true,
-            "type": "string"
-          }
         ],
         "security": [
           {
             "oauth2": [
               "FullAccess",
-              "InventoryAdmin",
               "ProductAdmin",
               "ProductReader"
             ]
@@ -13334,17 +14322,14 @@
         ]
       }
     },
-    "/products/{productID}/variants/inventory/{variantID}/{inventory}": {
+    "/products/{productID}/suppliers/{supplierID}": {
       "put": {
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Inventory"
-            }
+          "204": {
+            "description": ""
           }
         },
-        "operationId": "UpdateVariantInventory",
+        "operationId": "SaveSupplier",
         "tags": [
           "Product"
         ],
@@ -13357,147 +14342,29 @@
             "type": "string"
           },
           {
-            "name": "variantID",
+            "name": "supplierID",
             "in": "path",
-            "description": "ID of the variant.",
+            "description": "ID of the supplier.",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "inventory",
-            "in": "path",
-            "description": "Inventory of the product.",
-            "required": true,
-            "type": "integer"
           }
         ],
         "security": [
           {
             "oauth2": [
               "FullAccess",
-              "InventoryAdmin",
               "ProductAdmin"
             ]
           }
         ]
-      }
-    },
-    "/products/inventory": {
-      "get": {
+      },
+      "delete": {
         "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/ListInventory"
-            }
+          "204": {
+            "description": ""
           }
         },
-        "operationId": "ListInventory",
-        "tags": [
-          "Product"
-        ],
-        "parameters": [
-          {
-            "name": "search",
-            "in": "query",
-            "description": "Word or phrase to search for.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "searchOn",
-            "in": "query",
-            "description": "Comma-delimited list of fields to search on.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "sortBy",
-            "in": "query",
-            "description": "Comma-delimited list of fields to sort by.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Page of results to return. Default: 1",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "Number of results to return per page. Default: 20, max: 100.",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "filters",
-            "in": "query",
-            "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
-            "required": false,
-            "type": "object"
-          }
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "FullAccess",
-              "InventoryAdmin",
-              "ProductAdmin",
-              "ProductReader"
-            ]
-          }
-        ]
-      }
-    },
-    "/products/{productID}/inventory": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "Getting the Inventory on an Inventory-enabled product returns two things: the Avalible inventory, and the Reserved inventory. When an Order includes a product on the a lineitem, the total amount of that product is reserved. When that Order is submitted, the products previously reserved for that order are removed from the total inventory and the reserved ammount.",
-            "schema": {
-              "$ref": "#/definitions/Inventory"
-            }
-          }
-        },
-        "operationId": "GetInventory",
-        "tags": [
-          "Product"
-        ],
-        "parameters": [
-          {
-            "name": "productID",
-            "in": "path",
-            "description": "ID of the product.",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "security": [
-          {
-            "oauth2": [
-              "FullAccess",
-              "InventoryAdmin",
-              "ProductAdmin",
-              "ProductReader"
-            ]
-          }
-        ]
-      }
-    },
-    "/products/{productID}/inventory/{inventory}": {
-      "put": {
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/Inventory"
-            }
-          }
-        },
-        "operationId": "UpdateInventory",
+        "operationId": "RemoveSupplier",
         "tags": [
           "Product"
         ],
@@ -13510,18 +14377,17 @@
             "type": "string"
           },
           {
-            "name": "inventory",
+            "name": "supplierID",
             "in": "path",
-            "description": "Inventory of the product.",
+            "description": "ID of the supplier.",
             "required": true,
-            "type": "integer"
+            "type": "string"
           }
         ],
         "security": [
           {
             "oauth2": [
               "FullAccess",
-              "InventoryAdmin",
               "ProductAdmin"
             ]
           }
@@ -13582,6 +14448,13 @@
             "type": "string"
           },
           {
+            "name": "priceScheduleID",
+            "in": "query",
+            "description": "ID of the price schedule.",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "buyerID",
             "in": "query",
             "description": "ID of the buyer.",
@@ -13606,13 +14479,6 @@
             "name": "level",
             "in": "query",
             "description": "Level of the product.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "priceScheduleID",
-            "in": "query",
-            "description": "ID of the price schedule.",
             "required": false,
             "type": "string"
           },
@@ -13646,7 +14512,7 @@
       "delete": {
         "responses": {
           "204": {
-            "description": "As price schedules aren't assigned to a party without their accompanying product, you don't use Delete Assignment to delete a price schedule. If you need to remove a price schedule assignment, update the assignment to have the price schedule ID as a null. "
+            "description": ""
           }
         },
         "operationId": "DeleteAssignment",
@@ -13655,16 +14521,16 @@
         ],
         "parameters": [
           {
-            "name": "buyerID",
+            "name": "productID",
             "in": "path",
-            "description": "ID of the buyer.",
+            "description": "ID of the product.",
             "required": true,
             "type": "string"
           },
           {
-            "name": "productID",
+            "name": "buyerID",
             "in": "path",
-            "description": "ID of the product.",
+            "description": "ID of the buyer.",
             "required": true,
             "type": "string"
           },
@@ -13763,7 +14629,10 @@
             "in": "query",
             "description": "Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'",
             "required": false,
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         ],
         "security": [
@@ -14030,7 +14899,7 @@
           {
             "oauth2": [
               "FullAccess",
-              "BuyerUserAdmin"
+              "BuyerImpersonation"
             ]
           }
         ]

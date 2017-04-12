@@ -1,10 +1,10 @@
 {
   "gemName": "order_cloud",
   "moduleName": "OrderCloud",
-  "gemVersion": "0.0.6",
+  "gemVersion": "1.0.44-staging",
   "gemLicense": "MIT",
   "gemHomepage": "https://ordercloud.io",
   "gemSummary": "A Ruby Gem for the OrderCloud.io B2B eCommerce platform",
-  "gemAuthor": "Ben Le Cam",
-  "gemAuthorEmail": "blecam@four51.com"
+  "gemAuthor": "OrderCloud",
+  "gemAuthorEmail": "tech@ordercloud.io"
 }
