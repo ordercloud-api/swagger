@@ -31,11 +31,10 @@ namespace {{packageName}}.Test
       [SetUp]
       public void Init()
       {
-        oc = new OrderCloudClient(new Configuration
-        {
-            ApiClient = new ApiClient("https://stagingapi.ordercloud.io/v1"),
-            AuthURL = "https://stagingauth.ordercloud.io"
-        });
+          var config = Configuration.Default;
+          config.AuthURL = "https://stagingauth.ordercloud.io";
+          config.ApiClient = new ApiClient("https://stagingapi.ordercloud.io/v1");
+          oc = new OrderCloudClient(config);
       }
 
       /// <summary>
@@ -44,6 +43,7 @@ namespace {{packageName}}.Test
       [TearDown]
       public void Cleanup()
       {
+          Configuration.Default.AccessToken = null;
       }
 
       /// <summary>
@@ -54,7 +54,7 @@ namespace {{packageName}}.Test
       {
             Assert.IsNull(Configuration.Default.AccessToken);
 
-            await oc.Auth.Login("CONNOR_OBRIEN", "fails345", "BC4C655E-B11A-4EB0-BF61-1A349FCF72DA", new[] {"FullAccess"});
+            await oc.Auth.Login("CONNOR_OBRIEN", "fails345", "BC4C655E-B11A-4EB0-BF61-1A349FCF72DA", "FullAccess", "BuyerImpersonation");
 
             Assert.IsNotNull(Configuration.Default.AccessToken);
 

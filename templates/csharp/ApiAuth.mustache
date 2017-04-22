@@ -31,13 +31,13 @@ namespace {{packageName}}.Api
     /// </summary>
     /// <param name="grantType">Grant type for OAuth2 flow.</param>
     /// <param name="clientID">Client ID (optional).</param>
-    /// <param name="scopes">scope roles to give to authenticated user.</param>
+    /// <param name="scope">scope roles to give to authenticated user.</param>
     /// <returns></returns>
-    private static Dictionary<string,string>BaseBodyForAuth(string grantType, string clientID = null, string[] scopes = null)
+    private static Dictionary<string,string>BaseBodyForAuth(string grantType, string clientID = null, params string[] scope)
     {
       var body = new Dictionary<string, string>();   
-      body.Add("client_id", clientID != null ? clientID : Configuration.Default.ClientID);
-      body.Add("scope", (scopes != null && scopes.Length > 0) ? string.Join(" ", scopes) : string.Join(" ", Configuration.Default.Scopes));
+      body.Add("client_id", clientID ?? Configuration.Default.ClientID);
+      body.Add("scope", (scope != null && scope.Length > 0) ? string.Join(" ", scope) : string.Join(" ", Configuration.Default.Scopes));
       body.Add("grant_type", grantType);
 
       return body;
@@ -71,7 +71,7 @@ namespace {{packageName}}.Api
     /// <param name="clientID">Client ID (optional).</param>
     /// <param name="scope">scope roles to give to authenticated user.</param>
     /// <returns>bool</returns>
-    public async Task Login(string username, string password, string clientID = null, string[] scope = null)
+    public async Task Login(string username, string password, string clientID = null, params string[] scope)
     {
       var body = BaseBodyForAuth("password", clientID, scope);
       body.Add("username", username);
@@ -89,7 +89,7 @@ namespace {{packageName}}.Api
     /// <param name="clientID">Client ID (optional).</param>
     /// <param name="scope">scope roles to give to authenticated user.</param>
     /// <returns>bool</returns>
-    public async Task ElevatedLogin(string clientSecret, string username, string password, string clientID = null, string[] scope = null)
+    public async Task ElevatedLogin(string clientSecret, string username, string password, string clientID = null, params string[] scope)
     {
       var body = BaseBodyForAuth("password", clientID, scope);
       body.Add("username", username);
@@ -106,7 +106,7 @@ namespace {{packageName}}.Api
     /// <param name="clientID">Client ID (optional).</param>
     /// <param name="scope">scope roles to give to authenticated user.</param>
     /// <returns>bool</returns>
-    public async Task ClientCredentials(string clientSecret, string clientID = null, string[] scope = null) 
+    public async Task ClientCredentials(string clientSecret, string clientID = null, params string[] scope) 
     {
       var body = BaseBodyForAuth("client_credentials", clientID, scope);
       body.Add("client_secret", clientSecret);
@@ -121,7 +121,7 @@ namespace {{packageName}}.Api
     /// <param name="clientID">Client ID (optional).</param>
     /// <param name="scope">scope roles to give to authenticated user.</param>
     /// <returns>bool</returns>
-    public async Task RefreshToken(string refreshToken, string clientID = null, string[] scope = null)
+    public async Task RefreshToken(string refreshToken, string clientID = null, params string[] scope)
     {
       var body = BaseBodyForAuth("refresh_token", clientID, scope);
       body.Add("refresh_token", refreshToken);
@@ -135,11 +135,28 @@ namespace {{packageName}}.Api
     /// <param name="clientID">Client ID (optional).</param>
     /// <param name="scope">scope roles to give to authenticated user.</param>
     /// <returns>bool</returns>
-    public async Task Anonymous(string clientID = null, string[] scope = null)
+    public async Task Anonymous(string clientID = null, params string[] scope)
     {
       var body = BaseBodyForAuth("client_credentials", clientID, scope);
 
       await AuthApi.RequestAccessToken(body);
+    }
+
+    /// <summary>
+    /// Starts impersonation.
+    /// </summary>
+    /// <param name="impersonationAccessToken">User tokent to be used for impersonation</param>
+    static public void StartImpersonate(AccessToken impersonationAccessToken)
+    {
+      Configuration.Default.ImpersonationToken = impersonationAccessToken;
+    }
+
+    /// <summary>
+    /// Stops impersonation.
+    /// </summary>
+    static public void StopImpersonate()
+    {
+      Configuration.Default.ImpersonationToken = null;
     }
   }
 }

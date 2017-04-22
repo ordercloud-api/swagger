@@ -1,5 +1,5 @@
 {
-  "artifactVersion": "1.0.43",
+  "artifactVersion": "1.0.44",
   "invokerPackage": "OrderCloud",
   "apiPackage": "Api",
   "modelPackage": "Model",

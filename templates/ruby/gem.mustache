@@ -4,7 +4,6 @@
 
 # Common files
 require '{{gemName}}/api_client'
-require '{{gemName}}/api_auth'
 require '{{gemName}}/api_error'
 require '{{gemName}}/version'
 require '{{gemName}}/configuration'
@@ -16,6 +15,7 @@ require '{{gemName}}/{{modelPackage}}/{{classFilename}}'{{/model}}
 {{/models}}
 
 # APIs
+require '{{gemName}}/api/auth_api'
 {{#apiInfo}}
 {{#apis}}
 require '{{importPath}}'
