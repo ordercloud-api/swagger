@@ -10,14 +10,19 @@ module {{moduleName}}
     include Singleton
 
     private
-    def self._base_body_for_auth(grant_type, client_secret = nil)
+    def self._base_body_for_auth(grant_type, client_secret = nil, client_id = nil, scope = nil)
       body = {
         :client_id => {{moduleName}}::Configuration.default.client_id,
+        :scope => {{moduleName}}::Configuration.default.scopes.join(" "),
         :grant_type => grant_type,
       }
 
-      if Configuration.default.scopes
-        body = body.merge({ :scope => {{moduleName}}::Configuration.default.scopes.join("+") })
+      if client_id
+        body = body.merge({ :client_id => client_id })
+      end
+
+      if scope
+        body = body.merge({ :scope => scope.join(" ") })
       end
 
       if client_secret
@@ -37,15 +42,11 @@ module {{moduleName}}
       request.on_complete do |response|
         if response.success?
           token = JSON.parse(response.body)
-          if(token.key?("error"))
-            fail token["error"]
-          else
           {{moduleName}}::Configuration.default.access_token = OrderCloud::AccessToken.new({
             :access_token => token["access_token"], 
             :expires_in => token["expires_in"],
             :token_type => token["token_type"]
           })
-          end
         elsif response.timed_out?
           fail "HTTP Request timed out"
         elsif response.code == 0
@@ -57,8 +58,19 @@ module {{moduleName}}
       request.run
     end
 
-    def self.login(username, password, client_secret = nil)
-      body = _base_body_for_auth("password", client_secret)
+    def self.login(username, password, client_id = nil, scope = nil)
+      body = _base_body_for_auth("password", nil, client_id, scope)
+
+      body = body.merge({
+        :username => username,
+        :password => password
+      })
+
+      _request_access_token(body)
+    end
+
+    def self.elevated_login(username, password, client_secret, client_id = nil, scope = nil)
+      body = _base_body_for_auth("password", client_secret, client_id, scope)
 
       body = body.merge({
         :username => username,
@@ -70,6 +82,24 @@ module {{moduleName}}
 
     def self.authenticate(client_secret = nil)
       body = _base_body_for_auth("client_credentials", client_secret)
+
+      _request_access_token(body)
+    end
+
+    def self.client_secret(client_secret, client_id = nil, scope = nil)
+      body = _base_body_for_auth("client_credentials", client_secret, client_id, scope)
+
+      _request_access_token(body)
+    end
+
+    def self.anonymous(client_id = nil, scope = nil)
+      body = _base_body_for_auth("client_credentials", nil, client_id, scope)
+
+      _request_access_token(body)
+    end
+
+    def self.refresh_token(refresh_token, client_id = nil, scope = nil)
+      body = _base_body_for_auth("refresh_token", nil, client_id, scope)
 
       _request_access_token(body)
     end

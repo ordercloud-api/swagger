@@ -1,6 +1,6 @@
 {
   "packageName": "OrderCloudSDK",
-  "packageVersion": "1.0.0",
+  "packageVersion": "1.0.50",
   "useDateTimeOffset": true,
   "optionalAssemblyInfo": true,
   "supportsAsync": true,

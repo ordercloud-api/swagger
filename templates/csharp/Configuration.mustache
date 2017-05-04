@@ -43,6 +43,7 @@ namespace {{packageName}}.Client
         /// <summary>
         /// </summary>
         public bool Impersonate = false;
+        public bool StayImpersonating = false;
 
         /// <summary>
         /// Initializes a new instance of the Configuration class with different settings
@@ -251,14 +252,17 @@ namespace {{packageName}}.Client
           set {
             _accessToken = value;
           } get {
-            if(Impersonate != false && !String.IsNullOrEmpty(ImpersonationToken._AccessToken))
+            if(Impersonate != false && !string.IsNullOrEmpty(ImpersonationToken._AccessToken))
             {
-              Impersonate = false;
-              return ImpersonationToken;
-            } else {
-              return _accessToken;
+                Impersonate = false;
+                return ImpersonationToken;
             }
-          }
+            if (StayImpersonating && !string.IsNullOrEmpty(ImpersonationToken._AccessToken))
+            {
+                return ImpersonationToken;
+            }
+            return _accessToken;
+            }
         }
 
         /// <summary>

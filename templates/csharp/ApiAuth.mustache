@@ -146,17 +146,19 @@ namespace {{packageName}}.Api
     /// Starts impersonation.
     /// </summary>
     /// <param name="impersonationAccessToken">User tokent to be used for impersonation</param>
-    static public void StartImpersonate(AccessToken impersonationAccessToken)
+    public void StartImpersonate(AccessToken impersonationAccessToken)
     {
-      Configuration.Default.ImpersonationToken = impersonationAccessToken;
+        Configuration.Default.StayImpersonating = true;
+        Configuration.Default.ImpersonationToken = impersonationAccessToken;
     }
 
     /// <summary>
     /// Stops impersonation.
     /// </summary>
-    static public void StopImpersonate()
+    public void StopImpersonate()
     {
-      Configuration.Default.ImpersonationToken = null;
+        Configuration.Default.StayImpersonating = false;
+        Configuration.Default.ImpersonationToken = null;
     }
   }
 }
