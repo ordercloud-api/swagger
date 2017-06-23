@@ -32,8 +32,8 @@ namespace {{packageName}}.Test
       public void Init()
       {
           var config = Configuration.Default;
-          config.AuthURL = "https://stagingauth.ordercloud.io";
-          config.ApiClient = new ApiClient("https://stagingapi.ordercloud.io/v1");
+          config.AuthURL = "https://qaauth.ordercloud.io";
+          config.ApiClient = new ApiClient("https://qaapi.ordercloud.io/v1");
           oc = new OrderCloudClient(config);
       }
 
@@ -52,17 +52,7 @@ namespace {{packageName}}.Test
       [Test]
       public async Task CanLoginWithPasswordFlowTest()
       {
-            Assert.IsNull(Configuration.Default.AccessToken);
-
-            await oc.Auth.Login("CONNOR_OBRIEN", "fails345", "BC4C655E-B11A-4EB0-BF61-1A349FCF72DA", "FullAccess", "BuyerImpersonation");
-
-            Assert.IsNotNull(Configuration.Default.AccessToken);
-
-            var me = oc.Me.Get();
-            var meAwaited = await oc.Me.GetAsync();
-            Assert.AreEqual("CONNOR_OBRIEN", me.Username);
-            Assert.AreEqual("CONNOR_OBRIEN", meAwaited.Username);
-        }
+      }
 
       /// <summary>
     /// Test that authenticate is successful
@@ -70,23 +60,6 @@ namespace {{packageName}}.Test
       [Test]
       public async Task CanAuthenticateWithCredentialsFlowTest()
       {
-          Assert.IsNull(Configuration.Default.AccessToken);
-
-          await oc.Auth.ClientCredentials("potato", "A015750C-B342-4B78-B0B8-32AAD7ACE076", new[] {"FullAccess", "BuyerImpersonation"});
-
-          Assert.IsNotNull(Configuration.Default.AccessToken);
-
-          Configuration.Default.ImpersonationToken = oc.Users.GetAccessToken("e3mpDiik3Ua_kZ9V66jQ6g", "j2qPn7FyTECStXqY8sPTAQ",
-              new ImpersonateTokenRequest
-              {
-                  ClientID = "BC4C655E-B11A-4EB0-BF61-1A349FCF72DA",
-                  Roles = new List<string>() { "FullAccess" }
-              });
-
-          var adminMe = await oc.Me.GetAsync();
-          var impersonatedMe = await oc.As().Me.GetAsync();
-          Assert.AreEqual("cobrien451", adminMe.Username);
-          Assert.AreEqual("CONNOR_OBRIEN", impersonatedMe.Username);
       }
 
       /// <summary>

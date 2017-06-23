@@ -59,12 +59,12 @@ class ApiAuthTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-        ApiAuthTest::$validClientId = "BA89381F-E787-477D-B220-F8A01F0D582A";
-        ApiAuthTest::$validUsername = "testo5";
-        ApiAuthTest::$validPassword = "testo5";
+        ApiAuthTest::$validClientId = "XXXXX";
+        ApiAuthTest::$validUsername = "XXXX";
+        ApiAuthTest::$validPassword = "XXXX";
         ApiAuthTest::$validClientSecret = "";
 
-        ApiAuthTest::$invalidClientId = "L6kzJlz1ewwYYeVozNCs";
+        ApiAuthTest::$invalidClientId = "XXXXX";
         ApiAuthTest::$invalidUsername = "invaliduser";
         ApiAuthTest::$invalidPassword = "invalidpassword";
         ApiAuthTest::$invalidClientSecret = "L6kzJlz1ewwYYeVozNCs";
@@ -107,12 +107,6 @@ class ApiAuthTest extends \PHPUnit_Framework_TestCase
      */
     public function testPasswordFlowSuccesfulLogin()
     {
-        Configuration::getDefaultConfiguration()->setClientId(ApiAuthTest::$validClientId);
-        Configuration::getDefaultConfiguration()->setScopes(ApiAuthTest::$scopes);
-
-        ApiAuth::login(ApiAuthTest::$validUsername, ApiAuthTest::$validPassword);
-
-        $this->assertNotNull(Configuration::getDefaultConfiguration()->getAccessToken());
     }
 
     /**
@@ -120,10 +114,6 @@ class ApiAuthTest extends \PHPUnit_Framework_TestCase
      */
     public function testPasswordFlowFailsWithEmptyClientId()
     {
-        Configuration::getDefaultConfiguration()->setClientId('');
-        Configuration::getDefaultConfiguration()->setScopes(ApiAuthTest::$scopes);
-
-        ApiAuth::login(ApiAuthTest::$validUsername, ApiAuthTest::$validPassword);
     }
 
     /**
@@ -131,10 +121,6 @@ class ApiAuthTest extends \PHPUnit_Framework_TestCase
      */
     public function testPasswordFlowFailsWithInvalidClientId()
     {
-        Configuration::getDefaultConfiguration()->setClientId(ApiAuthTest::$invalidClientId);
-        Configuration::getDefaultConfiguration()->setScopes(ApiAuthTest::$scopes);
-
-        ApiAuth::login(ApiAuthTest::$validUsername, ApiAuthTest::$validPassword);
     }
 
     /**
@@ -142,19 +128,10 @@ class ApiAuthTest extends \PHPUnit_Framework_TestCase
      */
     public function testPasswordFlowFailsWithInvalidUsernamePassword()
     {
-        Configuration::getDefaultConfiguration()->setClientId(ApiAuthTest::$validClientId);
-        Configuration::getDefaultConfiguration()->setScopes(ApiAuthTest::$scopes);
-
-        ApiAuth::login(ApiAuthTest::$invalidUsername, ApiAuthTest::$invalidPassword);
     }
 
     public function testCredentialsFlowSuccesfulLogin()
     {
-        Configuration::getDefaultConfiguration()->setClientId(ApiAuthTest::$validClientId);
-        Configuration::getDefaultConfiguration()->setScopes(ApiAuthTest::$scopes);
-
-        ApiAuth::authenticate(ApiAuthTest::$validClientSecret);
-        $this->assertNotNull(Configuration::getDefaultConfiguration()->getAccessToken());
     }
 
     /**
@@ -162,10 +139,6 @@ class ApiAuthTest extends \PHPUnit_Framework_TestCase
      */
     public function testCredentialsFlowFailsWithEmptyClientId()
     {
-        Configuration::getDefaultConfiguration()->setClientId('');
-        Configuration::getDefaultConfiguration()->setScopes(ApiAuthTest::$scopes);
-
-        ApiAuth::authenticate(ApiAuthTest::$validClientSecret);
     }
 
     /**
@@ -173,16 +146,10 @@ class ApiAuthTest extends \PHPUnit_Framework_TestCase
      */
     public function testCredentialsFlowFailsWithInvalidClientId()
     {
-        Configuration::getDefaultConfiguration()->setClientId(ApiAuthTest::$invalidClientId);
-        Configuration::getDefaultConfiguration()->setScopes(ApiAuthTest::$scopes);
-
-        ApiAuth::authenticate(ApiAuthTest::$validClientSecret);
     }
 
     public function testImpersonationSucceeds()
     {
-        ApiAuth::startImpersonate(ApiAuthTest::$impersonationToken);
-        $this->assertTrue(Configuration::getDefaultConfiguration()->isImpersonating());
     }
 
     /**
@@ -190,25 +157,13 @@ class ApiAuthTest extends \PHPUnit_Framework_TestCase
      */
     public function testImpersonationFailsWhenNoToken()
     {
-        ApiAuth::startImpersonate('');
-        $this->assertFalse(Configuration::getDefaultConfiguration()->isImpersonating());
     }
 
     public function testImpersonationStopsProperly()
     {
-        ApiAuth::startImpersonate(ApiAuthTest::$impersonationToken);
-        $this->assertTrue(Configuration::getDefaultConfiguration()->isImpersonating());
-
-        ApiAuth::stopImpersonate();
-        $this->assertFalse(Configuration::getDefaultConfiguration()->isImpersonating());
     }
 
     public function testImpersonationReturnProperToken()
     {
-        ApiAuth::startImpersonate(ApiAuthTest::$impersonationToken);
-        $this->assertEquals(Configuration::getDefaultConfiguration()->getAccessToken(), ApiAuthTest::$impersonationToken);
-
-        ApiAuth::stopImpersonate();
-        $this->assertNotEquals(Configuration::getDefaultConfiguration()->getAccessToken(), ApiAuthTest::$impersonationToken);
     }
 }
