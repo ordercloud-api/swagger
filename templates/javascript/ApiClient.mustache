@@ -386,6 +386,12 @@
     // set header parameters
     request.set(this.defaultHeaders).set(this.normalizeParams(headerParams));
 
+    // dont cache response (guards against IE's aggressive caching)
+    request.set('X-Requested-With', 'XMLHttpRequest')
+    request.set('Expires', '-1')
+    request.set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
+    request.set('Pragma', 'no-cache');
+
     // set request timeout
     request.timeout(this.timeout);
 
@@ -462,6 +468,12 @@ exports.prototype.callAuth = function callApi(path, httpMethod, pathParams,
 
     // set header parameters
     request.set(this.defaultHeaders).set(this.normalizeParams(headerParams));
+
+    // dont cache response (guards against IE's aggressive caching)
+    request.set('X-Requested-With', 'XMLHttpRequest')
+    request.set('Expires', '-1')
+    request.set('Cache-Control', 'no-cache,no-store,must-revalidate,max-age=-1,private')
+    request.set('Pragma', 'no-cache');
 
     // set request timeout
     request.timeout(this.timeout);
