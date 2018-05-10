@@ -89,6 +89,38 @@ export class LoginComponent {
   }
 }
 ```
+### Filtering
+
+All of the [filtering options](https://developer.ordercloud.io/documentation/platform-guides/basic-api-features/filtering)  you love from the API are available through the SDK as well. Simply pass in a key/value pair to the filters object on list calls where the `key` is any top-level API model *or* a custom indexed xp value and the `value` is the value you'd like to filter on.
+
+Let's run through a couple scenarios and what the call will look like with the SDK:
+
+My products where xp.Featured is true
+``` typescript
+return this.meService.ListProducts({filters: {'xp.Featured': true})
+```
+
+My orders submitted after April 20th, 2018
+```typescript
+return this.meService.ListOrders( {filters: {DateSubmitted: '>2018-04-20'}})
+```
+
+Users with the last name starting with Smith:
+``` typescript
+return this.userService('my-mock-buyerid', {filters: {LastName: 'Smith*'})
+```
+
+Users with the last name starting with Smith *or* users with the last name *ending* with Jones 
+```typescript
+return this.userService('my-mock-buyerid', {filters: {LastName: 'Smith*|*Jones'}})
+```
+
+My products where xp.Color is not red *and* not blue
+```typescript
+return this.productService.List({filters: {'xp.Color': ['!red', '!blue']}});
+```
+
+And of course you can mix and match filters to your heart's content.
 
 ### Impersonation
 

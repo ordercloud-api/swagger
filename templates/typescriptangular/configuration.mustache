@@ -1,3 +1,5 @@
+import { HttpParams } from '@angular/common/http';
+
 export interface ConfigurationParameters {
     /**
      * the path that will be used to talk to the ordercloud api
@@ -35,6 +37,27 @@ export class Configuration {
         this.basePath = configurationParameters.basePath;
         this.authPath = configurationParameters.authPath;
         this.cookiePrefix = configurationParameters.cookiePrefix;
+    }
+
+    /**
+     * Unwrap filters object - Swagger doesn't support free-form query parameters
+     * out of the box so we need to manually unwrap filters ourselves
+     */
+    public unwrapFilters(filters: any, queryParameters: HttpParams) {
+        for (var filterKey in filters) {
+            var filterVal = filters[filterKey];
+              if (filters.hasOwnProperty(filterKey) && filterVal != undefined && filterVal != null) {
+                if (filterVal instanceof Array) {
+                    filterVal.forEach((arrayVal, index) => {
+                        let action = index === 0 ? 'set' : 'append';
+                        queryParameters = queryParameters[action](filterKey, <any>arrayVal);
+                    })
+                } else {
+                    queryParameters = queryParameters.set(filterKey, filterVal);
+                }
+              }
+            }
+        return queryParameters;
     }
 
     /**
