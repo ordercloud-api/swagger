@@ -1,16 +1,16 @@
 {
-    "readme": "All available configurations are listed here. The first set are unchanged defaults. Those after the space are customized",
-    "sortParamsByRequiredFlag": true,
-    "ensureUniqueParams": true,
-    "allowUnicodeIdentifiers": true,
-    "modelPropertyNaming": "original",
-    "snapshot": false,
-    "ngVersion": "4.3",
-    "withInterfaces": false,
+  "readme": "All available configurations are listed here. The first set are unchanged defaults. Those after the space are customized",
+  "sortParamsByRequiredFlag": true,
+  "ensureUniqueParams": true,
+  "allowUnicodeIdentifiers": true,
+  "modelPropertyNaming": "original",
+  "snapshot": false,
+  "ngVersion": "4.3",
+  "withInterfaces": false,
 
 
-    "supportsES6": true,
-    "npmName": "@ordercloud/angular-sdk",
-    "npmVersion": "0.0.1-6",
-    "npmRepository": "https://github.com/ordercloud-api/angular-client"
+  "supportsES6": true,
+  "npmName": "@ordercloud/angular-sdk",
+  "npmVersion": "0.0.1-7",
+  "npmRepository": "https://github.com/ordercloud-api/angular-client"
 }
