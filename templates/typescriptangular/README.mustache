@@ -1,23 +1,18 @@
-## OrderCloud Angular SDK v{{npmVersion}}
+# OrderCloud.io's Angular SDK
 
-[OrderCloud](https://developer.ordercloud.io/documentation/) is a cloud-hosted B2B eCommerce platform exposed entirely via a RESTful API.
+> The official client library for building Angular (4.3+) solutions on [OrderCloud.io's](https://developer.ordercloud.io/documentation) B2B ecommerce platform
 
-This package is an SDK for OrderCloud's API written in Angular 4.3+ (Typescript). All of the methods are a 1:1 reflection of the API with
-the addition of the AuthService for authentication and the TokenService exposed as a convenience service for storing and getting authentication tokens.
+This SDK aims to greatly improve developer productivity and reduce errors by providing discoverable, strongly-typed wrappers for all public endpoints and request/response models.
 
-Use of this SDK assumes basic understanding of the API. If you're not quite there yet, no problem! Level up by reading up on [our docs](https://developer.ordercloud.io/documentation/)
+All included methods are a 1:1 reflection of the API with the *addition* of the `AuthService` for authentication and the `TokenService` exposed as a convenience service for setting and getting authentication tokens
 
 ### Acknowledgement
 
-This Angular SDK is made possible by leveraging the [Swagger Codegen](https://github.com/swagger-api/swagger-codegen) project.
+This Angular SDK is made possible by leveraging [Swagger's](https://swagger.io/) open source tools with our Open API Specification: `https://api.ordercloud.io/v1/swagger`
 
 ### Requirements
-Dependencies for this SDK are defined as peer-dependencies. For the uninitiated this simply means that npm will not install them for you, and
-they must be installed separately. This ensures that those packages will continue working should you use them independent of the SDK.
-
-Not to worry though, as long as you have installed at least Angular 4.3 the only other dependency you should have to worry about is 
-angular2-cookie(^1.2.6) which is used by the TokenService to store auth tokens.
-
+* Angular 4.3+
+* `ngx-cookie` > 2.0.0 (peer dependency)
 
 ### Installation
 
@@ -31,7 +26,7 @@ npm install --save @ordercloud/angular-sdk
 
 In your root app module:
 
-```javascript
+```typescript
 import { OrderCloudModule, Configuration } from '@ordercloud/angular-sdk';
 
 @NgModule({
@@ -46,12 +41,12 @@ import { OrderCloudModule, Configuration } from '@ordercloud/angular-sdk';
 export class AppModule {}
 ```
 
-### Your first API call
+### Your First API Call
 
 Now that your app is configured you can authenticate and make your
 first api call!
 
-```javascript
+```typescript
 import { AuthService, TokenService, MeService } from '@ordercloud/angular-sdk';
 
 @Component({
@@ -97,13 +92,11 @@ export class LoginComponent {
 
 ### Impersonation
 
-Impersonation allows a seller user to make an api call on behalf of another user. The SDK enables this by exposing the
-`As()` method for each service. 
+Impersonation allows a seller user to make an api call on behalf of another user. The SDK enables this by exposing the `As()` method for each service. 
 
-Assuming you are already authenticated and have the required ImpersonationConfigs set up for your organization, 
-an impersonation call will look something like this:
+Assuming you are already authenticated and have the required ImpersonationConfigs set up for your organization, an impersonation call will look something like this:
 
-```javascript
+```typescript
 import { AuthService, TokenService, MeService } from '@ordercloud/angular-sdk';
 
 @Component({
@@ -145,14 +138,9 @@ Every method can be configured with `observe` and `reportProgress` by setting th
 
 ### Getting Help
 
-The [API reference](https://developer.ordercloud.io/documentation/api-reference/) should be your go to reference but if you get stuck or have some feedback about
-this SDK please drop us a line on our [community slack channel](https://developer.ordercloud.io/documentation/) or ask a question on [StackOverflow](https://stackoverflow.com/questions/tagged/ordercloud)
-just use the tag `ordercloud`.
+The [API reference](https://developer.ordercloud.io/documentation/api-reference) should be your go to reference but if you get stuck or have some feedback about this SDK please drop us a line on our [community slack channel](https://developer.ordercloud.io/community) or ask a question on [StackOverflow](https://stackoverflow.com/questions/tagged/ordercloud) just use the tag `ordercloud`.
 
 
 ### Contributing
 
-Because this SDK is generated with the help of the swagger codegen we can't accept PR's on this project directly (as they would simply get overwritten when regenerated).
-Instead, please check out how to contribute on our swagger and swagger codegen repositories for PR's.
-
-If you see any typo's or have any general feedback please let us know. We really want to make this an easy to use and understand SDK!
+Because this SDK is generated with the help of the swagger codegen we can't accept PR's on this project directly (as they would simply get overwritten when regenerated) but please open an issue if you notice any bugs, typos, or have general feedback about the SDK. We really want to make this SDK a pleasure to use!

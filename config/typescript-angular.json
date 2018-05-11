@@ -11,6 +11,6 @@
 
     "supportsES6": true,
     "npmName": "@ordercloud/angular-sdk",
-    "npmVersion": "0.0.0",
-    "npmRepository": "UPDATE_NPM_REPO"
+    "npmVersion": "0.0.1-2",
+    "npmRepository": "https://github.com/ordercloud-api/angular-client"
 }
