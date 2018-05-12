@@ -5,12 +5,11 @@
   "allowUnicodeIdentifiers": true,
   "modelPropertyNaming": "original",
   "snapshot": false,
-  "ngVersion": "4.3",
+  "ngVersion": "6.0.0",
   "withInterfaces": false,
-
 
   "supportsES6": true,
   "npmName": "@ordercloud/angular-sdk",
-  "npmVersion": "0.0.1-8",
+  "npmVersion": "0.0.1-9",
   "npmRepository": "https://github.com/ordercloud-api/angular-client"
 }

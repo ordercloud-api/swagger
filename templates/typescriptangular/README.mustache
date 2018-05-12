@@ -1,6 +1,6 @@
 # OrderCloud.io's Angular SDK
 
-> The official client library for building Angular (4.3+) solutions on [OrderCloud.io's](https://developer.ordercloud.io/documentation) B2B ecommerce platform
+> The official client library for building Angular ({{ngVersion}}+) solutions on [OrderCloud.io's](https://developer.ordercloud.io/documentation) B2B ecommerce platform
 
 This SDK aims to greatly improve developer productivity and reduce errors by providing discoverable, strongly-typed wrappers for all public endpoints and request/response models.
 
@@ -11,7 +11,7 @@ All included methods are a 1:1 reflection of the API with the *addition* of the 
 This Angular SDK is made possible by leveraging [Swagger's](https://swagger.io/) open source tools with our Open API Specification: `https://api.ordercloud.io/v1/swagger`
 
 ### Requirements
-* Angular 4.3+
+* Angular {{ngVersion}}+
 * `ngx-cookie` > 2.0.0 (peer dependency)
 
 ### Installation
@@ -164,7 +164,7 @@ export class ImpersonationExample {
 ```
 
 ### Http Responses
-This SDK takes advantage of the newer version of the [HTTP service](https://blog.angularindepth.com/the-new-angular-httpclient-api-9e5c85fe3361) introduced in Angular 4.3
+This SDK takes advantage of the version of the [HTTP service](https://blog.angularindepth.com/the-new-angular-httpclient-api-9e5c85fe3361) introduced in Angular 4.3
 
 Every method can be configured with `observe` and `reportProgress` by setting their values in the options object. If omitted they will default to `'body'` and `false` respectively.
 

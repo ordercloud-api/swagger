@@ -14,7 +14,7 @@ import { Response, ResponseContentType }                     from '@angular/http
 import { CustomQueryEncoderHelper }                          from '../encoder';
 {{/useHttpClient}}
 
-import { Observable }                                        from 'rxjs/Observable';
+import { Observable }                                        from 'rxjs{{#useRxjsVersion6Imports}}';{{/useRxjsVersion6Imports}}{{^useRxjsVersion6Imports}}/Observable';{{/useRxjsVersion6Imports}}
 import { TokenService }                                      from './token.service';
 {{^useHttpClient}}
 import '../rxjs-operators';

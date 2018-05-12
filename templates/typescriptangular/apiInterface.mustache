@@ -1,7 +1,7 @@
 {{>licenseInfo}}
 import { Headers }                                           from '@angular/http';
 
-import { Observable }                                        from 'rxjs/Observable';
+import { Observable }                                        from 'rxjs{{#useRxjsVersion6Imports}}';{{/useRxjsVersion6Imports}}{{^useRxjsVersion6Imports}}/Observable';{{/useRxjsVersion6Imports}}
 
 import * as models                                           from '../model/models';
 import { Configuration }                                     from '../configuration';
