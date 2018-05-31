@@ -46,7 +46,10 @@ export class Configuration {
     public unwrapFilters(filters: any, queryParameters: HttpParams) {
         for (var filterKey in filters) {
             var filterVal = filters[filterKey];
-              if (filters.hasOwnProperty(filterKey) && filterVal != undefined && filterVal != null) {
+              if(filterVal === null) {
+                  throw new Error(`Parameter ${filterKey} is null. Use negative filters ("!" operator) to return items without a certain value. For example an order list call with status: !Unsubmitted would return all orders without a status of Unsubmitted`);
+              }
+              if (filters.hasOwnProperty(filterKey) && filterVal !== undefined) {
                 if (filterVal instanceof Array) {
                     filterVal.forEach((arrayVal, index) => {
                         let action = index === 0 ? 'set' : 'append';

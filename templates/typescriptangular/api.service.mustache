@@ -181,7 +181,7 @@ export class {{classname}} {
         {{/isDateTime}}
         }
         if ({{^required}}opts.{{/required}}{{paramName}} === null) {
-            throw new Error('Parameter {{paramName}} was null when calling {{operationIdCamelCase}}. Null filters are not allowed. Use negative filters ("!" operator) to return items without a certain value. For example an order list call with status: !Unsubmitted would return all orders without a status of Unsubmitted');
+            throw new Error('Parameter {{paramName}} was null when calling {{operationIdCamelCase}}. Use negative filters ("!" operator) to return items without a certain value. For example an order list call with status: !Unsubmitted would return all orders without a status of Unsubmitted');
         }
         {{/isListContainer}}
 {{/queryParams}}
