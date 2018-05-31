@@ -38,7 +38,7 @@
     "@angular/common": "^{{ngVersion}}",
     "@angular/compiler": "^{{ngVersion}}",
     "@angular/platform-browser": "^{{ngVersion}}",
-    "rxjs": "^6.0.0",
+    "rxjs": "^{{#useRxjsVersion6Imports}}6.0.0{{/useRxjsVersion6Imports}}{{^useRxjsVersion6Imports}}5.4.0{{/useRxjsVersion6Imports}}",
     "zone.js": "<1",
     "typescript": "^2.1.5",
     "ngx-cookie": "^2.0.0"
