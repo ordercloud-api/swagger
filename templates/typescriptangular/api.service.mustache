@@ -173,7 +173,7 @@ export class {{classname}} {
         {{/isDateTime}}
         {{^isDateTime}}
             {{#isFilterParam}}
-            queryParameters = this.configuration.unwrapFilters({{^required}}opts.{{/required}}{{paramName}}, queryParameters);
+            queryParameters = this.configuration.unwrapFilters({{^required}}opts.{{/required}}{{paramName}}, queryParameters, '{{operationIdCamelCase}}');
             {{/isFilterParam}}
             {{^isFilterParam}}
             {{#useHttpClient}}queryParameters = {{/useHttpClient}}queryParameters.set('{{baseName}}', <any>{{^required}}opts.{{/required}}{{paramName}});
@@ -181,7 +181,7 @@ export class {{classname}} {
         {{/isDateTime}}
         }
         if ({{^required}}opts.{{/required}}{{paramName}} === null) {
-            throw new Error('Parameter {{paramName}} was null when calling {{operationIdCamelCase}}. Use negative filters ("!" operator) to return items without a certain value. For example an order list call with status: !Unsubmitted would return all orders without a status of Unsubmitted');
+            throw new Error('Parameter {{paramName}} was null when calling {{operationIdCamelCase}}. Null values are not allowed');
         }
         {{/isListContainer}}
 {{/queryParams}}
