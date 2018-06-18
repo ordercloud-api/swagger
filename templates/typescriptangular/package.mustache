@@ -28,9 +28,9 @@
     "@angular/common": "^{{ngVersion}}",
     "@angular/compiler": "^{{ngVersion}}",
     "core-js": "^2.5.4",
-    "rxjs": "^5.4.0",
+    "rxjs": "^{{#useRxjsVersion6Imports}}6.0.0{{/useRxjsVersion6Imports}}{{^useRxjsVersion6Imports}}5.4.0{{/useRxjsVersion6Imports}}",
     "zone.js": "<1.0.0",
-    "ngx-cookie": "^2.0.0"
+    "ngx-cookie": "^4.0.0"
   },
   "devDependencies": {
     "@angular/core": "^{{ngVersion}}",
@@ -41,6 +41,6 @@
     "rxjs": "^{{#useRxjsVersion6Imports}}6.0.0{{/useRxjsVersion6Imports}}{{^useRxjsVersion6Imports}}5.4.0{{/useRxjsVersion6Imports}}",
     "zone.js": "<1",
     "typescript": "^2.1.5",
-    "ngx-cookie": "^2.0.0"
+    "ngx-cookie": "^4.0.0"
   }
 }
