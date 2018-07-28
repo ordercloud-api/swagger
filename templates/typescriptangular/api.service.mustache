@@ -15,7 +15,7 @@ import { CustomQueryEncoderHelper }                          from '../encoder';
 {{/useHttpClient}}
 
 import { Observable }                                        from 'rxjs{{#useRxjsVersion6Imports}}';{{/useRxjsVersion6Imports}}{{^useRxjsVersion6Imports}}/Observable';{{/useRxjsVersion6Imports}}
-import { TokenService }                                      from './token.service';
+import { OcTokenService }                                      from './token.service';
 {{^useHttpClient}}
 import '../rxjs-operators';
 {{/useHttpClient}}
@@ -50,7 +50,7 @@ export class {{classname}} {
     public configuration = new Configuration();
     private impersonating = false;
 
-    constructor(protected {{#useHttpClient}}httpClient: HttpClient{{/useHttpClient}}{{^useHttpClient}}http: Http{{/useHttpClient}}, protected tokens: TokenService, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected {{#useHttpClient}}httpClient: HttpClient{{/useHttpClient}}{{^useHttpClient}}http: Http{{/useHttpClient}}, protected ocTokenService: OcTokenService, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -224,7 +224,7 @@ export class {{classname}} {
 
 {{/isBasic}}
 {{#isOAuth}}
-        let accessToken = this.impersonating ? this.tokens.GetImpersonation() : this.tokens.GetAccess();
+        let accessToken = this.impersonating ? this.ocTokenService.GetImpersonation() : this.ocTokenService.GetAccess();
         this.impersonating = false;
         {{#useHttpClient}}headers = {{/useHttpClient}}headers.set('Authorization', 'Bearer ' + accessToken);
 

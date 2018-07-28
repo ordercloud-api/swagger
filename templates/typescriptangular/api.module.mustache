@@ -13,8 +13,8 @@ import { Configuration } from './configuration';
 import { {{classname}} } from './{{importPath}}';
 {{/apis}}
 {{/apiInfo}}
-import { AuthService } from './api/auth.service';
-import { TokenService } from './api/token.service';
+import { OcAuthService } from './api/auth.service';
+import { OcTokenService } from './api/token.service';
 
 @NgModule({
   imports:      [ CommonModule, {{#useHttpClient}}HttpClientModule{{/useHttpClient}}{{^useHttpClient}}HttpModule{{/useHttpClient}} ],
@@ -23,8 +23,8 @@ import { TokenService } from './api/token.service';
   providers: [
     {{#apiInfo}}{{#apis}}{{classname}}{{#hasMore}},
     {{/hasMore}}{{/apis}}{{/apiInfo}},
-    AuthService,
-    TokenService
+    OcAuthService,
+    OcTokenService
      ]
 })
 export class OrderCloudModule {

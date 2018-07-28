@@ -6,8 +6,8 @@ import { {{ classname }} } from './{{ classFilename }}';
 {{/operations}}
 {{/apis}}
 export * from './auth.service';
-import { AuthService } from './auth.service';
+import { OcAuthService } from './auth.service';
 export * from './token.service';
-import { TokenService } from './token.service';
-export const APIS = [{{#apis}}{{#operations}}{{ classname }}{{/operations}}{{^-last}}, {{/-last}}{{/apis}}, AuthService, TokenService];
+import { OcTokenService } from './token.service';
+export const APIS = [{{#apis}}{{#operations}}{{ classname }}{{/operations}}{{^-last}}, {{/-last}}{{/apis}}, OcAuthService, OcTokenService];
 {{/apiInfo}}

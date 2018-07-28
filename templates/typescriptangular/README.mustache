@@ -4,7 +4,7 @@
 
 This SDK aims to greatly improve developer productivity and reduce errors by providing discoverable, strongly-typed wrappers for all public endpoints and request/response models.
 
-All included methods are a 1:1 reflection of the API with the *addition* of the `AuthService` for authentication and the `TokenService` exposed as a convenience service for setting and getting authentication tokens
+All included methods are a 1:1 reflection of the API with the *addition* of the `OcAuthService` for authentication and the `OcTokenService` exposed as a convenience service for setting and getting authentication tokens
 
 ### Acknowledgement
 
@@ -47,7 +47,7 @@ Now that your app is configured you can authenticate and make your
 first api call!
 
 ```typescript
-import { AuthService, TokenService, MeService } from '@ordercloud/angular-sdk';
+import { OcAuthService, OcTokenService, OcMeService } from '@ordercloud/angular-sdk';
 
 @Component({
   selector: '...',
@@ -57,9 +57,9 @@ import { AuthService, TokenService, MeService } from '@ordercloud/angular-sdk';
 
 export class LoginComponent {
   constructor(
-    private authService: AuthService,
-    private tokenService: TokenService,
-    private meService: MeService
+    private ocAuthService: OcAuthService,
+    private ocTokenService: OcTokenService,
+    private ocMeService: OcMeService
   ) { }
 
   login() {
@@ -69,18 +69,18 @@ export class LoginComponent {
     let scope = [ 'Shopper' ];
 
     // login as this user
-    return this.authService.Login(username, password, clientid, scope).subscribe(
+    return this.ocAuthService.Login(username, password, clientid, scope).subscribe(
         authResponse => {
           
           // set the access token in the cookies, now any subsequent calls to the api
           // will automatically have this token set in the headers
-          this.tokenService.SetAccess(authResponse.access_token);
+          this.ocTokenService.SetAccess(authResponse.access_token);
 
           // make call to get that user's details
-          this.meService.Get().subscribe(
+          this.ocMeService.Get().subscribe(
             currentUser => {
 
-              // because we set that user's token a meService.Get will return details for that user
+              // because we set that user's token a ocMeService.Get will return details for that user
               console.log(currentUser)
             }
           )
@@ -97,27 +97,27 @@ Let's run through a couple scenarios and what the call will look like with the S
 
 My products where xp.Featured is true
 ``` typescript
-return this.meService.ListProducts({filters: {'xp.Featured': true})
+return this.ocMeService.ListProducts({filters: {'xp.Featured': true})
 ```
 
 My orders submitted after April 20th, 2018
 ```typescript
-return this.meService.ListOrders( {filters: {DateSubmitted: '>2018-04-20'}})
+return this.ocMeService.ListOrders( {filters: {DateSubmitted: '>2018-04-20'}})
 ```
 
 Users with the last name starting with Smith:
 ``` typescript
-return this.userService('my-mock-buyerid', {filters: {LastName: 'Smith*'})
+return this.ocUserService('my-mock-buyerid', {filters: {LastName: 'Smith*'})
 ```
 
 Users with the last name starting with Smith *or* users with the last name *ending* with Jones 
 ```typescript
-return this.userService('my-mock-buyerid', {filters: {LastName: 'Smith*|*Jones'}})
+return this.ocUserService('my-mock-buyerid', {filters: {LastName: 'Smith*|*Jones'}})
 ```
 
 My products where xp.Color is not red *and* not blue
 ```typescript
-return this.productService.List({filters: {'xp.Color': ['!red', '!blue']}});
+return this.ocProductService.List({filters: {'xp.Color': ['!red', '!blue']}});
 ```
 
 And of course you can mix and match filters to your heart's content.
@@ -129,7 +129,7 @@ Impersonation allows a seller user to make an api call on behalf of another user
 Assuming you are already authenticated and have the required ImpersonationConfigs set up for your organization, an impersonation call will look something like this:
 
 ```typescript
-import { AuthService, TokenService, MeService } from '@ordercloud/angular-sdk';
+import { OcAuthService, OcTokenService, MeService } from '@ordercloud/angular-sdk';
 
 @Component({
   selector: '...',
@@ -139,9 +139,9 @@ import { AuthService, TokenService, MeService } from '@ordercloud/angular-sdk';
 
 export class ImpersonationExample {
   constructor(
-    private authService: AuthService,
-    private tokenService: TokenService,
-    private meService: MeService
+    private ocAuthService: OcAuthService,
+    private ocTokenService: OcTokenService,
+    private ocMeService: OcMeService
   ) { }
 
   impersonate() {
@@ -149,11 +149,11 @@ export class ImpersonationExample {
       ClientID: 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', // clientid of the user to impersonate
       Roles: ['Shopper'] // roles you are requesting
     };
-    this.userService.GetAccessToken('examplebuyerid', 'exampleuserid', impersonationRequest)
+    this.ocUserService.GetAccessToken('examplebuyerid', 'exampleuserid', impersonationRequest)
       .subscribe(response => {
         // store impersonation token, any impersonation calls will now use this token
-        this.tokenService.setImpersonation(response.access_token);
-        this.meService.As().Get()
+        this.ocTokenService.setImpersonation(response.access_token);
+        this.ocMeService.As().Get()
           .subscribe(impersonatedUser => {
             console.log(impersonatedUser);
           });
